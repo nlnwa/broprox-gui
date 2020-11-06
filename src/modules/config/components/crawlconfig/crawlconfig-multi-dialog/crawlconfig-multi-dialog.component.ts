@@ -71,7 +71,6 @@ export class CrawlConfigMultiDialogComponent extends CrawlConfigDetailsComponent
       browserConfigRefId: '',
       politenessRefId: '',
       extra: this.fb.group({
-        extractText: {value: '', disabled: true},
         createScreenshot: {value: '', disabled: true},
       }),
       minimumDnsTtlS: ['', Validators.pattern(NUMBER_OR_EMPTY_STRING)],
@@ -80,11 +79,6 @@ export class CrawlConfigMultiDialogComponent extends CrawlConfigDetailsComponent
   }
 
   protected updateForm() {
-    if (this.configObject.crawlConfig.extra.extractText !== null && !this.allSelected) {
-      this.extractText.enable();
-    } else {
-      this.extractText.disable();
-    }
     if (this.configObject.crawlConfig.extra.createScreenshot !== null && !this.allSelected) {
       this.createScreenshot.enable();
     } else {
@@ -132,11 +126,6 @@ export class CrawlConfigMultiDialogComponent extends CrawlConfigDetailsComponent
     if (this.priorityWeight.dirty && (this.allSelected || formModel.priorityWeight !== this.configObject.crawlConfig.priorityWeight)) {
       crawlConfig.priorityWeight = formModel.priorityWeight;
       pathList.push('crawlConfig.priorityWeight');
-    }
-
-    if (this.extractText.dirty && (this.allSelected || formModel.extra.extractText !== this.configObject.crawlConfig.extra.extractText)) {
-      crawlConfig.extra.extractText = formModel.extra.extractText;
-      pathList.push('crawlConfig.extra.extractText');
     }
 
     if (this.createScreenshot.dirty

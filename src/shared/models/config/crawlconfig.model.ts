@@ -4,24 +4,20 @@ import {Kind} from './kind.model';
 import {ConfigObject} from './configobject.model';
 
 export class ExtraConfig {
-  extractText: boolean;
   createScreenshot: boolean;
 
-  constructor({createScreenshot = true, extractText = true}: Partial<ExtraConfig> = {}) {
-    this.extractText = extractText;
+  constructor({createScreenshot = true}: Partial<ExtraConfig> = {}) {
     this.createScreenshot = createScreenshot;
   }
 
   static fromProto(proto: ExtraConfigProto): ExtraConfig {
     return new ExtraConfig({
-      extractText: proto.getExtractText(),
       createScreenshot: proto.getCreateScreenshot()
     });
   }
 
   static toProto(extraConfig: ExtraConfig): ExtraConfigProto {
     const proto = new ExtraConfigProto();
-    proto.setExtractText(extraConfig.extractText);
     proto.setCreateScreenshot(extraConfig.createScreenshot);
     return proto;
   }
@@ -89,8 +85,6 @@ export class CrawlConfig {
 
     const equalPriorityWeight = configObjects.every(cfg => cfg.crawlConfig.priorityWeight === compareObj.priorityWeight);
 
-    const equalExtractText = configObjects.every(cfg => cfg.crawlConfig.extra.extractText === compareObj.extra.extractText);
-
     const equalCreateScreenshot = configObjects.every(
       cfg => cfg.crawlConfig.extra.createScreenshot === compareObj.extra.createScreenshot);
 
@@ -118,12 +112,6 @@ export class CrawlConfig {
 
     if (equalPriorityWeight) {
       crawlConfig.priorityWeight = compareObj.priorityWeight;
-    }
-
-    if (equalExtractText) {
-      crawlConfig.extra.extractText = compareObj.extra.extractText;
-    } else {
-      crawlConfig.extra.extractText = null;
     }
 
     if (equalCreateScreenshot) {

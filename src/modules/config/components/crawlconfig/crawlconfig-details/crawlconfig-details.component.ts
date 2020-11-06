@@ -84,10 +84,6 @@ export class CrawlConfigDetailsComponent implements OnChanges {
     return this.form.get('priorityWeight');
   }
 
-  get extractText(): AbstractControl {
-    return this.form.get('extra.extractText');
-  }
-
   get createScreenshot(): AbstractControl {
     return this.form.get('extra.createScreenshot');
   }
@@ -131,7 +127,6 @@ export class CrawlConfigDetailsComponent implements OnChanges {
       browserConfigRefId: '',
       politenessRefId: '',
       extra: this.fb.group({
-        extractText: '',
         createScreenshot: '',
       }),
       minimumDnsTtlS: ['', Validators.pattern(NUMBER_OR_EMPTY_STRING)],
@@ -179,7 +174,6 @@ export class CrawlConfigDetailsComponent implements OnChanges {
     }) : null;
     crawlConfig.minimumDnsTtlS = parseInt(formModel.minimumDnsTtlS, 10) || 0;
     crawlConfig.priorityWeight = parseFloat(formModel.priorityWeight) || 0;
-    crawlConfig.extra.extractText = formModel.extra ? formModel.extra.extractText : null;
     crawlConfig.extra.createScreenshot = formModel.extra ? formModel.extra.createScreenshot : null;
 
     configObject.crawlConfig = crawlConfig;
