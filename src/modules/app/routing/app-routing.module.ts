@@ -1,9 +1,14 @@
 import {NgModule} from '@angular/core';
 import {NoPreloading, RouterModule, Routes} from '@angular/router';
 import {GuardService} from '../../core/services/auth';
+import {HomeComponent} from '../components/home/home.component';
 
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+  },
   {
     path: 'config',
     loadChildren: () => import('../../config/configurations.module').then(m => m.ConfigurationsModule),

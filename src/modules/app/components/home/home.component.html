@@ -1,0 +1,10 @@
+<div class="container content-padding"*ngIf="'read' | able: 'home'">
+  <h1 style="text-align: center; padding: 24px">Welcome to Veidemann</h1>
+  <div fxLayout="row wrap" fxLayoutGap="16px">
+    <div fxLayout="column" fxLayoutGap="16px">
+      <app-crawlerstatus *ngIf="'read' | able: 'crawlerStatus'"
+                         [runStatus]="runStatus$ | async"
+                         (change)="onChangeRunStatus($event)"></app-crawlerstatus>
+    </div>
+  </div>
+</div>

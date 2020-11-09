@@ -1,20 +1,34 @@
-<button mat-button mat-flat-button matTooltip="Pause crawler"
-        *ngIf="runStatus === RunStatus.RUNNING"
-        color="primary"
-        i18n-matTooltip="@@crawlerStatusPauseCrawlerButtonTooltip" (click)="onPauseCrawler(true)">
-  <mat-icon>pause</mat-icon>
-  <span i18n="@@crawlerStatusRunningTitle">CRAWLER IS RUNNING</span>
-</button>
-
-<div class="mat-button mat-flat-button" *ngIf="runStatus === RunStatus.PAUSE_REQUESTED"
-     i18n="@@crawlerStatusPauseRequestedTitle">
-  CRAWLER IS PAUSING
-</div>
-
-<button mat-button mat-flat-button matTooltip="Unpause crawler"
-        *ngIf="runStatus === RunStatus.PAUSED"
-        color="warn"
-        i18n-matTooltip="@@crawlerStatusUnpauseCrawlerButtonTooltip" (click)="onPauseCrawler(false)">
-  <mat-icon>play_arrow</mat-icon>
-  <span i18n="@@crawlerStatusPausedTitle">CRAWLER IS PAUSED</span>
-</button>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Crawler status
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" *ngIf="runStatus === RunStatus.RUNNING">
+      <button mat-button mat-flat-button class="crawlerRunningButton"
+              *ngIf="('update' | able: 'crawlerStatus')"
+              matTooltip="Pause crawler"
+              i18n-matTooltip="@@crawlerStatusPauseCrawlerButtonTooltip"
+              (click)="onPauseCrawler(true)">
+        RUNNING
+        <mat-icon>pause</mat-icon>
+      </button>
+    </div>
+    <div fxLayout="row" *ngIf="runStatus === RunStatus.PAUSE_REQUESTED">
+      <h1 i18n="@@crawlerStatusPauseRequestedTitle" style="color: darkorange">
+        IS PAUSING
+      </h1>
+    </div>
+    <div fxLayout="row" *ngIf="runStatus === RunStatus.PAUSED">
+      <button mat-button mat-flat-button class="crawlerPausedButton"
+              *ngIf="('update' | able: 'crawlerStatus')"
+              matTooltip="Unpause crawler"
+              i18n-matTooltip="@@crawlerStatusUnpauseCrawlerButtonTooltip"
+              (click)="onPauseCrawler(false)">
+        PAUSED
+        <mat-icon >play_arrow</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

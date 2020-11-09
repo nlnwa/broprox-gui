@@ -8,10 +8,6 @@
 
     <span fxFlex></span>
 
-    <app-crawlerstatus *ngIf="isLoggedIn && ('read' | able: 'status')"
-                       [runStatus]="runStatus$ | async"
-                       (change)="onChangeRunStatus($event)"></app-crawlerstatus>
-
     <a mat-button mat-icon-button [matMenuTriggerFor]="helpMenu"><mat-icon>help</mat-icon></a>
     <mat-menu #helpMenu="matMenu">
       <a mat-menu-item

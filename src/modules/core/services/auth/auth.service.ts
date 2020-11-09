@@ -159,10 +159,11 @@ export class AuthService {
     }
 
     if (this.isOperator()) {
+      can('read', 'home');
       can('read', reports);
       can(['read', 'update'], 'annotation');
       can('read', 'configs');
-      can('read', 'status');
+      can('read', 'update', 'crawlerStatus');
       can(['create', 'read', 'update', 'delete', 'updateAll'], operatorConfigs);
       can('runCrawl', [Kind[Kind.SEED], Kind[Kind.CRAWLJOB]]);
       can('abort', ['jobexecution']);
@@ -170,6 +171,8 @@ export class AuthService {
     }
 
     if (this.isCurator()) {
+      can('read', 'home');
+      can('read', 'crawlerStatus');
       can(['create', 'read', 'update', 'delete', 'updateAll'], curatorConfigs);
       can(['read', 'update'], 'annotation');
       can('read', 'configs');
@@ -177,11 +180,17 @@ export class AuthService {
     }
 
     if (this.isConsultant()) {
+      can('read', 'home');
+      can('read', 'crawlerStatus');
       can(['create', 'read', 'update', 'delete'], [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED]]);
       can('read', 'configs');
       can('read', reports);
-    } else {
-      can('read', 'Home');
+    }
+
+    if (this.isAnyUser()) {
+      can('read', 'home');
+      can('read', 'configs');
+      can('read', [Kind[Kind.SEED], Kind[Kind.CRAWLENTITY]]);
     }
     this.ability.update(rules);
   }

@@ -17,6 +17,7 @@ import {
 } from './components';
 import {AbilityModule} from '@casl/angular';
 import {Ability, PureAbility} from '@casl/ability';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {Ability, PureAbility} from '@casl/ability';
     CrawlerStatusDialogComponent,
     CrawlerStatusComponent,
     AboutDialogComponent,
+    HomeComponent,
   ],
   entryComponents: [ErrorDialogComponent, CrawlerStatusDialogComponent],
   imports: [

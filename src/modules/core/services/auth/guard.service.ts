@@ -14,6 +14,7 @@ export class GuardService implements CanActivate {
   constructor(public authService: AuthService) {
   }
 
+
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const ability = this.authService.getAbility();
     const path = route.url.map(segment => segment.path);
@@ -30,8 +31,6 @@ export class GuardService implements CanActivate {
         return of(ability.can('read', 'crawllog'));
       case 'logconfig':
         return of(ability.can('read', 'logconfig'));
-      case 'status':
-        return of(ability.can('read', 'status'));
       case 'config':
         return of(ability.can('read', 'configs'));
       case 'browserconfig':
