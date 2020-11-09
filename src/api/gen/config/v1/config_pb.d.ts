@@ -1,12 +1,13 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as config_v1_resources_pb from '../../config/v1/resources_pb';
 import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 
+
 export class GetLabelKeysRequest extends jspb.Message {
   getKind(): config_v1_resources_pb.Kind;
-  setKind(value: config_v1_resources_pb.Kind): void;
+  setKind(value: config_v1_resources_pb.Kind): GetLabelKeysRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetLabelKeysRequest.AsObject;
@@ -24,47 +25,47 @@ export namespace GetLabelKeysRequest {
 
 export class ListRequest extends jspb.Message {
   getKind(): config_v1_resources_pb.Kind;
-  setKind(value: config_v1_resources_pb.Kind): void;
+  setKind(value: config_v1_resources_pb.Kind): ListRequest;
 
   getIdList(): Array<string>;
-  setIdList(value: Array<string>): void;
-  clearIdList(): void;
-  addId(value: string, index?: number): void;
+  setIdList(value: Array<string>): ListRequest;
+  clearIdList(): ListRequest;
+  addId(value: string, index?: number): ListRequest;
 
   getNameRegex(): string;
-  setNameRegex(value: string): void;
+  setNameRegex(value: string): ListRequest;
 
   getLabelSelectorList(): Array<string>;
-  setLabelSelectorList(value: Array<string>): void;
-  clearLabelSelectorList(): void;
-  addLabelSelector(value: string, index?: number): void;
+  setLabelSelectorList(value: Array<string>): ListRequest;
+  clearLabelSelectorList(): ListRequest;
+  addLabelSelector(value: string, index?: number): ListRequest;
 
   getQueryTemplate(): config_v1_resources_pb.ConfigObject | undefined;
-  setQueryTemplate(value?: config_v1_resources_pb.ConfigObject): void;
+  setQueryTemplate(value?: config_v1_resources_pb.ConfigObject): ListRequest;
   hasQueryTemplate(): boolean;
-  clearQueryTemplate(): void;
+  clearQueryTemplate(): ListRequest;
 
   getQueryMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setQueryMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setQueryMask(value?: commons_v1_resources_pb.FieldMask): ListRequest;
   hasQueryMask(): boolean;
-  clearQueryMask(): void;
+  clearQueryMask(): ListRequest;
 
   getReturnedFieldsMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): ListRequest;
   hasReturnedFieldsMask(): boolean;
-  clearReturnedFieldsMask(): void;
+  clearReturnedFieldsMask(): ListRequest;
 
   getOrderByPath(): string;
-  setOrderByPath(value: string): void;
+  setOrderByPath(value: string): ListRequest;
 
   getOrderDescending(): boolean;
-  setOrderDescending(value: boolean): void;
+  setOrderDescending(value: boolean): ListRequest;
 
   getPageSize(): number;
-  setPageSize(value: number): void;
+  setPageSize(value: number): ListRequest;
 
   getOffset(): number;
-  setOffset(value: number): void;
+  setOffset(value: number): ListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListRequest.AsObject;
@@ -92,19 +93,19 @@ export namespace ListRequest {
 
 export class UpdateRequest extends jspb.Message {
   getListRequest(): ListRequest | undefined;
-  setListRequest(value?: ListRequest): void;
+  setListRequest(value?: ListRequest): UpdateRequest;
   hasListRequest(): boolean;
-  clearListRequest(): void;
+  clearListRequest(): UpdateRequest;
 
   getUpdateMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setUpdateMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setUpdateMask(value?: commons_v1_resources_pb.FieldMask): UpdateRequest;
   hasUpdateMask(): boolean;
-  clearUpdateMask(): void;
+  clearUpdateMask(): UpdateRequest;
 
   getUpdateTemplate(): config_v1_resources_pb.ConfigObject | undefined;
-  setUpdateTemplate(value?: config_v1_resources_pb.ConfigObject): void;
+  setUpdateTemplate(value?: config_v1_resources_pb.ConfigObject): UpdateRequest;
   hasUpdateTemplate(): boolean;
-  clearUpdateTemplate(): void;
+  clearUpdateTemplate(): UpdateRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRequest.AsObject;
@@ -124,7 +125,7 @@ export namespace UpdateRequest {
 
 export class UpdateResponse extends jspb.Message {
   getUpdated(): number;
-  setUpdated(value: number): void;
+  setUpdated(value: number): UpdateResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateResponse.AsObject;
@@ -142,10 +143,10 @@ export namespace UpdateResponse {
 
 export class ListCountResponse extends jspb.Message {
   getCount(): number;
-  setCount(value: number): void;
+  setCount(value: number): ListCountResponse;
 
   getApproximate(): boolean;
-  setApproximate(value: boolean): void;
+  setApproximate(value: boolean): ListCountResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCountResponse.AsObject;
@@ -164,7 +165,7 @@ export namespace ListCountResponse {
 
 export class DeleteResponse extends jspb.Message {
   getDeleted(): boolean;
-  setDeleted(value: boolean): void;
+  setDeleted(value: boolean): DeleteResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteResponse.AsObject;
@@ -182,9 +183,9 @@ export namespace DeleteResponse {
 
 export class LabelKeysResponse extends jspb.Message {
   getKeyList(): Array<string>;
-  setKeyList(value: Array<string>): void;
-  clearKeyList(): void;
-  addKey(value: string, index?: number): void;
+  setKeyList(value: Array<string>): LabelKeysResponse;
+  clearKeyList(): LabelKeysResponse;
+  addKey(value: string, index?: number): LabelKeysResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LabelKeysResponse.AsObject;

@@ -1,59 +1,50 @@
 import * as grpcWeb from 'grpc-web';
 
-import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as frontier_v1_resources_pb from '../../frontier/v1/resources_pb';
-import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
+import * as report_v1_report_pb from '../../report/v1/report_pb';
 
-import {
-  CrawlExecutionsListRequest,
-  CrawlLogListRequest,
-  ExecuteDbQueryReply,
-  ExecuteDbQueryRequest,
-  JobExecutionsListRequest,
-  ListCountResponse,
-  PageLogListRequest} from './report_pb';
 
 export class ReportClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               options?: null | { [index: string]: any; });
 
   listCrawlLogs(
-    request: CrawlLogListRequest,
+    request: report_v1_report_pb.CrawlLogListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.CrawlLog>;
 
   countCrawlLogs(
-    request: CrawlLogListRequest,
+    request: report_v1_report_pb.CrawlLogListRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: ListCountResponse) => void
-  ): grpcWeb.ClientReadableStream<ListCountResponse>;
+               response: report_v1_report_pb.ListCountResponse) => void
+  ): grpcWeb.ClientReadableStream<report_v1_report_pb.ListCountResponse>;
 
   listPageLogs(
-    request: PageLogListRequest,
+    request: report_v1_report_pb.PageLogListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.PageLog>;
 
   countPageLogs(
-    request: PageLogListRequest,
+    request: report_v1_report_pb.PageLogListRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: ListCountResponse) => void
-  ): grpcWeb.ClientReadableStream<ListCountResponse>;
+               response: report_v1_report_pb.ListCountResponse) => void
+  ): grpcWeb.ClientReadableStream<report_v1_report_pb.ListCountResponse>;
 
   executeDbQuery(
-    request: ExecuteDbQueryRequest,
+    request: report_v1_report_pb.ExecuteDbQueryRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<ExecuteDbQueryReply>;
+  ): grpcWeb.ClientReadableStream<report_v1_report_pb.ExecuteDbQueryReply>;
 
   listExecutions(
-    request: CrawlExecutionsListRequest,
+    request: report_v1_report_pb.CrawlExecutionsListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.CrawlExecutionStatus>;
 
   listJobExecutions(
-    request: JobExecutionsListRequest,
+    request: report_v1_report_pb.JobExecutionsListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.JobExecutionStatus>;
 
@@ -62,40 +53,40 @@ export class ReportClient {
 export class ReportPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               options?: null | { [index: string]: any; });
 
   listCrawlLogs(
-    request: CrawlLogListRequest,
+    request: report_v1_report_pb.CrawlLogListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.CrawlLog>;
 
   countCrawlLogs(
-    request: CrawlLogListRequest,
+    request: report_v1_report_pb.CrawlLogListRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<ListCountResponse>;
+  ): Promise<report_v1_report_pb.ListCountResponse>;
 
   listPageLogs(
-    request: PageLogListRequest,
+    request: report_v1_report_pb.PageLogListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.PageLog>;
 
   countPageLogs(
-    request: PageLogListRequest,
+    request: report_v1_report_pb.PageLogListRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<ListCountResponse>;
+  ): Promise<report_v1_report_pb.ListCountResponse>;
 
   executeDbQuery(
-    request: ExecuteDbQueryRequest,
+    request: report_v1_report_pb.ExecuteDbQueryRequest,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<ExecuteDbQueryReply>;
+  ): grpcWeb.ClientReadableStream<report_v1_report_pb.ExecuteDbQueryReply>;
 
   listExecutions(
-    request: CrawlExecutionsListRequest,
+    request: report_v1_report_pb.CrawlExecutionsListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.CrawlExecutionStatus>;
 
   listJobExecutions(
-    request: JobExecutionsListRequest,
+    request: report_v1_report_pb.JobExecutionsListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<frontier_v1_resources_pb.JobExecutionStatus>;
 

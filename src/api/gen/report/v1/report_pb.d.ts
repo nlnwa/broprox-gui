@@ -1,44 +1,45 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as frontier_v1_resources_pb from '../../frontier/v1/resources_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
+
 export class CrawlLogListRequest extends jspb.Message {
   getWarcIdList(): Array<string>;
-  setWarcIdList(value: Array<string>): void;
-  clearWarcIdList(): void;
-  addWarcId(value: string, index?: number): void;
+  setWarcIdList(value: Array<string>): CrawlLogListRequest;
+  clearWarcIdList(): CrawlLogListRequest;
+  addWarcId(value: string, index?: number): CrawlLogListRequest;
 
   getQueryTemplate(): frontier_v1_resources_pb.CrawlLog | undefined;
-  setQueryTemplate(value?: frontier_v1_resources_pb.CrawlLog): void;
+  setQueryTemplate(value?: frontier_v1_resources_pb.CrawlLog): CrawlLogListRequest;
   hasQueryTemplate(): boolean;
-  clearQueryTemplate(): void;
+  clearQueryTemplate(): CrawlLogListRequest;
 
   getQueryMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setQueryMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setQueryMask(value?: commons_v1_resources_pb.FieldMask): CrawlLogListRequest;
   hasQueryMask(): boolean;
-  clearQueryMask(): void;
+  clearQueryMask(): CrawlLogListRequest;
 
   getReturnedFieldsMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): CrawlLogListRequest;
   hasReturnedFieldsMask(): boolean;
-  clearReturnedFieldsMask(): void;
+  clearReturnedFieldsMask(): CrawlLogListRequest;
 
   getOrderByPath(): string;
-  setOrderByPath(value: string): void;
+  setOrderByPath(value: string): CrawlLogListRequest;
 
   getOrderDescending(): boolean;
-  setOrderDescending(value: boolean): void;
+  setOrderDescending(value: boolean): CrawlLogListRequest;
 
   getWatch(): boolean;
-  setWatch(value: boolean): void;
+  setWatch(value: boolean): CrawlLogListRequest;
 
   getPageSize(): number;
-  setPageSize(value: number): void;
+  setPageSize(value: number): CrawlLogListRequest;
 
   getOffset(): number;
-  setOffset(value: number): void;
+  setOffset(value: number): CrawlLogListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlLogListRequest.AsObject;
@@ -64,39 +65,39 @@ export namespace CrawlLogListRequest {
 
 export class PageLogListRequest extends jspb.Message {
   getWarcIdList(): Array<string>;
-  setWarcIdList(value: Array<string>): void;
-  clearWarcIdList(): void;
-  addWarcId(value: string, index?: number): void;
+  setWarcIdList(value: Array<string>): PageLogListRequest;
+  clearWarcIdList(): PageLogListRequest;
+  addWarcId(value: string, index?: number): PageLogListRequest;
 
   getQueryTemplate(): frontier_v1_resources_pb.PageLog | undefined;
-  setQueryTemplate(value?: frontier_v1_resources_pb.PageLog): void;
+  setQueryTemplate(value?: frontier_v1_resources_pb.PageLog): PageLogListRequest;
   hasQueryTemplate(): boolean;
-  clearQueryTemplate(): void;
+  clearQueryTemplate(): PageLogListRequest;
 
   getQueryMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setQueryMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setQueryMask(value?: commons_v1_resources_pb.FieldMask): PageLogListRequest;
   hasQueryMask(): boolean;
-  clearQueryMask(): void;
+  clearQueryMask(): PageLogListRequest;
 
   getReturnedFieldsMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): PageLogListRequest;
   hasReturnedFieldsMask(): boolean;
-  clearReturnedFieldsMask(): void;
+  clearReturnedFieldsMask(): PageLogListRequest;
 
   getOrderByPath(): string;
-  setOrderByPath(value: string): void;
+  setOrderByPath(value: string): PageLogListRequest;
 
   getOrderDescending(): boolean;
-  setOrderDescending(value: boolean): void;
+  setOrderDescending(value: boolean): PageLogListRequest;
 
   getWatch(): boolean;
-  setWatch(value: boolean): void;
+  setWatch(value: boolean): PageLogListRequest;
 
   getPageSize(): number;
-  setPageSize(value: number): void;
+  setPageSize(value: number): PageLogListRequest;
 
   getOffset(): number;
-  setOffset(value: number): void;
+  setOffset(value: number): PageLogListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PageLogListRequest.AsObject;
@@ -122,10 +123,10 @@ export namespace PageLogListRequest {
 
 export class ExecuteDbQueryRequest extends jspb.Message {
   getQuery(): string;
-  setQuery(value: string): void;
+  setQuery(value: string): ExecuteDbQueryRequest;
 
   getLimit(): number;
-  setLimit(value: number): void;
+  setLimit(value: number): ExecuteDbQueryRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ExecuteDbQueryRequest.AsObject;
@@ -144,7 +145,7 @@ export namespace ExecuteDbQueryRequest {
 
 export class ExecuteDbQueryReply extends jspb.Message {
   getRecord(): string;
-  setRecord(value: string): void;
+  setRecord(value: string): ExecuteDbQueryReply;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ExecuteDbQueryReply.AsObject;
@@ -162,10 +163,10 @@ export namespace ExecuteDbQueryReply {
 
 export class ListCountResponse extends jspb.Message {
   getCount(): number;
-  setCount(value: number): void;
+  setCount(value: number): ListCountResponse;
 
   getApproximate(): boolean;
-  setApproximate(value: boolean): void;
+  setApproximate(value: boolean): ListCountResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCountResponse.AsObject;
@@ -184,57 +185,57 @@ export namespace ListCountResponse {
 
 export class CrawlExecutionsListRequest extends jspb.Message {
   getIdList(): Array<string>;
-  setIdList(value: Array<string>): void;
-  clearIdList(): void;
-  addId(value: string, index?: number): void;
+  setIdList(value: Array<string>): CrawlExecutionsListRequest;
+  clearIdList(): CrawlExecutionsListRequest;
+  addId(value: string, index?: number): CrawlExecutionsListRequest;
 
   getStateList(): Array<frontier_v1_resources_pb.CrawlExecutionStatus.State>;
-  setStateList(value: Array<frontier_v1_resources_pb.CrawlExecutionStatus.State>): void;
-  clearStateList(): void;
-  addState(value: frontier_v1_resources_pb.CrawlExecutionStatus.State, index?: number): void;
+  setStateList(value: Array<frontier_v1_resources_pb.CrawlExecutionStatus.State>): CrawlExecutionsListRequest;
+  clearStateList(): CrawlExecutionsListRequest;
+  addState(value: frontier_v1_resources_pb.CrawlExecutionStatus.State, index?: number): CrawlExecutionsListRequest;
 
   getStartTimeFrom(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTimeFrom(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTimeFrom(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionsListRequest;
   hasStartTimeFrom(): boolean;
-  clearStartTimeFrom(): void;
+  clearStartTimeFrom(): CrawlExecutionsListRequest;
 
   getStartTimeTo(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTimeTo(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTimeTo(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionsListRequest;
   hasStartTimeTo(): boolean;
-  clearStartTimeTo(): void;
+  clearStartTimeTo(): CrawlExecutionsListRequest;
 
   getHasError(): boolean;
-  setHasError(value: boolean): void;
+  setHasError(value: boolean): CrawlExecutionsListRequest;
 
   getQueryTemplate(): frontier_v1_resources_pb.CrawlExecutionStatus | undefined;
-  setQueryTemplate(value?: frontier_v1_resources_pb.CrawlExecutionStatus): void;
+  setQueryTemplate(value?: frontier_v1_resources_pb.CrawlExecutionStatus): CrawlExecutionsListRequest;
   hasQueryTemplate(): boolean;
-  clearQueryTemplate(): void;
+  clearQueryTemplate(): CrawlExecutionsListRequest;
 
   getQueryMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setQueryMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setQueryMask(value?: commons_v1_resources_pb.FieldMask): CrawlExecutionsListRequest;
   hasQueryMask(): boolean;
-  clearQueryMask(): void;
+  clearQueryMask(): CrawlExecutionsListRequest;
 
   getReturnedFieldsMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): CrawlExecutionsListRequest;
   hasReturnedFieldsMask(): boolean;
-  clearReturnedFieldsMask(): void;
+  clearReturnedFieldsMask(): CrawlExecutionsListRequest;
 
   getOrderByPath(): string;
-  setOrderByPath(value: string): void;
+  setOrderByPath(value: string): CrawlExecutionsListRequest;
 
   getOrderDescending(): boolean;
-  setOrderDescending(value: boolean): void;
+  setOrderDescending(value: boolean): CrawlExecutionsListRequest;
 
   getWatch(): boolean;
-  setWatch(value: boolean): void;
+  setWatch(value: boolean): CrawlExecutionsListRequest;
 
   getPageSize(): number;
-  setPageSize(value: number): void;
+  setPageSize(value: number): CrawlExecutionsListRequest;
 
   getOffset(): number;
-  setOffset(value: number): void;
+  setOffset(value: number): CrawlExecutionsListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlExecutionsListRequest.AsObject;
@@ -264,54 +265,54 @@ export namespace CrawlExecutionsListRequest {
 
 export class JobExecutionsListRequest extends jspb.Message {
   getIdList(): Array<string>;
-  setIdList(value: Array<string>): void;
-  clearIdList(): void;
-  addId(value: string, index?: number): void;
+  setIdList(value: Array<string>): JobExecutionsListRequest;
+  clearIdList(): JobExecutionsListRequest;
+  addId(value: string, index?: number): JobExecutionsListRequest;
 
   getStateList(): Array<frontier_v1_resources_pb.JobExecutionStatus.State>;
-  setStateList(value: Array<frontier_v1_resources_pb.JobExecutionStatus.State>): void;
-  clearStateList(): void;
-  addState(value: frontier_v1_resources_pb.JobExecutionStatus.State, index?: number): void;
+  setStateList(value: Array<frontier_v1_resources_pb.JobExecutionStatus.State>): JobExecutionsListRequest;
+  clearStateList(): JobExecutionsListRequest;
+  addState(value: frontier_v1_resources_pb.JobExecutionStatus.State, index?: number): JobExecutionsListRequest;
 
   getStartTimeFrom(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTimeFrom(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTimeFrom(value?: google_protobuf_timestamp_pb.Timestamp): JobExecutionsListRequest;
   hasStartTimeFrom(): boolean;
-  clearStartTimeFrom(): void;
+  clearStartTimeFrom(): JobExecutionsListRequest;
 
   getStartTimeTo(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTimeTo(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTimeTo(value?: google_protobuf_timestamp_pb.Timestamp): JobExecutionsListRequest;
   hasStartTimeTo(): boolean;
-  clearStartTimeTo(): void;
+  clearStartTimeTo(): JobExecutionsListRequest;
 
   getQueryTemplate(): frontier_v1_resources_pb.JobExecutionStatus | undefined;
-  setQueryTemplate(value?: frontier_v1_resources_pb.JobExecutionStatus): void;
+  setQueryTemplate(value?: frontier_v1_resources_pb.JobExecutionStatus): JobExecutionsListRequest;
   hasQueryTemplate(): boolean;
-  clearQueryTemplate(): void;
+  clearQueryTemplate(): JobExecutionsListRequest;
 
   getQueryMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setQueryMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setQueryMask(value?: commons_v1_resources_pb.FieldMask): JobExecutionsListRequest;
   hasQueryMask(): boolean;
-  clearQueryMask(): void;
+  clearQueryMask(): JobExecutionsListRequest;
 
   getReturnedFieldsMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): JobExecutionsListRequest;
   hasReturnedFieldsMask(): boolean;
-  clearReturnedFieldsMask(): void;
+  clearReturnedFieldsMask(): JobExecutionsListRequest;
 
   getOrderByPath(): string;
-  setOrderByPath(value: string): void;
+  setOrderByPath(value: string): JobExecutionsListRequest;
 
   getOrderDescending(): boolean;
-  setOrderDescending(value: boolean): void;
+  setOrderDescending(value: boolean): JobExecutionsListRequest;
 
   getWatch(): boolean;
-  setWatch(value: boolean): void;
+  setWatch(value: boolean): JobExecutionsListRequest;
 
   getPageSize(): number;
-  setPageSize(value: number): void;
+  setPageSize(value: number): JobExecutionsListRequest;
 
   getOffset(): number;
-  setOffset(value: number): void;
+  setOffset(value: number): JobExecutionsListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): JobExecutionsListRequest.AsObject;

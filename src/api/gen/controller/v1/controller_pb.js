@@ -14,6 +14,8 @@ var global = Function('return this')();
 
 var controller_v1_resources_pb = require('../../controller/v1/resources_pb.js');
 goog.object.extend(proto, controller_v1_resources_pb);
+var frontier_v1_frontier_pb = require('../../frontier/v1/frontier_pb.js');
+goog.object.extend(proto, frontier_v1_frontier_pb);
 var frontier_v1_resources_pb = require('../../frontier/v1/resources_pb.js');
 goog.object.extend(proto, frontier_v1_resources_pb);
 var config_v1_resources_pb = require('../../config/v1/resources_pb.js');
@@ -739,7 +741,9 @@ proto.veidemann.api.controller.v1.CrawlerStatus.prototype.toObject = function(op
  */
 proto.veidemann.api.controller.v1.CrawlerStatus.toObject = function(includeInstance, msg) {
   var f, obj = {
-    runstatus: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    runstatus: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    busycrawlhostgroupcount: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    queuesize: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -780,6 +784,14 @@ proto.veidemann.api.controller.v1.CrawlerStatus.deserializeBinaryFromReader = fu
       var value = /** @type {!proto.veidemann.api.controller.v1.RunStatus} */ (reader.readEnum());
       msg.setRunstatus(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setBusycrawlhostgroupcount(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setQueuesize(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -816,6 +828,20 @@ proto.veidemann.api.controller.v1.CrawlerStatus.serializeBinaryToWriter = functi
       f
     );
   }
+  f = message.getBusycrawlhostgroupcount();
+  if (f !== 0) {
+    writer.writeInt64(
+      2,
+      f
+    );
+  }
+  f = message.getQueuesize();
+  if (f !== 0) {
+    writer.writeInt64(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -834,6 +860,42 @@ proto.veidemann.api.controller.v1.CrawlerStatus.prototype.getRunstatus = functio
  */
 proto.veidemann.api.controller.v1.CrawlerStatus.prototype.setRunstatus = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional int64 busyCrawlHostGroupCount = 2;
+ * @return {number}
+ */
+proto.veidemann.api.controller.v1.CrawlerStatus.prototype.getBusycrawlhostgroupcount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.veidemann.api.controller.v1.CrawlerStatus} returns this
+ */
+proto.veidemann.api.controller.v1.CrawlerStatus.prototype.setBusycrawlhostgroupcount = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int64 queueSize = 3;
+ * @return {number}
+ */
+proto.veidemann.api.controller.v1.CrawlerStatus.prototype.getQueuesize = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.veidemann.api.controller.v1.CrawlerStatus} returns this
+ */
+proto.veidemann.api.controller.v1.CrawlerStatus.prototype.setQueuesize = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

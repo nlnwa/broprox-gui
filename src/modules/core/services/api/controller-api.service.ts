@@ -12,6 +12,7 @@ import {Role} from '../../../../shared/models/config';
 import {ExecutionId, RunCrawlReply, RunCrawlRequest} from '../../../../shared/models/controller/controller.model';
 import {ApplicationErrorHandler} from '../error.handler';
 import {CrawlExecutionStatus, JobExecutionStatus} from '../../../../shared/models/report';
+import {CountResponse} from '../../../../shared/models/report/countresponse.model';
 
 
 @Injectable({
@@ -76,6 +77,17 @@ export class ControllerApiService {
     return from(this.controllerPromiseClient.abortCrawlExecution(ExecutionId.toProto(request), this.authService.metadata))
       .pipe(
         map(crawlExecutionStatus => CrawlExecutionStatus.fromProto(crawlExecutionStatus)),
+        catchError(error => {
+          this.errorHandler.handleError(error);
+          return of(null);
+        })
+      );
+  }
+
+  queueCountForCrawlExecution(request: ExecutionId): Observable<CountResponse> {
+    return from(this.controllerPromiseClient.queueCountForCrawlExecution(ExecutionId.toProto(request), this.authService.metadata))
+      .pipe(
+        map(countResponse => CountResponse.fromProto(countResponse)),
         catchError(error => {
           this.errorHandler.handleError(error);
           return of(null);

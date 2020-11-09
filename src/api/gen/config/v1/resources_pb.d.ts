@@ -1,76 +1,77 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
+
 export class ConfigObject extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): ConfigObject;
 
   getApiversion(): string;
-  setApiversion(value: string): void;
+  setApiversion(value: string): ConfigObject;
 
   getKind(): Kind;
-  setKind(value: Kind): void;
+  setKind(value: Kind): ConfigObject;
 
   getMeta(): Meta | undefined;
-  setMeta(value?: Meta): void;
+  setMeta(value?: Meta): ConfigObject;
   hasMeta(): boolean;
-  clearMeta(): void;
+  clearMeta(): ConfigObject;
 
   getCrawlEntity(): CrawlEntity | undefined;
-  setCrawlEntity(value?: CrawlEntity): void;
+  setCrawlEntity(value?: CrawlEntity): ConfigObject;
   hasCrawlEntity(): boolean;
-  clearCrawlEntity(): void;
+  clearCrawlEntity(): ConfigObject;
 
   getSeed(): Seed | undefined;
-  setSeed(value?: Seed): void;
+  setSeed(value?: Seed): ConfigObject;
   hasSeed(): boolean;
-  clearSeed(): void;
+  clearSeed(): ConfigObject;
 
   getCrawlJob(): CrawlJob | undefined;
-  setCrawlJob(value?: CrawlJob): void;
+  setCrawlJob(value?: CrawlJob): ConfigObject;
   hasCrawlJob(): boolean;
-  clearCrawlJob(): void;
+  clearCrawlJob(): ConfigObject;
 
   getCrawlConfig(): CrawlConfig | undefined;
-  setCrawlConfig(value?: CrawlConfig): void;
+  setCrawlConfig(value?: CrawlConfig): ConfigObject;
   hasCrawlConfig(): boolean;
-  clearCrawlConfig(): void;
+  clearCrawlConfig(): ConfigObject;
 
   getCrawlScheduleConfig(): CrawlScheduleConfig | undefined;
-  setCrawlScheduleConfig(value?: CrawlScheduleConfig): void;
+  setCrawlScheduleConfig(value?: CrawlScheduleConfig): ConfigObject;
   hasCrawlScheduleConfig(): boolean;
-  clearCrawlScheduleConfig(): void;
+  clearCrawlScheduleConfig(): ConfigObject;
 
   getBrowserConfig(): BrowserConfig | undefined;
-  setBrowserConfig(value?: BrowserConfig): void;
+  setBrowserConfig(value?: BrowserConfig): ConfigObject;
   hasBrowserConfig(): boolean;
-  clearBrowserConfig(): void;
+  clearBrowserConfig(): ConfigObject;
 
   getPolitenessConfig(): PolitenessConfig | undefined;
-  setPolitenessConfig(value?: PolitenessConfig): void;
+  setPolitenessConfig(value?: PolitenessConfig): ConfigObject;
   hasPolitenessConfig(): boolean;
-  clearPolitenessConfig(): void;
+  clearPolitenessConfig(): ConfigObject;
 
   getBrowserScript(): BrowserScript | undefined;
-  setBrowserScript(value?: BrowserScript): void;
+  setBrowserScript(value?: BrowserScript): ConfigObject;
   hasBrowserScript(): boolean;
-  clearBrowserScript(): void;
+  clearBrowserScript(): ConfigObject;
 
   getCrawlHostGroupConfig(): CrawlHostGroupConfig | undefined;
-  setCrawlHostGroupConfig(value?: CrawlHostGroupConfig): void;
+  setCrawlHostGroupConfig(value?: CrawlHostGroupConfig): ConfigObject;
   hasCrawlHostGroupConfig(): boolean;
-  clearCrawlHostGroupConfig(): void;
+  clearCrawlHostGroupConfig(): ConfigObject;
 
   getRoleMapping(): RoleMapping | undefined;
-  setRoleMapping(value?: RoleMapping): void;
+  setRoleMapping(value?: RoleMapping): ConfigObject;
   hasRoleMapping(): boolean;
-  clearRoleMapping(): void;
+  clearRoleMapping(): ConfigObject;
 
   getCollection(): Collection | undefined;
-  setCollection(value?: Collection): void;
+  setCollection(value?: Collection): ConfigObject;
   hasCollection(): boolean;
-  clearCollection(): void;
+  clearCollection(): ConfigObject;
 
   getSpecCase(): ConfigObject.SpecCase;
 
@@ -119,35 +120,35 @@ export namespace ConfigObject {
 
 export class Meta extends jspb.Message {
   getName(): string;
-  setName(value: string): void;
+  setName(value: string): Meta;
 
   getDescription(): string;
-  setDescription(value: string): void;
+  setDescription(value: string): Meta;
 
   getCreated(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreated(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setCreated(value?: google_protobuf_timestamp_pb.Timestamp): Meta;
   hasCreated(): boolean;
-  clearCreated(): void;
+  clearCreated(): Meta;
 
   getCreatedBy(): string;
-  setCreatedBy(value: string): void;
+  setCreatedBy(value: string): Meta;
 
   getLastModified(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setLastModified(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setLastModified(value?: google_protobuf_timestamp_pb.Timestamp): Meta;
   hasLastModified(): boolean;
-  clearLastModified(): void;
+  clearLastModified(): Meta;
 
   getLastModifiedBy(): string;
-  setLastModifiedBy(value: string): void;
+  setLastModifiedBy(value: string): Meta;
 
   getLabelList(): Array<Label>;
-  setLabelList(value: Array<Label>): void;
-  clearLabelList(): void;
+  setLabelList(value: Array<Label>): Meta;
+  clearLabelList(): Meta;
   addLabel(value?: Label, index?: number): Label;
 
   getAnnotationList(): Array<Annotation>;
-  setAnnotationList(value: Array<Annotation>): void;
-  clearAnnotationList(): void;
+  setAnnotationList(value: Array<Annotation>): Meta;
+  clearAnnotationList(): Meta;
   addAnnotation(value?: Annotation, index?: number): Annotation;
 
   serializeBinary(): Uint8Array;
@@ -173,10 +174,10 @@ export namespace Meta {
 
 export class Label extends jspb.Message {
   getKey(): string;
-  setKey(value: string): void;
+  setKey(value: string): Label;
 
   getValue(): string;
-  setValue(value: string): void;
+  setValue(value: string): Label;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Label.AsObject;
@@ -195,10 +196,10 @@ export namespace Label {
 
 export class Annotation extends jspb.Message {
   getKey(): string;
-  setKey(value: string): void;
+  setKey(value: string): Annotation;
 
   getValue(): string;
-  setValue(value: string): void;
+  setValue(value: string): Annotation;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Annotation.AsObject;
@@ -217,10 +218,10 @@ export namespace Annotation {
 
 export class ConfigRef extends jspb.Message {
   getKind(): Kind;
-  setKind(value: Kind): void;
+  setKind(value: Kind): ConfigRef;
 
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): ConfigRef;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConfigRef.AsObject;
@@ -253,22 +254,22 @@ export namespace CrawlEntity {
 
 export class Seed extends jspb.Message {
   getEntityRef(): ConfigRef | undefined;
-  setEntityRef(value?: ConfigRef): void;
+  setEntityRef(value?: ConfigRef): Seed;
   hasEntityRef(): boolean;
-  clearEntityRef(): void;
+  clearEntityRef(): Seed;
 
   getScope(): CrawlScope | undefined;
-  setScope(value?: CrawlScope): void;
+  setScope(value?: CrawlScope): Seed;
   hasScope(): boolean;
-  clearScope(): void;
+  clearScope(): Seed;
 
   getJobRefList(): Array<ConfigRef>;
-  setJobRefList(value: Array<ConfigRef>): void;
-  clearJobRefList(): void;
+  setJobRefList(value: Array<ConfigRef>): Seed;
+  clearJobRefList(): Seed;
   addJobRef(value?: ConfigRef, index?: number): ConfigRef;
 
   getDisabled(): boolean;
-  setDisabled(value: boolean): void;
+  setDisabled(value: boolean): Seed;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Seed.AsObject;
@@ -289,22 +290,22 @@ export namespace Seed {
 
 export class CrawlJob extends jspb.Message {
   getScheduleRef(): ConfigRef | undefined;
-  setScheduleRef(value?: ConfigRef): void;
+  setScheduleRef(value?: ConfigRef): CrawlJob;
   hasScheduleRef(): boolean;
-  clearScheduleRef(): void;
+  clearScheduleRef(): CrawlJob;
 
   getLimits(): CrawlLimitsConfig | undefined;
-  setLimits(value?: CrawlLimitsConfig): void;
+  setLimits(value?: CrawlLimitsConfig): CrawlJob;
   hasLimits(): boolean;
-  clearLimits(): void;
+  clearLimits(): CrawlJob;
 
   getCrawlConfigRef(): ConfigRef | undefined;
-  setCrawlConfigRef(value?: ConfigRef): void;
+  setCrawlConfigRef(value?: ConfigRef): CrawlJob;
   hasCrawlConfigRef(): boolean;
-  clearCrawlConfigRef(): void;
+  clearCrawlConfigRef(): CrawlJob;
 
   getDisabled(): boolean;
-  setDisabled(value: boolean): void;
+  setDisabled(value: boolean): CrawlJob;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlJob.AsObject;
@@ -325,30 +326,30 @@ export namespace CrawlJob {
 
 export class CrawlConfig extends jspb.Message {
   getCollectionRef(): ConfigRef | undefined;
-  setCollectionRef(value?: ConfigRef): void;
+  setCollectionRef(value?: ConfigRef): CrawlConfig;
   hasCollectionRef(): boolean;
-  clearCollectionRef(): void;
+  clearCollectionRef(): CrawlConfig;
 
   getBrowserConfigRef(): ConfigRef | undefined;
-  setBrowserConfigRef(value?: ConfigRef): void;
+  setBrowserConfigRef(value?: ConfigRef): CrawlConfig;
   hasBrowserConfigRef(): boolean;
-  clearBrowserConfigRef(): void;
+  clearBrowserConfigRef(): CrawlConfig;
 
   getPolitenessRef(): ConfigRef | undefined;
-  setPolitenessRef(value?: ConfigRef): void;
+  setPolitenessRef(value?: ConfigRef): CrawlConfig;
   hasPolitenessRef(): boolean;
-  clearPolitenessRef(): void;
+  clearPolitenessRef(): CrawlConfig;
 
   getExtra(): ExtraConfig | undefined;
-  setExtra(value?: ExtraConfig): void;
+  setExtra(value?: ExtraConfig): CrawlConfig;
   hasExtra(): boolean;
-  clearExtra(): void;
+  clearExtra(): CrawlConfig;
 
   getMinimumDnsTtlS(): number;
-  setMinimumDnsTtlS(value: number): void;
+  setMinimumDnsTtlS(value: number): CrawlConfig;
 
   getPriorityWeight(): number;
-  setPriorityWeight(value: number): void;
+  setPriorityWeight(value: number): CrawlConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlConfig.AsObject;
@@ -371,10 +372,10 @@ export namespace CrawlConfig {
 
 export class ExtraConfig extends jspb.Message {
   getExtractText(): boolean;
-  setExtractText(value: boolean): void;
+  setExtractText(value: boolean): ExtraConfig;
 
   getCreateScreenshot(): boolean;
-  setCreateScreenshot(value: boolean): void;
+  setCreateScreenshot(value: boolean): ExtraConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ExtraConfig.AsObject;
@@ -393,17 +394,17 @@ export namespace ExtraConfig {
 
 export class CrawlScheduleConfig extends jspb.Message {
   getCronExpression(): string;
-  setCronExpression(value: string): void;
+  setCronExpression(value: string): CrawlScheduleConfig;
 
   getValidFrom(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setValidFrom(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setValidFrom(value?: google_protobuf_timestamp_pb.Timestamp): CrawlScheduleConfig;
   hasValidFrom(): boolean;
-  clearValidFrom(): void;
+  clearValidFrom(): CrawlScheduleConfig;
 
   getValidTo(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setValidTo(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setValidTo(value?: google_protobuf_timestamp_pb.Timestamp): CrawlScheduleConfig;
   hasValidTo(): boolean;
-  clearValidTo(): void;
+  clearValidTo(): CrawlScheduleConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlScheduleConfig.AsObject;
@@ -423,7 +424,7 @@ export namespace CrawlScheduleConfig {
 
 export class CrawlScope extends jspb.Message {
   getSurtPrefix(): string;
-  setSurtPrefix(value: string): void;
+  setSurtPrefix(value: string): CrawlScope;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlScope.AsObject;
@@ -441,13 +442,13 @@ export namespace CrawlScope {
 
 export class CrawlLimitsConfig extends jspb.Message {
   getDepth(): number;
-  setDepth(value: number): void;
+  setDepth(value: number): CrawlLimitsConfig;
 
   getMaxDurationS(): number;
-  setMaxDurationS(value: number): void;
+  setMaxDurationS(value: number): CrawlLimitsConfig;
 
   getMaxBytes(): number;
-  setMaxBytes(value: number): void;
+  setMaxBytes(value: number): CrawlLimitsConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlLimitsConfig.AsObject;
@@ -467,35 +468,35 @@ export namespace CrawlLimitsConfig {
 
 export class BrowserConfig extends jspb.Message {
   getUserAgent(): string;
-  setUserAgent(value: string): void;
+  setUserAgent(value: string): BrowserConfig;
 
   getWindowWidth(): number;
-  setWindowWidth(value: number): void;
+  setWindowWidth(value: number): BrowserConfig;
 
   getWindowHeight(): number;
-  setWindowHeight(value: number): void;
+  setWindowHeight(value: number): BrowserConfig;
 
   getPageLoadTimeoutMs(): number;
-  setPageLoadTimeoutMs(value: number): void;
+  setPageLoadTimeoutMs(value: number): BrowserConfig;
 
   getScriptSelectorList(): Array<string>;
-  setScriptSelectorList(value: Array<string>): void;
-  clearScriptSelectorList(): void;
-  addScriptSelector(value: string, index?: number): void;
+  setScriptSelectorList(value: Array<string>): BrowserConfig;
+  clearScriptSelectorList(): BrowserConfig;
+  addScriptSelector(value: string, index?: number): BrowserConfig;
 
   getScriptRefList(): Array<ConfigRef>;
-  setScriptRefList(value: Array<ConfigRef>): void;
-  clearScriptRefList(): void;
+  setScriptRefList(value: Array<ConfigRef>): BrowserConfig;
+  clearScriptRefList(): BrowserConfig;
   addScriptRef(value?: ConfigRef, index?: number): ConfigRef;
 
   getHeadersMap(): jspb.Map<string, string>;
-  clearHeadersMap(): void;
+  clearHeadersMap(): BrowserConfig;
 
   getScriptParametersMap(): jspb.Map<string, string>;
-  clearScriptParametersMap(): void;
+  clearScriptParametersMap(): BrowserConfig;
 
   getMaxInactivityTimeMs(): number;
-  setMaxInactivityTimeMs(value: number): void;
+  setMaxInactivityTimeMs(value: number): BrowserConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): BrowserConfig.AsObject;
@@ -521,36 +522,36 @@ export namespace BrowserConfig {
 
 export class PolitenessConfig extends jspb.Message {
   getRobotsPolicy(): PolitenessConfig.RobotsPolicy;
-  setRobotsPolicy(value: PolitenessConfig.RobotsPolicy): void;
+  setRobotsPolicy(value: PolitenessConfig.RobotsPolicy): PolitenessConfig;
 
   getMinimumRobotsValidityDurationS(): number;
-  setMinimumRobotsValidityDurationS(value: number): void;
+  setMinimumRobotsValidityDurationS(value: number): PolitenessConfig;
 
   getCustomRobots(): string;
-  setCustomRobots(value: string): void;
+  setCustomRobots(value: string): PolitenessConfig;
 
   getMinTimeBetweenPageLoadMs(): number;
-  setMinTimeBetweenPageLoadMs(value: number): void;
+  setMinTimeBetweenPageLoadMs(value: number): PolitenessConfig;
 
   getMaxTimeBetweenPageLoadMs(): number;
-  setMaxTimeBetweenPageLoadMs(value: number): void;
+  setMaxTimeBetweenPageLoadMs(value: number): PolitenessConfig;
 
   getDelayFactor(): number;
-  setDelayFactor(value: number): void;
+  setDelayFactor(value: number): PolitenessConfig;
 
   getMaxRetries(): number;
-  setMaxRetries(value: number): void;
+  setMaxRetries(value: number): PolitenessConfig;
 
   getRetryDelaySeconds(): number;
-  setRetryDelaySeconds(value: number): void;
+  setRetryDelaySeconds(value: number): PolitenessConfig;
 
   getCrawlHostGroupSelectorList(): Array<string>;
-  setCrawlHostGroupSelectorList(value: Array<string>): void;
-  clearCrawlHostGroupSelectorList(): void;
-  addCrawlHostGroupSelector(value: string, index?: number): void;
+  setCrawlHostGroupSelectorList(value: Array<string>): PolitenessConfig;
+  clearCrawlHostGroupSelectorList(): PolitenessConfig;
+  addCrawlHostGroupSelector(value: string, index?: number): PolitenessConfig;
 
   getUseHostname(): boolean;
-  setUseHostname(value: boolean): void;
+  setUseHostname(value: boolean): PolitenessConfig;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PolitenessConfig.AsObject;
@@ -587,15 +588,15 @@ export namespace PolitenessConfig {
 
 export class BrowserScript extends jspb.Message {
   getScript(): string;
-  setScript(value: string): void;
+  setScript(value: string): BrowserScript;
 
   getUrlRegexpList(): Array<string>;
-  setUrlRegexpList(value: Array<string>): void;
-  clearUrlRegexpList(): void;
-  addUrlRegexp(value: string, index?: number): void;
+  setUrlRegexpList(value: Array<string>): BrowserScript;
+  clearUrlRegexpList(): BrowserScript;
+  addUrlRegexp(value: string, index?: number): BrowserScript;
 
   getBrowserScriptType(): BrowserScript.BrowserScriptType;
-  setBrowserScriptType(value: BrowserScript.BrowserScriptType): void;
+  setBrowserScriptType(value: BrowserScript.BrowserScriptType): BrowserScript;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): BrowserScript.AsObject;
@@ -623,8 +624,8 @@ export namespace BrowserScript {
 
 export class CrawlHostGroupConfig extends jspb.Message {
   getIpRangeList(): Array<CrawlHostGroupConfig.IpRange>;
-  setIpRangeList(value: Array<CrawlHostGroupConfig.IpRange>): void;
-  clearIpRangeList(): void;
+  setIpRangeList(value: Array<CrawlHostGroupConfig.IpRange>): CrawlHostGroupConfig;
+  clearIpRangeList(): CrawlHostGroupConfig;
   addIpRange(value?: CrawlHostGroupConfig.IpRange, index?: number): CrawlHostGroupConfig.IpRange;
 
   serializeBinary(): Uint8Array;
@@ -642,10 +643,10 @@ export namespace CrawlHostGroupConfig {
 
   export class IpRange extends jspb.Message {
     getIpFrom(): string;
-    setIpFrom(value: string): void;
+    setIpFrom(value: string): IpRange;
 
     getIpTo(): string;
-    setIpTo(value: string): void;
+    setIpTo(value: string): IpRange;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): IpRange.AsObject;
@@ -666,12 +667,12 @@ export namespace CrawlHostGroupConfig {
 
 export class ApiKey extends jspb.Message {
   getToken(): string;
-  setToken(value: string): void;
+  setToken(value: string): ApiKey;
 
   getValiduntil(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setValiduntil(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setValiduntil(value?: google_protobuf_timestamp_pb.Timestamp): ApiKey;
   hasValiduntil(): boolean;
-  clearValiduntil(): void;
+  clearValiduntil(): ApiKey;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ApiKey.AsObject;
@@ -690,20 +691,20 @@ export namespace ApiKey {
 
 export class RoleMapping extends jspb.Message {
   getApiKey(): ApiKey | undefined;
-  setApiKey(value?: ApiKey): void;
+  setApiKey(value?: ApiKey): RoleMapping;
   hasApiKey(): boolean;
-  clearApiKey(): void;
+  clearApiKey(): RoleMapping;
 
   getEmail(): string;
-  setEmail(value: string): void;
+  setEmail(value: string): RoleMapping;
 
   getGroup(): string;
-  setGroup(value: string): void;
+  setGroup(value: string): RoleMapping;
 
   getRoleList(): Array<Role>;
-  setRoleList(value: Array<Role>): void;
-  clearRoleList(): void;
-  addRole(value: Role, index?: number): void;
+  setRoleList(value: Array<Role>): RoleMapping;
+  clearRoleList(): RoleMapping;
+  addRole(value: Role, index?: number): RoleMapping;
 
   getEmailOrGroupCase(): RoleMapping.EmailOrGroupCase;
 
@@ -733,20 +734,20 @@ export namespace RoleMapping {
 
 export class Collection extends jspb.Message {
   getCollectionDedupPolicy(): Collection.RotationPolicy;
-  setCollectionDedupPolicy(value: Collection.RotationPolicy): void;
+  setCollectionDedupPolicy(value: Collection.RotationPolicy): Collection;
 
   getFileRotationPolicy(): Collection.RotationPolicy;
-  setFileRotationPolicy(value: Collection.RotationPolicy): void;
+  setFileRotationPolicy(value: Collection.RotationPolicy): Collection;
 
   getCompress(): boolean;
-  setCompress(value: boolean): void;
+  setCompress(value: boolean): Collection;
 
   getFileSize(): number;
-  setFileSize(value: number): void;
+  setFileSize(value: number): Collection;
 
   getSubCollectionsList(): Array<Collection.SubCollection>;
-  setSubCollectionsList(value: Array<Collection.SubCollection>): void;
-  clearSubCollectionsList(): void;
+  setSubCollectionsList(value: Array<Collection.SubCollection>): Collection;
+  clearSubCollectionsList(): Collection;
   addSubCollections(value?: Collection.SubCollection, index?: number): Collection.SubCollection;
 
   serializeBinary(): Uint8Array;
@@ -768,10 +769,10 @@ export namespace Collection {
 
   export class SubCollection extends jspb.Message {
     getType(): Collection.SubCollectionType;
-    setType(value: Collection.SubCollectionType): void;
+    setType(value: Collection.SubCollectionType): SubCollection;
 
     getName(): string;
-    setName(value: string): void;
+    setName(value: string): SubCollection;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): SubCollection.AsObject;
@@ -806,8 +807,8 @@ export namespace Collection {
 
 export class LogLevels extends jspb.Message {
   getLogLevelList(): Array<LogLevels.LogLevel>;
-  setLogLevelList(value: Array<LogLevels.LogLevel>): void;
-  clearLogLevelList(): void;
+  setLogLevelList(value: Array<LogLevels.LogLevel>): LogLevels;
+  clearLogLevelList(): LogLevels;
   addLogLevel(value?: LogLevels.LogLevel, index?: number): LogLevels.LogLevel;
 
   serializeBinary(): Uint8Array;
@@ -825,10 +826,10 @@ export namespace LogLevels {
 
   export class LogLevel extends jspb.Message {
     getLogger(): string;
-    setLogger(value: string): void;
+    setLogger(value: string): LogLevel;
 
     getLevel(): LogLevels.Level;
-    setLevel(value: LogLevels.Level): void;
+    setLevel(value: LogLevels.Level): LogLevel;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LogLevel.AsObject;

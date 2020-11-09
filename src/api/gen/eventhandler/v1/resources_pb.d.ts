@@ -1,39 +1,40 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
+
 export class EventObject extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): EventObject;
 
   getType(): string;
-  setType(value: string): void;
+  setType(value: string): EventObject;
 
   getSource(): string;
-  setSource(value: string): void;
+  setSource(value: string): EventObject;
 
   getState(): EventObject.State;
-  setState(value: EventObject.State): void;
+  setState(value: EventObject.State): EventObject;
 
   getAssignee(): string;
-  setAssignee(value: string): void;
+  setAssignee(value: string): EventObject;
 
   getDataList(): Array<Data>;
-  setDataList(value: Array<Data>): void;
-  clearDataList(): void;
+  setDataList(value: Array<Data>): EventObject;
+  clearDataList(): EventObject;
   addData(value?: Data, index?: number): Data;
 
   getSeverity(): EventObject.Severity;
-  setSeverity(value: EventObject.Severity): void;
+  setSeverity(value: EventObject.Severity): EventObject;
 
   getLabelList(): Array<string>;
-  setLabelList(value: Array<string>): void;
-  clearLabelList(): void;
-  addLabel(value: string, index?: number): void;
+  setLabelList(value: Array<string>): EventObject;
+  clearLabelList(): EventObject;
+  addLabel(value: string, index?: number): EventObject;
 
   getActivityList(): Array<Activity>;
-  setActivityList(value: Array<Activity>): void;
-  clearActivityList(): void;
+  setActivityList(value: Array<Activity>): EventObject;
+  clearActivityList(): EventObject;
   addActivity(value?: Activity, index?: number): Activity;
 
   serializeBinary(): Uint8Array;
@@ -72,7 +73,7 @@ export namespace EventObject {
 
 export class EventRef extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): EventRef;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): EventRef.AsObject;
@@ -90,20 +91,20 @@ export namespace EventRef {
 
 export class Activity extends jspb.Message {
   getModifiedBy(): string;
-  setModifiedBy(value: string): void;
+  setModifiedBy(value: string): Activity;
 
   getModifiedTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setModifiedTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setModifiedTime(value?: google_protobuf_timestamp_pb.Timestamp): Activity;
   hasModifiedTime(): boolean;
-  clearModifiedTime(): void;
+  clearModifiedTime(): Activity;
 
   getDescriptionList(): Array<Activity.Change>;
-  setDescriptionList(value: Array<Activity.Change>): void;
-  clearDescriptionList(): void;
+  setDescriptionList(value: Array<Activity.Change>): Activity;
+  clearDescriptionList(): Activity;
   addDescription(value?: Activity.Change, index?: number): Activity.Change;
 
   getComment(): string;
-  setComment(value: string): void;
+  setComment(value: string): Activity;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Activity.AsObject;
@@ -123,16 +124,16 @@ export namespace Activity {
 
   export class Change extends jspb.Message {
     getType(): Activity.ChangeType;
-    setType(value: Activity.ChangeType): void;
+    setType(value: Activity.ChangeType): Change;
 
     getField(): string;
-    setField(value: string): void;
+    setField(value: string): Change;
 
     getOldVal(): string;
-    setOldVal(value: string): void;
+    setOldVal(value: string): Change;
 
     getNewVal(): string;
-    setNewVal(value: string): void;
+    setNewVal(value: string): Change;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Change.AsObject;
@@ -162,10 +163,10 @@ export namespace Activity {
 
 export class Data extends jspb.Message {
   getKey(): string;
-  setKey(value: string): void;
+  setKey(value: string): Data;
 
   getValue(): string;
-  setValue(value: string): void;
+  setValue(value: string): Data;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Data.AsObject;

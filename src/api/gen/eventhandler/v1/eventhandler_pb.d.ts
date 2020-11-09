@@ -1,34 +1,35 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as eventhandler_v1_resources_pb from '../../eventhandler/v1/resources_pb';
 import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 
+
 export class ListRequest extends jspb.Message {
   getIdList(): Array<string>;
-  setIdList(value: Array<string>): void;
-  clearIdList(): void;
-  addId(value: string, index?: number): void;
+  setIdList(value: Array<string>): ListRequest;
+  clearIdList(): ListRequest;
+  addId(value: string, index?: number): ListRequest;
 
   getQueryTemplate(): eventhandler_v1_resources_pb.EventObject | undefined;
-  setQueryTemplate(value?: eventhandler_v1_resources_pb.EventObject): void;
+  setQueryTemplate(value?: eventhandler_v1_resources_pb.EventObject): ListRequest;
   hasQueryTemplate(): boolean;
-  clearQueryTemplate(): void;
+  clearQueryTemplate(): ListRequest;
 
   getQueryMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setQueryMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setQueryMask(value?: commons_v1_resources_pb.FieldMask): ListRequest;
   hasQueryMask(): boolean;
-  clearQueryMask(): void;
+  clearQueryMask(): ListRequest;
 
   getReturnedFieldsMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setReturnedFieldsMask(value?: commons_v1_resources_pb.FieldMask): ListRequest;
   hasReturnedFieldsMask(): boolean;
-  clearReturnedFieldsMask(): void;
+  clearReturnedFieldsMask(): ListRequest;
 
   getPageSize(): number;
-  setPageSize(value: number): void;
+  setPageSize(value: number): ListRequest;
 
   getOffset(): number;
-  setOffset(value: number): void;
+  setOffset(value: number): ListRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListRequest.AsObject;
@@ -51,22 +52,22 @@ export namespace ListRequest {
 
 export class UpdateRequest extends jspb.Message {
   getListRequest(): ListRequest | undefined;
-  setListRequest(value?: ListRequest): void;
+  setListRequest(value?: ListRequest): UpdateRequest;
   hasListRequest(): boolean;
-  clearListRequest(): void;
+  clearListRequest(): UpdateRequest;
 
   getUpdateMask(): commons_v1_resources_pb.FieldMask | undefined;
-  setUpdateMask(value?: commons_v1_resources_pb.FieldMask): void;
+  setUpdateMask(value?: commons_v1_resources_pb.FieldMask): UpdateRequest;
   hasUpdateMask(): boolean;
-  clearUpdateMask(): void;
+  clearUpdateMask(): UpdateRequest;
 
   getUpdateTemplate(): eventhandler_v1_resources_pb.EventObject | undefined;
-  setUpdateTemplate(value?: eventhandler_v1_resources_pb.EventObject): void;
+  setUpdateTemplate(value?: eventhandler_v1_resources_pb.EventObject): UpdateRequest;
   hasUpdateTemplate(): boolean;
-  clearUpdateTemplate(): void;
+  clearUpdateTemplate(): UpdateRequest;
 
   getComment(): string;
-  setComment(value: string): void;
+  setComment(value: string): UpdateRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRequest.AsObject;
@@ -87,12 +88,12 @@ export namespace UpdateRequest {
 
 export class SaveRequest extends jspb.Message {
   getObject(): eventhandler_v1_resources_pb.EventObject | undefined;
-  setObject(value?: eventhandler_v1_resources_pb.EventObject): void;
+  setObject(value?: eventhandler_v1_resources_pb.EventObject): SaveRequest;
   hasObject(): boolean;
-  clearObject(): void;
+  clearObject(): SaveRequest;
 
   getComment(): string;
-  setComment(value: string): void;
+  setComment(value: string): SaveRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SaveRequest.AsObject;
@@ -111,7 +112,7 @@ export namespace SaveRequest {
 
 export class UpdateResponse extends jspb.Message {
   getUpdated(): number;
-  setUpdated(value: number): void;
+  setUpdated(value: number): UpdateResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateResponse.AsObject;
@@ -129,10 +130,10 @@ export namespace UpdateResponse {
 
 export class ListCountResponse extends jspb.Message {
   getCount(): number;
-  setCount(value: number): void;
+  setCount(value: number): ListCountResponse;
 
   getApproximate(): boolean;
-  setApproximate(value: boolean): void;
+  setApproximate(value: boolean): ListCountResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListCountResponse.AsObject;
@@ -151,7 +152,7 @@ export namespace ListCountResponse {
 
 export class DeleteResponse extends jspb.Message {
   getDeleted(): boolean;
-  setDeleted(value: boolean): void;
+  setDeleted(value: boolean): DeleteResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DeleteResponse.AsObject;
@@ -169,7 +170,7 @@ export namespace DeleteResponse {
 
 export class ListLabelRequest extends jspb.Message {
   getText(): string;
-  setText(value: string): void;
+  setText(value: string): ListLabelRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListLabelRequest.AsObject;
@@ -187,9 +188,9 @@ export namespace ListLabelRequest {
 
 export class ListLabelResponse extends jspb.Message {
   getLabelList(): Array<string>;
-  setLabelList(value: Array<string>): void;
-  clearLabelList(): void;
-  addLabel(value: string, index?: number): void;
+  setLabelList(value: Array<string>): ListLabelResponse;
+  clearLabelList(): ListLabelResponse;
+  addLabel(value: string, index?: number): ListLabelResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListLabelResponse.AsObject;

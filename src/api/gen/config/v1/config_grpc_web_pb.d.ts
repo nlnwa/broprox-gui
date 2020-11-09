@@ -1,22 +1,14 @@
 import * as grpcWeb from 'grpc-web';
 
 import * as config_v1_resources_pb from '../../config/v1/resources_pb';
-import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as config_v1_config_pb from '../../config/v1/config_pb';
 
-import {
-  DeleteResponse,
-  GetLabelKeysRequest,
-  LabelKeysResponse,
-  ListCountResponse,
-  ListRequest,
-  UpdateRequest,
-  UpdateResponse} from './config_pb';
 
 export class ConfigClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               options?: null | { [index: string]: any; });
 
   getConfigObject(
     request: config_v1_resources_pb.ConfigRef,
@@ -26,16 +18,16 @@ export class ConfigClient {
   ): grpcWeb.ClientReadableStream<config_v1_resources_pb.ConfigObject>;
 
   listConfigObjects(
-    request: ListRequest,
+    request: config_v1_config_pb.ListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<config_v1_resources_pb.ConfigObject>;
 
   countConfigObjects(
-    request: ListRequest,
+    request: config_v1_config_pb.ListRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: ListCountResponse) => void
-  ): grpcWeb.ClientReadableStream<ListCountResponse>;
+               response: config_v1_config_pb.ListCountResponse) => void
+  ): grpcWeb.ClientReadableStream<config_v1_config_pb.ListCountResponse>;
 
   saveConfigObject(
     request: config_v1_resources_pb.ConfigObject,
@@ -45,25 +37,25 @@ export class ConfigClient {
   ): grpcWeb.ClientReadableStream<config_v1_resources_pb.ConfigObject>;
 
   updateConfigObjects(
-    request: UpdateRequest,
+    request: config_v1_config_pb.UpdateRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: UpdateResponse) => void
-  ): grpcWeb.ClientReadableStream<UpdateResponse>;
+               response: config_v1_config_pb.UpdateResponse) => void
+  ): grpcWeb.ClientReadableStream<config_v1_config_pb.UpdateResponse>;
 
   deleteConfigObject(
     request: config_v1_resources_pb.ConfigObject,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: DeleteResponse) => void
-  ): grpcWeb.ClientReadableStream<DeleteResponse>;
+               response: config_v1_config_pb.DeleteResponse) => void
+  ): grpcWeb.ClientReadableStream<config_v1_config_pb.DeleteResponse>;
 
   getLabelKeys(
-    request: GetLabelKeysRequest,
+    request: config_v1_config_pb.GetLabelKeysRequest,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.Error,
-               response: LabelKeysResponse) => void
-  ): grpcWeb.ClientReadableStream<LabelKeysResponse>;
+               response: config_v1_config_pb.LabelKeysResponse) => void
+  ): grpcWeb.ClientReadableStream<config_v1_config_pb.LabelKeysResponse>;
 
   getLogConfig(
     request: google_protobuf_empty_pb.Empty,
@@ -84,7 +76,7 @@ export class ConfigClient {
 export class ConfigPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
-               options?: null | { [index: string]: string; });
+               options?: null | { [index: string]: any; });
 
   getConfigObject(
     request: config_v1_resources_pb.ConfigRef,
@@ -92,14 +84,14 @@ export class ConfigPromiseClient {
   ): Promise<config_v1_resources_pb.ConfigObject>;
 
   listConfigObjects(
-    request: ListRequest,
+    request: config_v1_config_pb.ListRequest,
     metadata?: grpcWeb.Metadata
   ): grpcWeb.ClientReadableStream<config_v1_resources_pb.ConfigObject>;
 
   countConfigObjects(
-    request: ListRequest,
+    request: config_v1_config_pb.ListRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<ListCountResponse>;
+  ): Promise<config_v1_config_pb.ListCountResponse>;
 
   saveConfigObject(
     request: config_v1_resources_pb.ConfigObject,
@@ -107,19 +99,19 @@ export class ConfigPromiseClient {
   ): Promise<config_v1_resources_pb.ConfigObject>;
 
   updateConfigObjects(
-    request: UpdateRequest,
+    request: config_v1_config_pb.UpdateRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<UpdateResponse>;
+  ): Promise<config_v1_config_pb.UpdateResponse>;
 
   deleteConfigObject(
     request: config_v1_resources_pb.ConfigObject,
     metadata?: grpcWeb.Metadata
-  ): Promise<DeleteResponse>;
+  ): Promise<config_v1_config_pb.DeleteResponse>;
 
   getLabelKeys(
-    request: GetLabelKeysRequest,
+    request: config_v1_config_pb.GetLabelKeysRequest,
     metadata?: grpcWeb.Metadata
-  ): Promise<LabelKeysResponse>;
+  ): Promise<config_v1_config_pb.LabelKeysResponse>;
 
   getLogConfig(
     request: google_protobuf_empty_pb.Empty,

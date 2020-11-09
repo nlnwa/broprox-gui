@@ -1,8 +1,10 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
+
+
 
 export class ExecutionId extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): ExecutionId;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ExecutionId.AsObject;

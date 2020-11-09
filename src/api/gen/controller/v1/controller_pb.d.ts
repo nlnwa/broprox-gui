@@ -1,16 +1,18 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as controller_v1_resources_pb from '../../controller/v1/resources_pb';
+import * as frontier_v1_frontier_pb from '../../frontier/v1/frontier_pb';
 import * as frontier_v1_resources_pb from '../../frontier/v1/resources_pb';
 import * as config_v1_resources_pb from '../../config/v1/resources_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 
+
 export class RunCrawlRequest extends jspb.Message {
   getJobId(): string;
-  setJobId(value: string): void;
+  setJobId(value: string): RunCrawlRequest;
 
   getSeedId(): string;
-  setSeedId(value: string): void;
+  setSeedId(value: string): RunCrawlRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RunCrawlRequest.AsObject;
@@ -29,7 +31,7 @@ export namespace RunCrawlRequest {
 
 export class RunCrawlReply extends jspb.Message {
   getJobExecutionId(): string;
-  setJobExecutionId(value: string): void;
+  setJobExecutionId(value: string): RunCrawlReply;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RunCrawlReply.AsObject;
@@ -47,9 +49,9 @@ export namespace RunCrawlReply {
 
 export class RoleList extends jspb.Message {
   getRoleList(): Array<config_v1_resources_pb.Role>;
-  setRoleList(value: Array<config_v1_resources_pb.Role>): void;
-  clearRoleList(): void;
-  addRole(value: config_v1_resources_pb.Role, index?: number): void;
+  setRoleList(value: Array<config_v1_resources_pb.Role>): RoleList;
+  clearRoleList(): RoleList;
+  addRole(value: config_v1_resources_pb.Role, index?: number): RoleList;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RoleList.AsObject;
@@ -67,7 +69,7 @@ export namespace RoleList {
 
 export class OpenIdConnectIssuerReply extends jspb.Message {
   getOpenIdConnectIssuer(): string;
-  setOpenIdConnectIssuer(value: string): void;
+  setOpenIdConnectIssuer(value: string): OpenIdConnectIssuerReply;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): OpenIdConnectIssuerReply.AsObject;
@@ -85,7 +87,13 @@ export namespace OpenIdConnectIssuerReply {
 
 export class CrawlerStatus extends jspb.Message {
   getRunstatus(): RunStatus;
-  setRunstatus(value: RunStatus): void;
+  setRunstatus(value: RunStatus): CrawlerStatus;
+
+  getBusycrawlhostgroupcount(): number;
+  setBusycrawlhostgroupcount(value: number): CrawlerStatus;
+
+  getQueuesize(): number;
+  setQueuesize(value: number): CrawlerStatus;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlerStatus.AsObject;
@@ -98,6 +106,8 @@ export class CrawlerStatus extends jspb.Message {
 export namespace CrawlerStatus {
   export type AsObject = {
     runstatus: RunStatus,
+    busycrawlhostgroupcount: number,
+    queuesize: number,
   }
 }
 

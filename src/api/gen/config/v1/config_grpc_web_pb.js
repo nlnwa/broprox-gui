@@ -7,6 +7,10 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 
+/* eslint-disable */
+// @ts-nocheck
+
+
 
 const grpc = {};
 grpc.web = require('grpc-web');
@@ -143,7 +147,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.getConfigObject =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.ConfigObject>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.getConfigObject =
     function(request, metadata) {
@@ -298,7 +302,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.countConfigObjects =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.ListCountResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.countConfigObjects =
     function(request, metadata) {
@@ -378,7 +382,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.saveConfigObject =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.ConfigObject>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.saveConfigObject =
     function(request, metadata) {
@@ -458,7 +462,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.updateConfigObjects =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.UpdateResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.updateConfigObjects =
     function(request, metadata) {
@@ -538,7 +542,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.deleteConfigObject =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.DeleteResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.deleteConfigObject =
     function(request, metadata) {
@@ -618,7 +622,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.getLabelKeys =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.LabelKeysResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.getLabelKeys =
     function(request, metadata) {
@@ -698,7 +702,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.getLogConfig =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.LogLevels>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.getLogConfig =
     function(request, metadata) {
@@ -778,7 +782,7 @@ proto.veidemann.api.config.v1.ConfigClient.prototype.saveLogConfig =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.config.v1.LogLevels>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.saveLogConfig =
     function(request, metadata) {

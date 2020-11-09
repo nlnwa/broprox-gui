@@ -106,3 +106,7 @@ export {
 export {
   Error as ErrorProto
 } from './gen/commons/v1/resources_pb';
+
+export {
+  CountResponse as CountResponseProto
+} from './gen/frontier/v1/frontier_pb';

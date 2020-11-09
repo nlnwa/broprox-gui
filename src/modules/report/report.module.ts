@@ -45,6 +45,7 @@ import {ChartsModule} from 'ng2-charts';
 import {CrawlExecutionPreviewComponent} from './components/crawl-execution-preview/crawl-execution-preview.component';
 import {CrawlLogPreviewComponent} from './components/crawl-log-preview/crawl-log-preview.component';
 import {AbilityModule} from '@casl/angular';
+import {ExecutionQueueCountPipe} from './pipe/execution-queue-count.pipe';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import {AbilityModule} from '@casl/angular';
     JobNamePipe,
     SeedNamePipe,
     SedPipe,
+    ExecutionQueueCountPipe,
     PageLogQueryComponent,
     QueryPageLogDirective,
     JobExecutionDetailComponent,

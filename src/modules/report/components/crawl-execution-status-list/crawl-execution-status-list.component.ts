@@ -1,11 +1,6 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import {BaseListComponent} from '../../../commons/components';
-import {
-  CrawlExecutionState,
-  crawlExecutionStates,
-  CrawlExecutionStatus,
-  ListDataSource
-} from '../../../../shared/models';
+import {CrawlExecutionState, crawlExecutionStates, CrawlExecutionStatus, ListDataSource} from '../../../../shared/models';
 import {BASE_LIST} from '../../../../shared/directives';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
@@ -38,7 +33,7 @@ export class CrawlExecutionStatusListComponent extends BaseListComponent<CrawlEx
   @Input()
   sortActive = 'startTime';
 
-  displayedColumns: string[] = ['seedId', 'jobId', 'state', 'startTime', 'endTime', 'extra', 'action'];
+  displayedColumns: string[] = ['seedId', 'jobId', 'state', 'queueCount', 'startTime', 'endTime', 'extra', 'action'];
 
   constructor() {
     super();

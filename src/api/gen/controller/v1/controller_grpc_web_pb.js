@@ -7,12 +7,18 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 
+/* eslint-disable */
+// @ts-nocheck
+
+
 
 const grpc = {};
 grpc.web = require('grpc-web');
 
 
 var controller_v1_resources_pb = require('../../controller/v1/resources_pb.js')
+
+var frontier_v1_frontier_pb = require('../../frontier/v1/frontier_pb.js')
 
 var frontier_v1_resources_pb = require('../../frontier/v1/resources_pb.js')
 
@@ -145,7 +151,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.getRolesForActiveUs
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.controller.v1.RoleList>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.getRolesForActiveUser =
     function(request, metadata) {
@@ -225,7 +231,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.runCrawl =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.controller.v1.RunCrawlReply>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.runCrawl =
     function(request, metadata) {
@@ -305,7 +311,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.abortCrawlExecution
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.frontier.v1.CrawlExecutionStatus>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.abortCrawlExecution =
     function(request, metadata) {
@@ -385,7 +391,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.abortJobExecution =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.frontier.v1.JobExecutionStatus>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.abortJobExecution =
     function(request, metadata) {
@@ -465,7 +471,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.getOpenIdConnectIss
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.controller.v1.OpenIdConnectIssuerReply>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.getOpenIdConnectIssuer =
     function(request, metadata) {
@@ -545,7 +551,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.pauseCrawler =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.pauseCrawler =
     function(request, metadata) {
@@ -625,7 +631,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.unPauseCrawler =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.unPauseCrawler =
     function(request, metadata) {
@@ -705,7 +711,7 @@ proto.veidemann.api.controller.v1.ControllerClient.prototype.status =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.controller.v1.CrawlerStatus>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.status =
     function(request, metadata) {
@@ -714,6 +720,166 @@ proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.status =
       request,
       metadata || {},
       methodDescriptor_Controller_Status);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.veidemann.api.frontier.v1.CrawlExecutionId,
+ *   !proto.veidemann.api.frontier.v1.CountResponse>}
+ */
+const methodDescriptor_Controller_QueueCountForCrawlExecution = new grpc.web.MethodDescriptor(
+  '/veidemann.api.controller.v1.Controller/QueueCountForCrawlExecution',
+  grpc.web.MethodType.UNARY,
+  frontier_v1_frontier_pb.CrawlExecutionId,
+  frontier_v1_frontier_pb.CountResponse,
+  /**
+   * @param {!proto.veidemann.api.frontier.v1.CrawlExecutionId} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  frontier_v1_frontier_pb.CountResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.veidemann.api.frontier.v1.CrawlExecutionId,
+ *   !proto.veidemann.api.frontier.v1.CountResponse>}
+ */
+const methodInfo_Controller_QueueCountForCrawlExecution = new grpc.web.AbstractClientBase.MethodInfo(
+  frontier_v1_frontier_pb.CountResponse,
+  /**
+   * @param {!proto.veidemann.api.frontier.v1.CrawlExecutionId} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  frontier_v1_frontier_pb.CountResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.veidemann.api.frontier.v1.CrawlExecutionId} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.veidemann.api.frontier.v1.CountResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.veidemann.api.frontier.v1.CountResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.veidemann.api.controller.v1.ControllerClient.prototype.queueCountForCrawlExecution =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/veidemann.api.controller.v1.Controller/QueueCountForCrawlExecution',
+      request,
+      metadata || {},
+      methodDescriptor_Controller_QueueCountForCrawlExecution,
+      callback);
+};
+
+
+/**
+ * @param {!proto.veidemann.api.frontier.v1.CrawlExecutionId} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.veidemann.api.frontier.v1.CountResponse>}
+ *     Promise that resolves to the response
+ */
+proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.queueCountForCrawlExecution =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/veidemann.api.controller.v1.Controller/QueueCountForCrawlExecution',
+      request,
+      metadata || {},
+      methodDescriptor_Controller_QueueCountForCrawlExecution);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.veidemann.api.frontier.v1.CrawlHostGroup,
+ *   !proto.veidemann.api.frontier.v1.CountResponse>}
+ */
+const methodDescriptor_Controller_QueueCountForCrawlHostGroup = new grpc.web.MethodDescriptor(
+  '/veidemann.api.controller.v1.Controller/QueueCountForCrawlHostGroup',
+  grpc.web.MethodType.UNARY,
+  frontier_v1_resources_pb.CrawlHostGroup,
+  frontier_v1_frontier_pb.CountResponse,
+  /**
+   * @param {!proto.veidemann.api.frontier.v1.CrawlHostGroup} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  frontier_v1_frontier_pb.CountResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.veidemann.api.frontier.v1.CrawlHostGroup,
+ *   !proto.veidemann.api.frontier.v1.CountResponse>}
+ */
+const methodInfo_Controller_QueueCountForCrawlHostGroup = new grpc.web.AbstractClientBase.MethodInfo(
+  frontier_v1_frontier_pb.CountResponse,
+  /**
+   * @param {!proto.veidemann.api.frontier.v1.CrawlHostGroup} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  frontier_v1_frontier_pb.CountResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.veidemann.api.frontier.v1.CrawlHostGroup} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.veidemann.api.frontier.v1.CountResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.veidemann.api.frontier.v1.CountResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.veidemann.api.controller.v1.ControllerClient.prototype.queueCountForCrawlHostGroup =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/veidemann.api.controller.v1.Controller/QueueCountForCrawlHostGroup',
+      request,
+      metadata || {},
+      methodDescriptor_Controller_QueueCountForCrawlHostGroup,
+      callback);
+};
+
+
+/**
+ * @param {!proto.veidemann.api.frontier.v1.CrawlHostGroup} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.veidemann.api.frontier.v1.CountResponse>}
+ *     Promise that resolves to the response
+ */
+proto.veidemann.api.controller.v1.ControllerPromiseClient.prototype.queueCountForCrawlHostGroup =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/veidemann.api.controller.v1.Controller/QueueCountForCrawlHostGroup',
+      request,
+      metadata || {},
+      methodDescriptor_Controller_QueueCountForCrawlHostGroup);
 };
 
 

@@ -1,57 +1,58 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as frontier_v1_resources_pb from '../../frontier/v1/resources_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
+
 export class StatusDetail extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): StatusDetail;
 
   getState(): frontier_v1_resources_pb.CrawlExecutionStatus.State;
-  setState(value: frontier_v1_resources_pb.CrawlExecutionStatus.State): void;
+  setState(value: frontier_v1_resources_pb.CrawlExecutionStatus.State): StatusDetail;
 
   getJobid(): string;
-  setJobid(value: string): void;
+  setJobid(value: string): StatusDetail;
 
   getSeed(): string;
-  setSeed(value: string): void;
+  setSeed(value: string): StatusDetail;
 
   getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): StatusDetail;
   hasStartTime(): boolean;
-  clearStartTime(): void;
+  clearStartTime(): StatusDetail;
 
   getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): StatusDetail;
   hasEndTime(): boolean;
-  clearEndTime(): void;
+  clearEndTime(): StatusDetail;
 
   getDocumentsCrawled(): number;
-  setDocumentsCrawled(value: number): void;
+  setDocumentsCrawled(value: number): StatusDetail;
 
   getBytesCrawled(): number;
-  setBytesCrawled(value: number): void;
+  setBytesCrawled(value: number): StatusDetail;
 
   getUrisCrawled(): number;
-  setUrisCrawled(value: number): void;
+  setUrisCrawled(value: number): StatusDetail;
 
   getDocumentsFailed(): number;
-  setDocumentsFailed(value: number): void;
+  setDocumentsFailed(value: number): StatusDetail;
 
   getDocumentsOutOfScope(): number;
-  setDocumentsOutOfScope(value: number): void;
+  setDocumentsOutOfScope(value: number): StatusDetail;
 
   getDocumentsRetried(): number;
-  setDocumentsRetried(value: number): void;
+  setDocumentsRetried(value: number): StatusDetail;
 
   getDocumentsDenied(): number;
-  setDocumentsDenied(value: number): void;
+  setDocumentsDenied(value: number): StatusDetail;
 
   getQueueSize(): number;
-  setQueueSize(value: number): void;
+  setQueueSize(value: number): StatusDetail;
 
   getCurrentUri(): string;
-  setCurrentUri(value: string): void;
+  setCurrentUri(value: string): StatusDetail;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): StatusDetail.AsObject;

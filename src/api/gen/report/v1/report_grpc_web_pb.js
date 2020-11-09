@@ -7,6 +7,10 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 
+/* eslint-disable */
+// @ts-nocheck
+
+
 
 const grpc = {};
 grpc.web = require('grpc-web');
@@ -218,7 +222,7 @@ proto.veidemann.api.report.v1.ReportClient.prototype.countCrawlLogs =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.report.v1.ListCountResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.report.v1.ReportPromiseClient.prototype.countCrawlLogs =
     function(request, metadata) {
@@ -373,7 +377,7 @@ proto.veidemann.api.report.v1.ReportClient.prototype.countPageLogs =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.report.v1.ListCountResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.report.v1.ReportPromiseClient.prototype.countPageLogs =
     function(request, metadata) {

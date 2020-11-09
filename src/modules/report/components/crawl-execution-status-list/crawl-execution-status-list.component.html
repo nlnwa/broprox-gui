@@ -29,6 +29,12 @@
         <td mat-cell *matCellDef="let row">{{CrawlExecutionState[row.state]}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="queueCount">
+        <th i18n="@@crawlExecutionReportListQueueCountHeaderCell" mat-header-cell *matHeaderCellDef>Queue
+        </th>
+        <td mat-cell *matCellDef="let row">{{(row | getExecutionQueueCountPipe | async)}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="createdTime">
         <th i18n="@@crawlExecutionReportListCreatedTimeHeaderCell"
             mat-header-cell *matHeaderCellDef>Created

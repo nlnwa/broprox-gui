@@ -1,81 +1,82 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
 
 import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as config_v1_resources_pb from '../../config/v1/resources_pb';
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
+
 export class QueuedUri extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): QueuedUri;
 
   getExecutionId(): string;
-  setExecutionId(value: string): void;
+  setExecutionId(value: string): QueuedUri;
 
   getDiscoveredTimeStamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setDiscoveredTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setDiscoveredTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): QueuedUri;
   hasDiscoveredTimeStamp(): boolean;
-  clearDiscoveredTimeStamp(): void;
+  clearDiscoveredTimeStamp(): QueuedUri;
 
   getSequence(): number;
-  setSequence(value: number): void;
+  setSequence(value: number): QueuedUri;
 
   getUri(): string;
-  setUri(value: string): void;
+  setUri(value: string): QueuedUri;
 
   getSurt(): string;
-  setSurt(value: string): void;
+  setSurt(value: string): QueuedUri;
 
   getIp(): string;
-  setIp(value: string): void;
+  setIp(value: string): QueuedUri;
 
   getDiscoveryPath(): string;
-  setDiscoveryPath(value: string): void;
+  setDiscoveryPath(value: string): QueuedUri;
 
   getReferrer(): string;
-  setReferrer(value: string): void;
+  setReferrer(value: string): QueuedUri;
 
   getCookiesList(): Array<Cookie>;
-  setCookiesList(value: Array<Cookie>): void;
-  clearCookiesList(): void;
+  setCookiesList(value: Array<Cookie>): QueuedUri;
+  clearCookiesList(): QueuedUri;
   addCookies(value?: Cookie, index?: number): Cookie;
 
   getPageFetchTimeMs(): number;
-  setPageFetchTimeMs(value: number): void;
+  setPageFetchTimeMs(value: number): QueuedUri;
 
   getRetries(): number;
-  setRetries(value: number): void;
+  setRetries(value: number): QueuedUri;
 
   getEarliestFetchTimeStamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setEarliestFetchTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setEarliestFetchTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): QueuedUri;
   hasEarliestFetchTimeStamp(): boolean;
-  clearEarliestFetchTimeStamp(): void;
+  clearEarliestFetchTimeStamp(): QueuedUri;
 
   getCrawlHostGroupId(): string;
-  setCrawlHostGroupId(value: string): void;
+  setCrawlHostGroupId(value: string): QueuedUri;
 
   getPolitenessRef(): config_v1_resources_pb.ConfigRef | undefined;
-  setPolitenessRef(value?: config_v1_resources_pb.ConfigRef): void;
+  setPolitenessRef(value?: config_v1_resources_pb.ConfigRef): QueuedUri;
   hasPolitenessRef(): boolean;
-  clearPolitenessRef(): void;
+  clearPolitenessRef(): QueuedUri;
 
   getError(): commons_v1_resources_pb.Error | undefined;
-  setError(value?: commons_v1_resources_pb.Error): void;
+  setError(value?: commons_v1_resources_pb.Error): QueuedUri;
   hasError(): boolean;
-  clearError(): void;
+  clearError(): QueuedUri;
 
   getJobExecutionId(): string;
-  setJobExecutionId(value: string): void;
+  setJobExecutionId(value: string): QueuedUri;
 
   getUnresolved(): boolean;
-  setUnresolved(value: boolean): void;
+  setUnresolved(value: boolean): QueuedUri;
 
   getFetchStartTimeStamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setFetchStartTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setFetchStartTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): QueuedUri;
   hasFetchStartTimeStamp(): boolean;
-  clearFetchStartTimeStamp(): void;
+  clearFetchStartTimeStamp(): QueuedUri;
 
   getPriorityWeight(): number;
-  setPriorityWeight(value: number): void;
+  setPriorityWeight(value: number): QueuedUri;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueuedUri.AsObject;
@@ -112,34 +113,34 @@ export namespace QueuedUri {
 
 export class Cookie extends jspb.Message {
   getName(): string;
-  setName(value: string): void;
+  setName(value: string): Cookie;
 
   getValue(): string;
-  setValue(value: string): void;
+  setValue(value: string): Cookie;
 
   getDomain(): string;
-  setDomain(value: string): void;
+  setDomain(value: string): Cookie;
 
   getPath(): string;
-  setPath(value: string): void;
+  setPath(value: string): Cookie;
 
   getExpires(): number;
-  setExpires(value: number): void;
+  setExpires(value: number): Cookie;
 
   getSize(): number;
-  setSize(value: number): void;
+  setSize(value: number): Cookie;
 
   getHttpOnly(): boolean;
-  setHttpOnly(value: boolean): void;
+  setHttpOnly(value: boolean): Cookie;
 
   getSecure(): boolean;
-  setSecure(value: boolean): void;
+  setSecure(value: boolean): Cookie;
 
   getSession(): boolean;
-  setSession(value: boolean): void;
+  setSession(value: boolean): Cookie;
 
   getSameSite(): string;
-  setSameSite(value: string): void;
+  setSameSite(value: string): Cookie;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Cookie.AsObject;
@@ -166,21 +167,21 @@ export namespace Cookie {
 
 export class CrawlHostGroup extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): CrawlHostGroup;
 
   getPolitenessId(): string;
-  setPolitenessId(value: string): void;
+  setPolitenessId(value: string): CrawlHostGroup;
 
   getNextFetchTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setNextFetchTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setNextFetchTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlHostGroup;
   hasNextFetchTime(): boolean;
-  clearNextFetchTime(): void;
+  clearNextFetchTime(): CrawlHostGroup;
 
   getBusy(): boolean;
-  setBusy(value: boolean): void;
+  setBusy(value: boolean): CrawlHostGroup;
 
   getQueuedUriCount(): number;
-  setQueuedUriCount(value: number): void;
+  setQueuedUriCount(value: number): CrawlHostGroup;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlHostGroup.AsObject;
@@ -202,75 +203,75 @@ export namespace CrawlHostGroup {
 
 export class CrawlExecutionStatus extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): CrawlExecutionStatus;
 
   getState(): CrawlExecutionStatus.State;
-  setState(value: CrawlExecutionStatus.State): void;
+  setState(value: CrawlExecutionStatus.State): CrawlExecutionStatus;
 
   getJobId(): string;
-  setJobId(value: string): void;
+  setJobId(value: string): CrawlExecutionStatus;
 
   getSeedId(): string;
-  setSeedId(value: string): void;
+  setSeedId(value: string): CrawlExecutionStatus;
 
   getScope(): config_v1_resources_pb.CrawlScope | undefined;
-  setScope(value?: config_v1_resources_pb.CrawlScope): void;
+  setScope(value?: config_v1_resources_pb.CrawlScope): CrawlExecutionStatus;
   hasScope(): boolean;
-  clearScope(): void;
+  clearScope(): CrawlExecutionStatus;
 
   getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionStatus;
   hasStartTime(): boolean;
-  clearStartTime(): void;
+  clearStartTime(): CrawlExecutionStatus;
 
   getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionStatus;
   hasEndTime(): boolean;
-  clearEndTime(): void;
+  clearEndTime(): CrawlExecutionStatus;
 
   getDocumentsCrawled(): number;
-  setDocumentsCrawled(value: number): void;
+  setDocumentsCrawled(value: number): CrawlExecutionStatus;
 
   getBytesCrawled(): number;
-  setBytesCrawled(value: number): void;
+  setBytesCrawled(value: number): CrawlExecutionStatus;
 
   getUrisCrawled(): number;
-  setUrisCrawled(value: number): void;
+  setUrisCrawled(value: number): CrawlExecutionStatus;
 
   getDocumentsFailed(): number;
-  setDocumentsFailed(value: number): void;
+  setDocumentsFailed(value: number): CrawlExecutionStatus;
 
   getDocumentsOutOfScope(): number;
-  setDocumentsOutOfScope(value: number): void;
+  setDocumentsOutOfScope(value: number): CrawlExecutionStatus;
 
   getDocumentsRetried(): number;
-  setDocumentsRetried(value: number): void;
+  setDocumentsRetried(value: number): CrawlExecutionStatus;
 
   getDocumentsDenied(): number;
-  setDocumentsDenied(value: number): void;
+  setDocumentsDenied(value: number): CrawlExecutionStatus;
 
   getLastChangeTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setLastChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setLastChangeTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionStatus;
   hasLastChangeTime(): boolean;
-  clearLastChangeTime(): void;
+  clearLastChangeTime(): CrawlExecutionStatus;
 
   getCreatedTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setCreatedTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setCreatedTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionStatus;
   hasCreatedTime(): boolean;
-  clearCreatedTime(): void;
+  clearCreatedTime(): CrawlExecutionStatus;
 
   getCurrentUriIdList(): Array<string>;
-  setCurrentUriIdList(value: Array<string>): void;
-  clearCurrentUriIdList(): void;
-  addCurrentUriId(value: string, index?: number): void;
+  setCurrentUriIdList(value: Array<string>): CrawlExecutionStatus;
+  clearCurrentUriIdList(): CrawlExecutionStatus;
+  addCurrentUriId(value: string, index?: number): CrawlExecutionStatus;
 
   getJobExecutionId(): string;
-  setJobExecutionId(value: string): void;
+  setJobExecutionId(value: string): CrawlExecutionStatus;
 
   getError(): commons_v1_resources_pb.Error | undefined;
-  setError(value?: commons_v1_resources_pb.Error): void;
+  setError(value?: commons_v1_resources_pb.Error): CrawlExecutionStatus;
   hasError(): boolean;
-  clearError(): void;
+  clearError(): CrawlExecutionStatus;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlExecutionStatus.AsObject;
@@ -319,51 +320,51 @@ export namespace CrawlExecutionStatus {
 
 export class CrawlExecutionStatusChange extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): CrawlExecutionStatusChange;
 
   getState(): CrawlExecutionStatus.State;
-  setState(value: CrawlExecutionStatus.State): void;
+  setState(value: CrawlExecutionStatus.State): CrawlExecutionStatusChange;
 
   getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionStatusChange;
   hasEndTime(): boolean;
-  clearEndTime(): void;
+  clearEndTime(): CrawlExecutionStatusChange;
 
   getAddDocumentsCrawled(): number;
-  setAddDocumentsCrawled(value: number): void;
+  setAddDocumentsCrawled(value: number): CrawlExecutionStatusChange;
 
   getAddBytesCrawled(): number;
-  setAddBytesCrawled(value: number): void;
+  setAddBytesCrawled(value: number): CrawlExecutionStatusChange;
 
   getAddUrisCrawled(): number;
-  setAddUrisCrawled(value: number): void;
+  setAddUrisCrawled(value: number): CrawlExecutionStatusChange;
 
   getAddDocumentsFailed(): number;
-  setAddDocumentsFailed(value: number): void;
+  setAddDocumentsFailed(value: number): CrawlExecutionStatusChange;
 
   getAddDocumentsOutOfScope(): number;
-  setAddDocumentsOutOfScope(value: number): void;
+  setAddDocumentsOutOfScope(value: number): CrawlExecutionStatusChange;
 
   getAddDocumentsRetried(): number;
-  setAddDocumentsRetried(value: number): void;
+  setAddDocumentsRetried(value: number): CrawlExecutionStatusChange;
 
   getAddDocumentsDenied(): number;
-  setAddDocumentsDenied(value: number): void;
+  setAddDocumentsDenied(value: number): CrawlExecutionStatusChange;
 
   getAddCurrentUri(): QueuedUri | undefined;
-  setAddCurrentUri(value?: QueuedUri): void;
+  setAddCurrentUri(value?: QueuedUri): CrawlExecutionStatusChange;
   hasAddCurrentUri(): boolean;
-  clearAddCurrentUri(): void;
+  clearAddCurrentUri(): CrawlExecutionStatusChange;
 
   getDeleteCurrentUri(): QueuedUri | undefined;
-  setDeleteCurrentUri(value?: QueuedUri): void;
+  setDeleteCurrentUri(value?: QueuedUri): CrawlExecutionStatusChange;
   hasDeleteCurrentUri(): boolean;
-  clearDeleteCurrentUri(): void;
+  clearDeleteCurrentUri(): CrawlExecutionStatusChange;
 
   getError(): commons_v1_resources_pb.Error | undefined;
-  setError(value?: commons_v1_resources_pb.Error): void;
+  setError(value?: commons_v1_resources_pb.Error): CrawlExecutionStatusChange;
   hasError(): boolean;
-  clearError(): void;
+  clearError(): CrawlExecutionStatusChange;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlExecutionStatusChange.AsObject;
@@ -393,52 +394,52 @@ export namespace CrawlExecutionStatusChange {
 
 export class JobExecutionStatus extends jspb.Message {
   getId(): string;
-  setId(value: string): void;
+  setId(value: string): JobExecutionStatus;
 
   getJobId(): string;
-  setJobId(value: string): void;
+  setJobId(value: string): JobExecutionStatus;
 
   getState(): JobExecutionStatus.State;
-  setState(value: JobExecutionStatus.State): void;
+  setState(value: JobExecutionStatus.State): JobExecutionStatus;
 
   getExecutionsStateMap(): jspb.Map<string, number>;
-  clearExecutionsStateMap(): void;
+  clearExecutionsStateMap(): JobExecutionStatus;
 
   getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): JobExecutionStatus;
   hasStartTime(): boolean;
-  clearStartTime(): void;
+  clearStartTime(): JobExecutionStatus;
 
   getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): JobExecutionStatus;
   hasEndTime(): boolean;
-  clearEndTime(): void;
+  clearEndTime(): JobExecutionStatus;
 
   getDocumentsCrawled(): number;
-  setDocumentsCrawled(value: number): void;
+  setDocumentsCrawled(value: number): JobExecutionStatus;
 
   getBytesCrawled(): number;
-  setBytesCrawled(value: number): void;
+  setBytesCrawled(value: number): JobExecutionStatus;
 
   getUrisCrawled(): number;
-  setUrisCrawled(value: number): void;
+  setUrisCrawled(value: number): JobExecutionStatus;
 
   getDocumentsFailed(): number;
-  setDocumentsFailed(value: number): void;
+  setDocumentsFailed(value: number): JobExecutionStatus;
 
   getDocumentsOutOfScope(): number;
-  setDocumentsOutOfScope(value: number): void;
+  setDocumentsOutOfScope(value: number): JobExecutionStatus;
 
   getDocumentsRetried(): number;
-  setDocumentsRetried(value: number): void;
+  setDocumentsRetried(value: number): JobExecutionStatus;
 
   getDocumentsDenied(): number;
-  setDocumentsDenied(value: number): void;
+  setDocumentsDenied(value: number): JobExecutionStatus;
 
   getError(): commons_v1_resources_pb.Error | undefined;
-  setError(value?: commons_v1_resources_pb.Error): void;
+  setError(value?: commons_v1_resources_pb.Error): JobExecutionStatus;
   hasError(): boolean;
-  clearError(): void;
+  clearError(): JobExecutionStatus;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): JobExecutionStatus.AsObject;
@@ -479,82 +480,82 @@ export namespace JobExecutionStatus {
 
 export class CrawlLog extends jspb.Message {
   getWarcId(): string;
-  setWarcId(value: string): void;
+  setWarcId(value: string): CrawlLog;
 
   getTimeStamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): CrawlLog;
   hasTimeStamp(): boolean;
-  clearTimeStamp(): void;
+  clearTimeStamp(): CrawlLog;
 
   getSurt(): string;
-  setSurt(value: string): void;
+  setSurt(value: string): CrawlLog;
 
   getStatusCode(): number;
-  setStatusCode(value: number): void;
+  setStatusCode(value: number): CrawlLog;
 
   getSize(): number;
-  setSize(value: number): void;
+  setSize(value: number): CrawlLog;
 
   getRequestedUri(): string;
-  setRequestedUri(value: string): void;
+  setRequestedUri(value: string): CrawlLog;
 
   getResponseUri(): string;
-  setResponseUri(value: string): void;
+  setResponseUri(value: string): CrawlLog;
 
   getDiscoveryPath(): string;
-  setDiscoveryPath(value: string): void;
+  setDiscoveryPath(value: string): CrawlLog;
 
   getReferrer(): string;
-  setReferrer(value: string): void;
+  setReferrer(value: string): CrawlLog;
 
   getContentType(): string;
-  setContentType(value: string): void;
+  setContentType(value: string): CrawlLog;
 
   getFetchTimeStamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setFetchTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  setFetchTimeStamp(value?: google_protobuf_timestamp_pb.Timestamp): CrawlLog;
   hasFetchTimeStamp(): boolean;
-  clearFetchTimeStamp(): void;
+  clearFetchTimeStamp(): CrawlLog;
 
   getFetchTimeMs(): number;
-  setFetchTimeMs(value: number): void;
+  setFetchTimeMs(value: number): CrawlLog;
 
   getBlockDigest(): string;
-  setBlockDigest(value: string): void;
+  setBlockDigest(value: string): CrawlLog;
 
   getPayloadDigest(): string;
-  setPayloadDigest(value: string): void;
+  setPayloadDigest(value: string): CrawlLog;
 
   getStorageRef(): string;
-  setStorageRef(value: string): void;
+  setStorageRef(value: string): CrawlLog;
 
   getRecordType(): string;
-  setRecordType(value: string): void;
+  setRecordType(value: string): CrawlLog;
 
   getWarcRefersTo(): string;
-  setWarcRefersTo(value: string): void;
+  setWarcRefersTo(value: string): CrawlLog;
 
   getIpAddress(): string;
-  setIpAddress(value: string): void;
+  setIpAddress(value: string): CrawlLog;
 
   getExecutionId(): string;
-  setExecutionId(value: string): void;
+  setExecutionId(value: string): CrawlLog;
 
   getRetries(): number;
-  setRetries(value: number): void;
+  setRetries(value: number): CrawlLog;
 
   getError(): commons_v1_resources_pb.Error | undefined;
-  setError(value?: commons_v1_resources_pb.Error): void;
+  setError(value?: commons_v1_resources_pb.Error): CrawlLog;
   hasError(): boolean;
-  clearError(): void;
+  clearError(): CrawlLog;
 
   getJobExecutionId(): string;
-  setJobExecutionId(value: string): void;
+  setJobExecutionId(value: string): CrawlLog;
 
   getCollectionFinalName(): string;
-  setCollectionFinalName(value: string): void;
+  setCollectionFinalName(value: string): CrawlLog;
 
   getMethod(): string;
-  setMethod(value: string): void;
+  setMethod(value: string): CrawlLog;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlLog.AsObject;
@@ -595,35 +596,35 @@ export namespace CrawlLog {
 
 export class PageLog extends jspb.Message {
   getWarcId(): string;
-  setWarcId(value: string): void;
+  setWarcId(value: string): PageLog;
 
   getUri(): string;
-  setUri(value: string): void;
+  setUri(value: string): PageLog;
 
   getExecutionId(): string;
-  setExecutionId(value: string): void;
+  setExecutionId(value: string): PageLog;
 
   getReferrer(): string;
-  setReferrer(value: string): void;
+  setReferrer(value: string): PageLog;
 
   getJobExecutionId(): string;
-  setJobExecutionId(value: string): void;
+  setJobExecutionId(value: string): PageLog;
 
   getCollectionFinalName(): string;
-  setCollectionFinalName(value: string): void;
+  setCollectionFinalName(value: string): PageLog;
 
   getMethod(): string;
-  setMethod(value: string): void;
+  setMethod(value: string): PageLog;
 
   getResourceList(): Array<PageLog.Resource>;
-  setResourceList(value: Array<PageLog.Resource>): void;
-  clearResourceList(): void;
+  setResourceList(value: Array<PageLog.Resource>): PageLog;
+  clearResourceList(): PageLog;
   addResource(value?: PageLog.Resource, index?: number): PageLog.Resource;
 
   getOutlinkList(): Array<string>;
-  setOutlinkList(value: Array<string>): void;
-  clearOutlinkList(): void;
-  addOutlink(value: string, index?: number): void;
+  setOutlinkList(value: Array<string>): PageLog;
+  clearOutlinkList(): PageLog;
+  addOutlink(value: string, index?: number): PageLog;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PageLog.AsObject;
@@ -648,39 +649,39 @@ export namespace PageLog {
 
   export class Resource extends jspb.Message {
     getUri(): string;
-    setUri(value: string): void;
+    setUri(value: string): Resource;
 
     getFromCache(): boolean;
-    setFromCache(value: boolean): void;
+    setFromCache(value: boolean): Resource;
 
     getRenderable(): boolean;
-    setRenderable(value: boolean): void;
+    setRenderable(value: boolean): Resource;
 
     getResourceType(): string;
-    setResourceType(value: string): void;
+    setResourceType(value: string): Resource;
 
     getMimeType(): string;
-    setMimeType(value: string): void;
+    setMimeType(value: string): Resource;
 
     getStatusCode(): number;
-    setStatusCode(value: number): void;
+    setStatusCode(value: number): Resource;
 
     getDiscoveryPath(): string;
-    setDiscoveryPath(value: string): void;
+    setDiscoveryPath(value: string): Resource;
 
     getWarcId(): string;
-    setWarcId(value: string): void;
+    setWarcId(value: string): Resource;
 
     getReferrer(): string;
-    setReferrer(value: string): void;
+    setReferrer(value: string): Resource;
 
     getError(): commons_v1_resources_pb.Error | undefined;
-    setError(value?: commons_v1_resources_pb.Error): void;
+    setError(value?: commons_v1_resources_pb.Error): Resource;
     hasError(): boolean;
-    clearError(): void;
+    clearError(): Resource;
 
     getMethod(): string;
-    setMethod(value: string): void;
+    setMethod(value: string): Resource;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Resource.AsObject;

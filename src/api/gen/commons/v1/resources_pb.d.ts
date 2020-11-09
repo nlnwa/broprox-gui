@@ -1,14 +1,16 @@
-import * as jspb from "google-protobuf"
+import * as jspb from 'google-protobuf'
+
+
 
 export class Error extends jspb.Message {
   getCode(): number;
-  setCode(value: number): void;
+  setCode(value: number): Error;
 
   getMsg(): string;
-  setMsg(value: string): void;
+  setMsg(value: string): Error;
 
   getDetail(): string;
-  setDetail(value: string): void;
+  setDetail(value: string): Error;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Error.AsObject;
@@ -28,9 +30,9 @@ export namespace Error {
 
 export class FieldMask extends jspb.Message {
   getPathsList(): Array<string>;
-  setPathsList(value: Array<string>): void;
-  clearPathsList(): void;
-  addPaths(value: string, index?: number): void;
+  setPathsList(value: Array<string>): FieldMask;
+  clearPathsList(): FieldMask;
+  addPaths(value: string, index?: number): FieldMask;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FieldMask.AsObject;
@@ -48,28 +50,28 @@ export namespace FieldMask {
 
 export class ExtractedText extends jspb.Message {
   getWarcId(): string;
-  setWarcId(value: string): void;
+  setWarcId(value: string): ExtractedText;
 
   getText(): string;
-  setText(value: string): void;
+  setText(value: string): ExtractedText;
 
   getSentenceCount(): number;
-  setSentenceCount(value: number): void;
+  setSentenceCount(value: number): ExtractedText;
 
   getWordCount(): number;
-  setWordCount(value: number): void;
+  setWordCount(value: number): ExtractedText;
 
   getLongWordCount(): number;
-  setLongWordCount(value: number): void;
+  setLongWordCount(value: number): ExtractedText;
 
   getCharacterCount(): number;
-  setCharacterCount(value: number): void;
+  setCharacterCount(value: number): ExtractedText;
 
   getLix(): number;
-  setLix(value: number): void;
+  setLix(value: number): ExtractedText;
 
   getLanguage(): string;
-  setLanguage(value: string): void;
+  setLanguage(value: string): ExtractedText;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ExtractedText.AsObject;

@@ -7,6 +7,10 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 
+/* eslint-disable */
+// @ts-nocheck
+
+
 
 const grpc = {};
 grpc.web = require('grpc-web');
@@ -141,7 +145,7 @@ proto.veidemann.api.eventhandler.v1.EventHandlerClient.prototype.getEventObject 
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.eventhandler.v1.EventObject>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.eventhandler.v1.EventHandlerPromiseClient.prototype.getEventObject =
     function(request, metadata) {
@@ -296,7 +300,7 @@ proto.veidemann.api.eventhandler.v1.EventHandlerClient.prototype.countEventObjec
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.eventhandler.v1.ListCountResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.eventhandler.v1.EventHandlerPromiseClient.prototype.countEventObjects =
     function(request, metadata) {
@@ -376,7 +380,7 @@ proto.veidemann.api.eventhandler.v1.EventHandlerClient.prototype.saveEventObject
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.eventhandler.v1.EventObject>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.eventhandler.v1.EventHandlerPromiseClient.prototype.saveEventObject =
     function(request, metadata) {
@@ -456,7 +460,7 @@ proto.veidemann.api.eventhandler.v1.EventHandlerClient.prototype.updateEventObje
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.eventhandler.v1.UpdateResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.eventhandler.v1.EventHandlerPromiseClient.prototype.updateEventObjects =
     function(request, metadata) {
@@ -536,7 +540,7 @@ proto.veidemann.api.eventhandler.v1.EventHandlerClient.prototype.deleteEventObje
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.eventhandler.v1.DeleteResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.eventhandler.v1.EventHandlerPromiseClient.prototype.deleteEventObject =
     function(request, metadata) {
@@ -616,7 +620,7 @@ proto.veidemann.api.eventhandler.v1.EventHandlerClient.prototype.listLabels =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.veidemann.api.eventhandler.v1.ListLabelResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.veidemann.api.eventhandler.v1.EventHandlerPromiseClient.prototype.listLabels =
     function(request, metadata) {

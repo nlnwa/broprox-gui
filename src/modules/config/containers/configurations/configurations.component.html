@@ -252,29 +252,29 @@
 
           <ng-container *ngIf="kind === Kind.POLITENESSCONFIG">
             <ng-container *appFilter="let row">
-            <button mat-menu-item
-                    *ngIf="'read' | able: Kind[Kind.CRAWLCONFIG]"
-                    (click)="onFilterByPolitenessConfigRef(row)"
-                    i18n="@@configListActionButtonFilterCrawlconfigswithPoliteness"
-                    matTooltip="Show crawlconfigs with reference to the politeness"
-                    i18n-matTooltip="@@politenessConfigListFilterCrawlconfigWithPolitenessActionButtonTooltip">
-              <mat-icon>settings_system_daydream</mat-icon>
-              Show crawlconfigs
-            </button>
+              <button mat-menu-item
+                      *ngIf="'read' | able: Kind[Kind.CRAWLCONFIG]"
+                      (click)="onFilterByPolitenessConfigRef(row)"
+                      i18n="@@configListActionButtonFilterCrawlconfigswithPoliteness"
+                      matTooltip="Show crawlconfigs with reference to the politeness"
+                      i18n-matTooltip="@@politenessConfigListFilterCrawlconfigWithPolitenessActionButtonTooltip">
+                <mat-icon>settings_system_daydream</mat-icon>
+                Show crawlconfigs
+              </button>
             </ng-container>
           </ng-container>
 
           <ng-container *ngIf="kind === Kind.BROWSERSCRIPT">
-            <ng-container *appFilter="let row" >
-            <button mat-menu-item
-                    *ngIf="'read' | able: Kind[Kind.BROWSERCONFIG]"
-                    (click)="onFilterByBrowserScriptRef(row)"
-                    i18n="@@configListActionButtonFilterBrowserconfigWithBrowserscript"
-                    matTooltip="Show browserconfigs with reference to the browserscript"
-                    i18n-matTooltip="@@browserscriptListFilterBrowserconfigsWithBrowserscriptActionButtonTooltip">
-              <mat-icon>web</mat-icon>
-              Show browserconfigs
-            </button>
+            <ng-container *appFilter="let row">
+              <button mat-menu-item
+                      *ngIf="'read' | able: Kind[Kind.BROWSERCONFIG]"
+                      (click)="onFilterByBrowserScriptRef(row)"
+                      i18n="@@configListActionButtonFilterBrowserconfigWithBrowserscript"
+                      matTooltip="Show browserconfigs with reference to the browserscript"
+                      i18n-matTooltip="@@browserscriptListFilterBrowserconfigsWithBrowserscriptActionButtonTooltip">
+                <mat-icon>web</mat-icon>
+                Show browserconfigs
+              </button>
             </ng-container>
           </ng-container>
 
@@ -329,18 +329,19 @@
                 Show seeds
               </button>
             </ng-container>
+
+            <ng-container *appAction="let row">
+              <button *ngIf="canRunCrawl(row)" mat-menu-item
+                      (click)="onRunCrawl(row)"
+                      i18n="@@configListActionButtonRunCrawl"
+                      matTooltip="Run crawljob: {{row.meta.name}}"
+                      i18n-matTooltip="@@runCrawlActionButtonTooltip">
+                <mat-icon>play_arrow</mat-icon>
+                Run crawl
+              </button>
+            </ng-container>
           </ng-container>
 
-          <ng-container *appAction="let row">
-            <button *ngIf="canRunCrawl(row)" mat-menu-item
-                    (click)="onRunCrawl(row)"
-                    i18n="@@configListActionButtonRunCrawl"
-                    matTooltip="Run crawljob: {{row.meta.name}}"
-                    i18n-matTooltip="@@runCrawlActionButtonTooltip">
-              <mat-icon>play_arrow</mat-icon>
-              Run crawl
-            </button>
-          </ng-container>
           <ng-container *appAction="let row">
             <button *ngIf="canEdit(row)" mat-menu-item (click)="onEdit(row)"
                     i18n="@@configListActionButtonEditConfig">
