@@ -64,7 +64,7 @@
   </mat-dialog-content>
 </form>
 
-<mat-dialog-actions>
+<mat-dialog-actions *ngIf="canEdit">
   <button mat-raised-button color="accent"
           *ngIf="showSave"
           [disabled]="!canSave"

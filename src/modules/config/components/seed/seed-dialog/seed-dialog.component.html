@@ -33,7 +33,7 @@
   </mat-dialog-content>
 </form>
 
-<mat-dialog-actions *ngIf="'manage' | able: 'Seed'">
+<mat-dialog-actions *ngIf="canEdit">
   <button mat-raised-button color="accent"
           *ngIf="!showSave"
           [disabled]="!canUpdate"

@@ -3,8 +3,9 @@
   <div fxFlex fxLayout="row" class="container no-scroll">
     <div fxLayout="column" class="scroll">
       <mat-action-list>
+        <ng-container *ngIf="kind$ | async as kind">
         <button mat-list-item
-                *ngIf="showCreateButton$ | async"
+                *ngIf="('create' | able: Kind[kind]) && showCreateButton$ | async"
                 (click)="onCreateConfigWithDialog()"
                 i18n="@@configurationSideBarMenuAddConfigButton"
                 matTooltip="Create a new configuration"
@@ -13,6 +14,7 @@
           </mat-icon>
           Create new
         </button>
+        </ng-container>
       </mat-action-list>
       <app-config-query [options]="options$ | async" [query]="query$ | async"
                         (queryChange)="onQueryChange($event)"></app-config-query>

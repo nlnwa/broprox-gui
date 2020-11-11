@@ -84,8 +84,6 @@ export class AuthService {
   }
 
   canAbortCrawl(subject: string) {
-    console.log('can abort: ', subject);
-    console.log('canAbortCrawl; ', this.ability.can('abort', subject));
     return this.ability.can('abort', subject);
   }
 
@@ -150,7 +148,8 @@ export class AuthService {
     const operatorConfigs = [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED], Kind[Kind.CRAWLJOB], Kind[Kind.CRAWLCONFIG],
       Kind[Kind.CRAWLSCHEDULECONFIG], Kind[Kind.BROWSERCONFIG], Kind[Kind.POLITENESSCONFIG], Kind[Kind.BROWSERSCRIPT],
       Kind[Kind.CRAWLHOSTGROUPCONFIG], Kind[Kind.COLLECTION]];
-    const curatorConfigs = [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED], Kind[Kind.COLLECTION], Kind[Kind.CRAWLJOB], Kind[Kind.CRAWLCONFIG]];
+    const curatorConfigs = [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED], Kind[Kind.COLLECTION], Kind[Kind.CRAWLJOB],
+      Kind[Kind.CRAWLCONFIG], Kind[Kind.CRAWLSCHEDULECONFIG]];
 
     const reports = ['report', 'jobexecution', 'crawlexecution', 'pagelog', 'crawllog'];
 
@@ -164,7 +163,7 @@ export class AuthService {
       can(['read', 'update'], 'annotation');
       can('read', 'configs');
       can('read', 'update', 'crawlerStatus');
-      can(['create', 'read', 'update', 'delete', 'updateAll'], operatorConfigs);
+      can(['create', 'read', 'update', 'updateAll'], operatorConfigs);
       can('runCrawl', [Kind[Kind.SEED], Kind[Kind.CRAWLJOB]]);
       can('abort', ['jobexecution']);
       can(['read', 'update'], 'logconfig');
@@ -173,7 +172,7 @@ export class AuthService {
     if (this.isCurator()) {
       can('read', 'home');
       can('read', 'crawlerStatus');
-      can(['create', 'read', 'update', 'delete', 'updateAll'], curatorConfigs);
+      can(['create', 'read', 'update', 'updateAll'], curatorConfigs);
       can(['read', 'update'], 'annotation');
       can('read', 'configs');
       can('read', reports);
@@ -182,15 +181,13 @@ export class AuthService {
     if (this.isConsultant()) {
       can('read', 'home');
       can('read', 'crawlerStatus');
-      can(['create', 'read', 'update', 'delete'], [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED]]);
+      can(['create', 'read', 'update'], [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED]]);
       can('read', 'configs');
       can('read', reports);
     }
 
     if (this.isAnyUser()) {
       can('read', 'home');
-      can('read', 'configs');
-      can('read', [Kind[Kind.SEED], Kind[Kind.CRAWLENTITY]]);
     }
     this.ability.update(rules);
   }
