@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
 
-    <div fxLayout="row" *ngIf="runStatus === RunStatus.RUNNING">
+    <div fxLayout="row" *ngIf="crawlerStatus.runStatus === RunStatus.RUNNING">
       <p class="crawlerRunningButton">RUNNING<p>
       <button mat-icon-button class="crawlerRunningButton"
              *ngIf="'update' | able: 'crawlerStatus'"
@@ -17,13 +17,13 @@
       </button>
     </div>
 
-    <div fxLayout="row" *ngIf="runStatus === RunStatus.PAUSE_REQUESTED">
+    <div fxLayout="row" *ngIf="crawlerStatus.runStatus === RunStatus.PAUSE_REQUESTED">
       <h1 i18n="@@crawlerStatusPauseRequestedTitle" style="color: darkorange">
         IS PAUSING
       </h1>
     </div>
 
-    <div fxLayout="row" *ngIf="runStatus === RunStatus.PAUSED">
+    <div fxLayout="row" *ngIf="crawlerStatus.runStatus === RunStatus.PAUSED">
       <p class="crawlerPausedButton">PAUSED</p>
       <button mat-icon-button class="crawlerPausedButton"
               *ngIf="'update' | able: 'crawlerStatus'"
@@ -33,5 +33,28 @@
         <mat-icon >play_arrow</mat-icon>
       </button>
     </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Total queue size
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    {{ crawlerStatus.queueSize }}
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Busy crawlhost groups
+    </mat-card-title>
+    <mat-card-subtitle>Number of web pages currently downloading</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{ crawlerStatus.busyCrawlHostGroupCount }}
   </mat-card-content>
 </mat-card>

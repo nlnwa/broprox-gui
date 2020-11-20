@@ -1,4 +1,30 @@
-import {ExecutionIdProto, RunCrawlReplyProto, RunCrawlRequestProto} from '../../../api';
+import {ExecutionIdProto, RunCrawlReplyProto, RunCrawlRequestProto, CrawlerStatusProto} from '../../../api';
+import {run} from 'tslint/lib/runner';
+
+export class CrawlerStatus {
+  runStatus: RunStatus;
+  busyCrawlHostGroupCount: number;
+  queueSize: number;
+
+
+  constructor({
+                runStatus = 0,
+                busyCrawlHostGroupCount = 0,
+                queueSize = 0,
+              }: Partial<CrawlerStatus> = {}) {
+    this.busyCrawlHostGroupCount = busyCrawlHostGroupCount;
+    this.queueSize = queueSize;
+    this.runStatus = runStatus;
+  }
+
+  static fromProto(proto: CrawlerStatusProto): CrawlerStatus {
+    return new CrawlerStatus({
+      queueSize: proto.getQueuesize(),
+      busyCrawlHostGroupCount: proto.getBusycrawlhostgroupcount(),
+      runStatus: proto.getRunstatus().valueOf() as RunStatus
+    });
+  }
+}
 
 export enum RunStatus {
   RUNNING = 0,
