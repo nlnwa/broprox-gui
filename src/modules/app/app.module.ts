@@ -18,6 +18,7 @@ import {
 import {AbilityModule} from '@casl/angular';
 import {Ability, PureAbility} from '@casl/ability';
 import { HomeComponent } from './components/home/home.component';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     CommonsModule,
     CoreModule,
-    AbilityModule
+    AbilityModule,
+    MonacoEditorModule.forRoot(),
   ],
   providers: [
     {provide: Ability, useValue: new Ability()},

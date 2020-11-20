@@ -47,6 +47,7 @@
     "nano-editor": "^1.2.4",
     "ng2-charts": "^2.4.0",
     "ngx-filesize": "^2.0.15",
+    "ngx-monaco-editor": "9.0.0",
     "prismjs": "^1.21.0",
     "rxjs": "~6.6.2",
     "tslib": "^2.0.1",

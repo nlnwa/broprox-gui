@@ -91,6 +91,7 @@ import {PolitenessConfigMultiDialogComponent} from './components/politenessconfi
 import { RoleMappingMultiDialogComponent } from './components/rolemapping/rolemapping-multi-dialog/rolemapping-multi-dialog.component';
 import { LabelMultiComponent } from './components/label/label-multi/label-multi.component';
 import {AbilityModule} from '@casl/angular';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
 
 @NgModule({
@@ -194,12 +195,13 @@ import {AbilityModule} from '@casl/angular';
     RoleMappingDialogComponent,
     ScheduleDialogComponent,
   ],
-    imports: [
-        CommonsModule,
-        ConfigurationsRoutingModule,
-        ReportModule,
-        AbilityModule,
-    ],
+  imports: [
+    CommonsModule,
+    ConfigurationsRoutingModule,
+    ReportModule,
+    AbilityModule,
+    MonacoEditorModule,
+  ],
   exports: [],
   providers: [
     OptionsResolver,
