@@ -2,7 +2,6 @@ import {CrawlExecutionStatusProto} from '../../../api';
 import {fromTimestampProto, isNumeric, toTimestampProto} from '../../func';
 import {ExtraStatusCodes} from './extrastatuscodes.model';
 import {ApiError} from './api-error.model';
-import {CrawlScope} from '../config/crawlscope.model';
 import {fromRethinkTimeStamp} from '../../func/rethinkdb';
 
 export enum CrawlExecutionState {
@@ -34,7 +33,6 @@ export class CrawlExecutionStatus {
   state: CrawlExecutionState;
   jobId: string;
   seedId: string;
-  scope: CrawlScope;
   startTime: string;
   endTime: string;
   documentsCrawled: number;
@@ -55,7 +53,6 @@ export class CrawlExecutionStatus {
                 state = CrawlExecutionState.UNDEFINED,
                 jobId = '',
                 seedId = '',
-                scope = new CrawlScope(),
                 startTime = '',
                 endTime = '',
                 documentsCrawled = 0,
@@ -75,7 +72,6 @@ export class CrawlExecutionStatus {
     this.jobId = jobId;
     this.seedId = seedId;
     this.state = state;
-    this.scope = scope;
     this.startTime = startTime;
     this.endTime = endTime;
     this.documentsCrawled = documentsCrawled;
@@ -135,11 +131,6 @@ export class CrawlExecutionStatus {
       jobExecutionId: proto.getJobExecutionId(),
       error: ApiError.fromProto(proto.getError())
     });
-
-    if (proto.getScope()) {
-      crawlExecutionStatus.scope = CrawlScope.fromProto(proto.getScope());
-    }
-
     return crawlExecutionStatus;
   }
 

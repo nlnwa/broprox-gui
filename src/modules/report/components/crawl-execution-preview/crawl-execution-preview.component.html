@@ -19,11 +19,6 @@
       <h1>{{crawlExec.urisCrawled}}</h1>
     </mat-card>
 
-    <mat-card>
-      <h2>Scope</h2>
-      <h1>{{crawlExec.scope.surtPrefix}}</h1>
-    </mat-card>
-
     <mat-card *ngIf="crawlExec.error as error">
       <h2>Error</h2>
       <h3>{{ExtraStatusCodes[error.code]}} ({{error.code}})</h3>

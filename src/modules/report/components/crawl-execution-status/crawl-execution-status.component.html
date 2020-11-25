@@ -16,7 +16,6 @@
           <th class="mat-header-cell" i18n="@@crawlExecutionReportStatusJobExecutionHeaderCell">Job execution</th>
           <th class="mat-header-cell" i18n="@@crawlExecutionReportStatusCrawljobHeaderCell">Job</th>
           <th class="mat-header-cell" i18n="@@crawlExecutionReportStatusStateHeaderCell">State</th>
-          <th class="mat-header-cell" i18n="@@crawlExecutionReportStatusSurtPrefixHeaderCell">Surt prefiks</th>
         </tr>
         </thead>
         <tbody>
@@ -29,7 +28,6 @@
               [routerLink]="['/config', 'crawljobs', crawlExecutionStatus.jobId]">{{crawlExecutionStatus.jobId | getJobNamePipe | async}}</a>
           </td>
           <td class="mat-cell">{{CrawlExecutionState[crawlExecutionStatus.state]}}</td>
-          <td class="mat-cell">{{crawlExecutionStatus.scope.surtPrefix}}</td>
         </tr>
         </tbody>
       </table>
