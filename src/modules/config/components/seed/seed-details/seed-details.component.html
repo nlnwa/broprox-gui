@@ -63,13 +63,6 @@
                           [value]="crawlJob.id">{{crawlJob.meta.name}}</mat-option>
             </mat-select>
           </mat-form-field>
-
-          <mat-form-field formGroupName="scope" *ngIf="configObject?.id">
-            <input matInput
-                   formControlName="surtPrefix"
-                   placeholder="Surt prefix"
-                   i18n-placeholder="@@seedDetailsFormSurtPrefixPlaceholder">
-          </mat-form-field>
         </div>
       </div>
     </mat-card-content>

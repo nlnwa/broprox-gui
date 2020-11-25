@@ -164,9 +164,6 @@ export class SeedDetailsComponent implements OnChanges, OnDestroy {
         id: '',
       }, {validator: configRefIdRequired}),
       jobRefListId: {value: []},
-      scope: this.fb.group({
-        surtPrefix: {value: ''}
-      }),
       meta: new Meta(),
     });
   }
@@ -181,9 +178,6 @@ export class SeedDetailsComponent implements OnChanges, OnDestroy {
       disabled: !!this.configObject.seed.disabled,
       entityRef: this.configObject.seed.entityRef,
       jobRefListId: this.configObject.seed.jobRefList.map(job => job.id),
-      scope: {
-        surtPrefix: this.configObject.seed.scope.surtPrefix,
-      },
       meta: this.configObject.meta,
     });
     this.form.markAsPristine();
@@ -203,7 +197,6 @@ export class SeedDetailsComponent implements OnChanges, OnDestroy {
         disabled: formModel.disabled,
         entityRef: formModel.entityRef,
         jobRefList: formModel.jobRefListId.map(id => new ConfigRef({kind: Kind.CRAWLJOB, id})),
-        scope: formModel.scope
       }
     });
   }
@@ -219,7 +212,6 @@ export class SeedDetailsComponent implements OnChanges, OnDestroy {
         disabled: formModel.disabled,
         entityRef: formModel.entityRef,
         jobRefList: formModel.jobRefListId.map(id => new ConfigRef({kind: Kind.CRAWLJOB, id})),
-        scope: formModel.scope
       }
     });
 

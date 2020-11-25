@@ -1,22 +1,18 @@
 import {SeedProto} from '../../../api';
 import {ConfigRef} from './configref.model';
 import {Kind} from './kind.model';
-import {CrawlScope} from './crawlscope.model';
 
 export class Seed {
   entityRef: ConfigRef;
-  scope: CrawlScope;
   jobRefList: ConfigRef[];
   disabled: boolean;
 
   constructor({
                 entityRef,
-                scope,
                 jobRefList = [],
                 disabled = false
               }: Partial<Seed> = {}) {
     this.entityRef = entityRef || new ConfigRef({kind: Kind.CRAWLENTITY});
-    this.scope = new CrawlScope(scope);
     this.jobRefList = jobRefList ? jobRefList.map(configRef => new ConfigRef(configRef)) : [];
     this.disabled = disabled;
   }
@@ -24,7 +20,6 @@ export class Seed {
   static fromProto(proto: SeedProto): Seed {
     return new Seed({
       entityRef: proto.getEntityRef() ? ConfigRef.fromProto(proto.getEntityRef()) : new ConfigRef({kind: Kind.CRAWLENTITY}),
-      scope: CrawlScope.fromProto(proto.getScope()),
       jobRefList: proto.getJobRefList().map(ref => ConfigRef.fromProto(ref)),
       disabled: proto.getDisabled()
     });
@@ -36,7 +31,6 @@ export class Seed {
       const entityRef = new ConfigRef({kind: Kind.CRAWLENTITY, id: seed.entityRef.id});
       proto.setEntityRef(ConfigRef.toProto(entityRef));
     }
-    proto.setScope(CrawlScope.toProto(seed.scope));
     proto.setJobRefList(seed.jobRefList.map(ConfigRef.toProto));
     proto.setDisabled(seed.disabled);
 

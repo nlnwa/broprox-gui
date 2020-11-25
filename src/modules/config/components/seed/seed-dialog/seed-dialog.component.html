@@ -16,19 +16,13 @@
                    [entityRef]="entityRef.value"
                    (move)="move.emit($event)"></app-seed-meta>
     <div fxLayoutGap="16px">
-    <mat-form-field>
-      <mat-select placeholder="CrawlJob" i18n-placeholder="@@seedDetailsFormCrawljobPlaceholder"
-                  multiple formControlName="jobRefListId">
-        <mat-option *ngFor="let crawlJob of crawlJobs"
-                    [value]="crawlJob.id">{{crawlJob.meta.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field formGroupName="scope" *ngIf="configObject?.id">
-      <input matInput
-             formControlName="surtPrefix"
-             placeholder="Surt prefix"
-             i18n-placeholder="@@seedDetailsFormSurtPrefixPlaceholder">
-    </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="CrawlJob" i18n-placeholder="@@seedDetailsFormCrawljobPlaceholder"
+                    multiple formControlName="jobRefListId">
+          <mat-option *ngFor="let crawlJob of crawlJobs"
+                      [value]="crawlJob.id">{{crawlJob.meta.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </mat-dialog-content>
 </form>
