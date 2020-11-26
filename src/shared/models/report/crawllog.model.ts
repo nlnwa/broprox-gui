@@ -7,7 +7,6 @@ export class CrawlLog {
   id: string;
   warcId: string;
   timeStamp: string;
-  surt: string;
   statusCode: number;
   size: number;
   requestedUri: string;
@@ -34,7 +33,6 @@ export class CrawlLog {
                 id = '',
                 warcId = '',
                 timeStamp = '',
-                surt = '',
                 statusCode = 0,
                 size = 0,
                 requestedUri = '',
@@ -60,7 +58,6 @@ export class CrawlLog {
     this.id = id || warcId;
     this.warcId = warcId;
     this.timeStamp = timeStamp;
-    this.surt = surt;
     this.statusCode = statusCode;
     this.size = size;
     this.requestedUri = requestedUri;
@@ -103,7 +100,6 @@ export class CrawlLog {
     return new CrawlLog({
       warcId: proto.getWarcId(),
       timeStamp: fromTimestampProto(proto.getTimeStamp()),
-      surt: proto.getSurt(),
       statusCode: proto.getStatusCode(),
       size: proto.getSize(),
       requestedUri: proto.getRequestedUri(),
@@ -132,7 +128,6 @@ export class CrawlLog {
     const proto = new CrawlLogProto();
     proto.setWarcId(crawlLog.warcId);
     proto.setTimeStamp(toTimestampProto(crawlLog.timeStamp));
-    proto.setSurt(crawlLog.surt);
     proto.setStatusCode(crawlLog.statusCode);
     proto.setSize(crawlLog.size);
     proto.setRequestedUri(crawlLog.requestedUri);
