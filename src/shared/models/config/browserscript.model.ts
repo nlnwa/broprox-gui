@@ -7,7 +7,8 @@ export enum BrowserScriptType {
   EXTRACT_OUTLINKS = 1,
   REPLACEMENT = 2,
   ON_LOAD = 3,
-  ON_NEW_DOCUMENT = 4
+  ON_NEW_DOCUMENT = 4,
+  SCOPE_CHECK= 5,
 }
 
 export const browserScriptTypes = Object.keys(BrowserScriptType).filter(p => !isNumeric(p)).map(key => BrowserScriptType[key]);
