@@ -34,6 +34,8 @@ export {
   ListRequest,
   UpdateRequest,
   UpdateResponse,
+  GetScriptAnnotationsRequest,
+  GetScriptAnnotationsResponse
 } from './gen/config/v1/config_pb';
 
 export {

@@ -794,5 +794,85 @@ proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.saveLogConfig =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.veidemann.api.config.v1.GetScriptAnnotationsRequest,
+ *   !proto.veidemann.api.config.v1.GetScriptAnnotationsResponse>}
+ */
+const methodDescriptor_Config_GetScriptAnnotations = new grpc.web.MethodDescriptor(
+  '/veidemann.api.config.v1.Config/GetScriptAnnotations',
+  grpc.web.MethodType.UNARY,
+  proto.veidemann.api.config.v1.GetScriptAnnotationsRequest,
+  proto.veidemann.api.config.v1.GetScriptAnnotationsResponse,
+  /**
+   * @param {!proto.veidemann.api.config.v1.GetScriptAnnotationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.veidemann.api.config.v1.GetScriptAnnotationsResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.veidemann.api.config.v1.GetScriptAnnotationsRequest,
+ *   !proto.veidemann.api.config.v1.GetScriptAnnotationsResponse>}
+ */
+const methodInfo_Config_GetScriptAnnotations = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.veidemann.api.config.v1.GetScriptAnnotationsResponse,
+  /**
+   * @param {!proto.veidemann.api.config.v1.GetScriptAnnotationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.veidemann.api.config.v1.GetScriptAnnotationsResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.veidemann.api.config.v1.GetScriptAnnotationsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.veidemann.api.config.v1.GetScriptAnnotationsResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.veidemann.api.config.v1.GetScriptAnnotationsResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.veidemann.api.config.v1.ConfigClient.prototype.getScriptAnnotations =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/veidemann.api.config.v1.Config/GetScriptAnnotations',
+      request,
+      metadata || {},
+      methodDescriptor_Config_GetScriptAnnotations,
+      callback);
+};
+
+
+/**
+ * @param {!proto.veidemann.api.config.v1.GetScriptAnnotationsRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.veidemann.api.config.v1.GetScriptAnnotationsResponse>}
+ *     Promise that resolves to the response
+ */
+proto.veidemann.api.config.v1.ConfigPromiseClient.prototype.getScriptAnnotations =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/veidemann.api.config.v1.Config/GetScriptAnnotations',
+      request,
+      metadata || {},
+      methodDescriptor_Config_GetScriptAnnotations);
+};
+
+
 module.exports = proto.veidemann.api.config.v1;
 

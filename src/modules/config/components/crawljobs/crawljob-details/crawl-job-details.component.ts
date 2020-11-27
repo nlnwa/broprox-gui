@@ -4,6 +4,7 @@ import {AuthService} from '../../../../core/services/auth';
 import {NUMBER_OR_EMPTY_STRING} from '../../../../../shared/validation/patterns';
 import {ConfigObject, ConfigRef, CrawlJob, Kind, Meta} from '../../../../../shared/models';
 import {UnitOfTime} from '../../../../../shared/models/duration/unit-time.model';
+import {Annotation} from '../../../../../api';
 
 
 @Component({
@@ -26,6 +27,9 @@ export class CrawlJobDetailsComponent implements OnChanges {
 
   @Input()
   scopeScripts: ConfigObject[];
+
+  @Input()
+  scriptAnnotations: Annotation[];
 
   @Output()
   save = new EventEmitter<ConfigObject>();

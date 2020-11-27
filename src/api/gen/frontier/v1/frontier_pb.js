@@ -20,6 +20,8 @@ var frontier_v1_resources_pb = require('../../frontier/v1/resources_pb.js');
 goog.object.extend(proto, frontier_v1_resources_pb);
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.veidemann.api.frontier.v1.CountResponse', null, global);
 goog.exportSymbol('proto.veidemann.api.frontier.v1.CrawlExecutionId', null, global);
 goog.exportSymbol('proto.veidemann.api.frontier.v1.CrawlSeedRequest', null, global);
@@ -187,7 +189,8 @@ proto.veidemann.api.frontier.v1.CrawlSeedRequest.toObject = function(includeInst
   var f, obj = {
     jobExecutionId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     job: (f = msg.getJob()) && config_v1_resources_pb.ConfigObject.toObject(includeInstance, f),
-    seed: (f = msg.getSeed()) && config_v1_resources_pb.ConfigObject.toObject(includeInstance, f)
+    seed: (f = msg.getSeed()) && config_v1_resources_pb.ConfigObject.toObject(includeInstance, f),
+    timeout: (f = msg.getTimeout()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -237,6 +240,11 @@ proto.veidemann.api.frontier.v1.CrawlSeedRequest.deserializeBinaryFromReader = f
       var value = new config_v1_resources_pb.ConfigObject;
       reader.readMessage(value,config_v1_resources_pb.ConfigObject.deserializeBinaryFromReader);
       msg.setSeed(value);
+      break;
+    case 7:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTimeout(value);
       break;
     default:
       reader.skipField();
@@ -288,6 +296,14 @@ proto.veidemann.api.frontier.v1.CrawlSeedRequest.serializeBinaryToWriter = funct
       6,
       f,
       config_v1_resources_pb.ConfigObject.serializeBinaryToWriter
+    );
+  }
+  f = message.getTimeout();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -382,6 +398,43 @@ proto.veidemann.api.frontier.v1.CrawlSeedRequest.prototype.clearSeed = function(
  */
 proto.veidemann.api.frontier.v1.CrawlSeedRequest.prototype.hasSeed = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timeout = 7;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.veidemann.api.frontier.v1.CrawlSeedRequest.prototype.getTimeout = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.veidemann.api.frontier.v1.CrawlSeedRequest} returns this
+*/
+proto.veidemann.api.frontier.v1.CrawlSeedRequest.prototype.setTimeout = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.veidemann.api.frontier.v1.CrawlSeedRequest} returns this
+ */
+proto.veidemann.api.frontier.v1.CrawlSeedRequest.prototype.clearTimeout = function() {
+  return this.setTimeout(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.veidemann.api.frontier.v1.CrawlSeedRequest.prototype.hasTimeout = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 

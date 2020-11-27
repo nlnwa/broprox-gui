@@ -23,9 +23,6 @@ export class QueuedUri extends jspb.Message {
   getUri(): string;
   setUri(value: string): QueuedUri;
 
-  getSurt(): string;
-  setSurt(value: string): QueuedUri;
-
   getIp(): string;
   setIp(value: string): QueuedUri;
 
@@ -78,6 +75,14 @@ export class QueuedUri extends jspb.Message {
   getPriorityWeight(): number;
   setPriorityWeight(value: number): QueuedUri;
 
+  getSeedUri(): string;
+  setSeedUri(value: string): QueuedUri;
+
+  getAnnotationList(): Array<config_v1_resources_pb.Annotation>;
+  setAnnotationList(value: Array<config_v1_resources_pb.Annotation>): QueuedUri;
+  clearAnnotationList(): QueuedUri;
+  addAnnotation(value?: config_v1_resources_pb.Annotation, index?: number): config_v1_resources_pb.Annotation;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): QueuedUri.AsObject;
   static toObject(includeInstance: boolean, msg: QueuedUri): QueuedUri.AsObject;
@@ -93,7 +98,6 @@ export namespace QueuedUri {
     discoveredTimeStamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     sequence: number,
     uri: string,
-    surt: string,
     ip: string,
     discoveryPath: string,
     referrer: string,
@@ -108,6 +112,8 @@ export namespace QueuedUri {
     unresolved: boolean,
     fetchStartTimeStamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     priorityWeight: number,
+    seedUri: string,
+    annotationList: Array<config_v1_resources_pb.Annotation.AsObject>,
   }
 }
 
@@ -172,14 +178,6 @@ export class CrawlHostGroup extends jspb.Message {
   getPolitenessId(): string;
   setPolitenessId(value: string): CrawlHostGroup;
 
-  getNextFetchTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setNextFetchTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlHostGroup;
-  hasNextFetchTime(): boolean;
-  clearNextFetchTime(): CrawlHostGroup;
-
-  getBusy(): boolean;
-  setBusy(value: boolean): CrawlHostGroup;
-
   getQueuedUriCount(): number;
   setQueuedUriCount(value: number): CrawlHostGroup;
 
@@ -195,8 +193,6 @@ export namespace CrawlHostGroup {
   export type AsObject = {
     id: string,
     politenessId: string,
-    nextFetchTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    busy: boolean,
     queuedUriCount: number,
   }
 }
@@ -213,11 +209,6 @@ export class CrawlExecutionStatus extends jspb.Message {
 
   getSeedId(): string;
   setSeedId(value: string): CrawlExecutionStatus;
-
-  getScope(): config_v1_resources_pb.CrawlScope | undefined;
-  setScope(value?: config_v1_resources_pb.CrawlScope): CrawlExecutionStatus;
-  hasScope(): boolean;
-  clearScope(): CrawlExecutionStatus;
 
   getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): CrawlExecutionStatus;
@@ -287,7 +278,6 @@ export namespace CrawlExecutionStatus {
     state: CrawlExecutionStatus.State,
     jobId: string,
     seedId: string,
-    scope?: config_v1_resources_pb.CrawlScope.AsObject,
     startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     documentsCrawled: number,
@@ -487,9 +477,6 @@ export class CrawlLog extends jspb.Message {
   hasTimeStamp(): boolean;
   clearTimeStamp(): CrawlLog;
 
-  getSurt(): string;
-  setSurt(value: string): CrawlLog;
-
   getStatusCode(): number;
   setStatusCode(value: number): CrawlLog;
 
@@ -569,7 +556,6 @@ export namespace CrawlLog {
   export type AsObject = {
     warcId: string,
     timeStamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    surt: string,
     statusCode: number,
     size: number,
     requestedUri: string,

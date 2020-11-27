@@ -48,6 +48,56 @@ export namespace FieldMask {
   }
 }
 
+export class ParsedUri extends jspb.Message {
+  getHref(): string;
+  setHref(value: string): ParsedUri;
+
+  getScheme(): string;
+  setScheme(value: string): ParsedUri;
+
+  getHost(): string;
+  setHost(value: string): ParsedUri;
+
+  getPort(): number;
+  setPort(value: number): ParsedUri;
+
+  getUsername(): string;
+  setUsername(value: string): ParsedUri;
+
+  getPassword(): string;
+  setPassword(value: string): ParsedUri;
+
+  getPath(): string;
+  setPath(value: string): ParsedUri;
+
+  getQuery(): string;
+  setQuery(value: string): ParsedUri;
+
+  getFragment(): string;
+  setFragment(value: string): ParsedUri;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ParsedUri.AsObject;
+  static toObject(includeInstance: boolean, msg: ParsedUri): ParsedUri.AsObject;
+  static serializeBinaryToWriter(message: ParsedUri, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ParsedUri;
+  static deserializeBinaryFromReader(message: ParsedUri, reader: jspb.BinaryReader): ParsedUri;
+}
+
+export namespace ParsedUri {
+  export type AsObject = {
+    href: string,
+    scheme: string,
+    host: string,
+    port: number,
+    username: string,
+    password: string,
+    path: string,
+    query: string,
+    fragment: string,
+  }
+}
+
 export class ExtractedText extends jspb.Message {
   getWarcId(): string;
   setWarcId(value: string): ExtractedText;

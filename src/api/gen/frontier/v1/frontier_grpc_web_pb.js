@@ -23,6 +23,8 @@ var config_v1_resources_pb = require('../../config/v1/resources_pb.js')
 var frontier_v1_resources_pb = require('../../frontier/v1/resources_pb.js')
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js')
+
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 const proto = {};
 proto.veidemann = {};
 proto.veidemann.api = {};

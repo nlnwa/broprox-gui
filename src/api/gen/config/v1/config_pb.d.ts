@@ -5,6 +5,52 @@ import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 
 
+export class GetScriptAnnotationsRequest extends jspb.Message {
+  getJob(): config_v1_resources_pb.ConfigRef | undefined;
+  setJob(value?: config_v1_resources_pb.ConfigRef): GetScriptAnnotationsRequest;
+  hasJob(): boolean;
+  clearJob(): GetScriptAnnotationsRequest;
+
+  getSeed(): config_v1_resources_pb.ConfigRef | undefined;
+  setSeed(value?: config_v1_resources_pb.ConfigRef): GetScriptAnnotationsRequest;
+  hasSeed(): boolean;
+  clearSeed(): GetScriptAnnotationsRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetScriptAnnotationsRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: GetScriptAnnotationsRequest): GetScriptAnnotationsRequest.AsObject;
+  static serializeBinaryToWriter(message: GetScriptAnnotationsRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetScriptAnnotationsRequest;
+  static deserializeBinaryFromReader(message: GetScriptAnnotationsRequest, reader: jspb.BinaryReader): GetScriptAnnotationsRequest;
+}
+
+export namespace GetScriptAnnotationsRequest {
+  export type AsObject = {
+    job?: config_v1_resources_pb.ConfigRef.AsObject,
+    seed?: config_v1_resources_pb.ConfigRef.AsObject,
+  }
+}
+
+export class GetScriptAnnotationsResponse extends jspb.Message {
+  getAnnotationList(): Array<config_v1_resources_pb.Annotation>;
+  setAnnotationList(value: Array<config_v1_resources_pb.Annotation>): GetScriptAnnotationsResponse;
+  clearAnnotationList(): GetScriptAnnotationsResponse;
+  addAnnotation(value?: config_v1_resources_pb.Annotation, index?: number): config_v1_resources_pb.Annotation;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetScriptAnnotationsResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: GetScriptAnnotationsResponse): GetScriptAnnotationsResponse.AsObject;
+  static serializeBinaryToWriter(message: GetScriptAnnotationsResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetScriptAnnotationsResponse;
+  static deserializeBinaryFromReader(message: GetScriptAnnotationsResponse, reader: jspb.BinaryReader): GetScriptAnnotationsResponse;
+}
+
+export namespace GetScriptAnnotationsResponse {
+  export type AsObject = {
+    annotationList: Array<config_v1_resources_pb.Annotation.AsObject>,
+  }
+}
+
 export class GetLabelKeysRequest extends jspb.Message {
   getKind(): config_v1_resources_pb.Kind;
   setKind(value: config_v1_resources_pb.Kind): GetLabelKeysRequest;

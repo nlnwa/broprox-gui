@@ -3,7 +3,16 @@ import {ErrorHandler, Injectable} from '@angular/core';
 import {from, Observable, Observer, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
-import {ConfigObjectProto, ConfigPromiseClient, GetLabelKeysRequest, LabelKeysResponse, ListRequest, UpdateRequest} from '../../../../api';
+import {
+  Annotation,
+  ConfigObjectProto,
+  ConfigPromiseClient,
+  GetLabelKeysRequest,
+  GetScriptAnnotationsRequest, GetScriptAnnotationsResponse,
+  LabelKeysResponse,
+  ListRequest,
+  UpdateRequest
+} from '../../../../api';
 import {AuthService} from '../auth';
 import {AppConfigService} from '../app.config.service';
 import {ConfigObject, ConfigRef} from '../../../../shared/models/config';
@@ -86,6 +95,14 @@ export class ConfigApiService {
     return from(this.configPromiseClient.getLabelKeys(request, this.authService.metadata))
       .pipe(
         map((response: LabelKeysResponse) => response.getKeyList()),
+        catchConfigError(this.errorHandler, [])
+      );
+  }
+
+  getScriptAnnotations(request: GetScriptAnnotationsRequest): Observable<Array<Annotation>> {
+    return from(this.configPromiseClient.getScriptAnnotations(request, this.authService.metadata))
+      .pipe(
+        map((response: GetScriptAnnotationsResponse) => response.getAnnotationList()),
         catchConfigError(this.errorHandler, [])
       );
   }

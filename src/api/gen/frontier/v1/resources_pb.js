@@ -224,7 +224,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.veidemann.api.frontier.v1.QueuedUri.repeatedFields_ = [10];
+proto.veidemann.api.frontier.v1.QueuedUri.repeatedFields_ = [10,22];
 
 
 
@@ -262,7 +262,6 @@ proto.veidemann.api.frontier.v1.QueuedUri.toObject = function(includeInstance, m
     discoveredTimeStamp: (f = msg.getDiscoveredTimeStamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     sequence: jspb.Message.getFieldWithDefault(msg, 4, 0),
     uri: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    surt: jspb.Message.getFieldWithDefault(msg, 6, ""),
     ip: jspb.Message.getFieldWithDefault(msg, 7, ""),
     discoveryPath: jspb.Message.getFieldWithDefault(msg, 8, ""),
     referrer: jspb.Message.getFieldWithDefault(msg, 9, ""),
@@ -277,7 +276,10 @@ proto.veidemann.api.frontier.v1.QueuedUri.toObject = function(includeInstance, m
     jobExecutionId: jspb.Message.getFieldWithDefault(msg, 17, ""),
     unresolved: jspb.Message.getBooleanFieldWithDefault(msg, 18, false),
     fetchStartTimeStamp: (f = msg.getFetchStartTimeStamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    priorityWeight: jspb.Message.getFloatingPointFieldWithDefault(msg, 20, 0.0)
+    priorityWeight: jspb.Message.getFloatingPointFieldWithDefault(msg, 20, 0.0),
+    seedUri: jspb.Message.getFieldWithDefault(msg, 21, ""),
+    annotationList: jspb.Message.toObjectList(msg.getAnnotationList(),
+    config_v1_resources_pb.Annotation.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -334,10 +336,6 @@ proto.veidemann.api.frontier.v1.QueuedUri.deserializeBinaryFromReader = function
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setUri(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSurt(value);
       break;
     case 7:
       var value = /** @type {string} */ (reader.readString());
@@ -399,6 +397,15 @@ proto.veidemann.api.frontier.v1.QueuedUri.deserializeBinaryFromReader = function
     case 20:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setPriorityWeight(value);
+      break;
+    case 21:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSeedUri(value);
+      break;
+    case 22:
+      var value = new config_v1_resources_pb.Annotation;
+      reader.readMessage(value,config_v1_resources_pb.Annotation.deserializeBinaryFromReader);
+      msg.addAnnotation(value);
       break;
     default:
       reader.skipField();
@@ -462,13 +469,6 @@ proto.veidemann.api.frontier.v1.QueuedUri.serializeBinaryToWriter = function(mes
   if (f.length > 0) {
     writer.writeString(
       5,
-      f
-    );
-  }
-  f = message.getSurt();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
       f
     );
   }
@@ -573,6 +573,21 @@ proto.veidemann.api.frontier.v1.QueuedUri.serializeBinaryToWriter = function(mes
     writer.writeDouble(
       20,
       f
+    );
+  }
+  f = message.getSeedUri();
+  if (f.length > 0) {
+    writer.writeString(
+      21,
+      f
+    );
+  }
+  f = message.getAnnotationList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      22,
+      f,
+      config_v1_resources_pb.Annotation.serializeBinaryToWriter
     );
   }
 };
@@ -684,24 +699,6 @@ proto.veidemann.api.frontier.v1.QueuedUri.prototype.getUri = function() {
  */
 proto.veidemann.api.frontier.v1.QueuedUri.prototype.setUri = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
-};
-
-
-/**
- * optional string surt = 6;
- * @return {string}
- */
-proto.veidemann.api.frontier.v1.QueuedUri.prototype.getSurt = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.veidemann.api.frontier.v1.QueuedUri} returns this
- */
-proto.veidemann.api.frontier.v1.QueuedUri.prototype.setSurt = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -1050,6 +1047,62 @@ proto.veidemann.api.frontier.v1.QueuedUri.prototype.getPriorityWeight = function
  */
 proto.veidemann.api.frontier.v1.QueuedUri.prototype.setPriorityWeight = function(value) {
   return jspb.Message.setProto3FloatField(this, 20, value);
+};
+
+
+/**
+ * optional string seed_uri = 21;
+ * @return {string}
+ */
+proto.veidemann.api.frontier.v1.QueuedUri.prototype.getSeedUri = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 21, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.veidemann.api.frontier.v1.QueuedUri} returns this
+ */
+proto.veidemann.api.frontier.v1.QueuedUri.prototype.setSeedUri = function(value) {
+  return jspb.Message.setProto3StringField(this, 21, value);
+};
+
+
+/**
+ * repeated veidemann.api.config.v1.Annotation annotation = 22;
+ * @return {!Array<!proto.veidemann.api.config.v1.Annotation>}
+ */
+proto.veidemann.api.frontier.v1.QueuedUri.prototype.getAnnotationList = function() {
+  return /** @type{!Array<!proto.veidemann.api.config.v1.Annotation>} */ (
+    jspb.Message.getRepeatedWrapperField(this, config_v1_resources_pb.Annotation, 22));
+};
+
+
+/**
+ * @param {!Array<!proto.veidemann.api.config.v1.Annotation>} value
+ * @return {!proto.veidemann.api.frontier.v1.QueuedUri} returns this
+*/
+proto.veidemann.api.frontier.v1.QueuedUri.prototype.setAnnotationList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 22, value);
+};
+
+
+/**
+ * @param {!proto.veidemann.api.config.v1.Annotation=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.veidemann.api.config.v1.Annotation}
+ */
+proto.veidemann.api.frontier.v1.QueuedUri.prototype.addAnnotation = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 22, opt_value, proto.veidemann.api.config.v1.Annotation, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.veidemann.api.frontier.v1.QueuedUri} returns this
+ */
+proto.veidemann.api.frontier.v1.QueuedUri.prototype.clearAnnotationList = function() {
+  return this.setAnnotationList([]);
 };
 
 
@@ -1487,8 +1540,6 @@ proto.veidemann.api.frontier.v1.CrawlHostGroup.toObject = function(includeInstan
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     politenessId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    nextFetchTime: (f = msg.getNextFetchTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    busy: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
     queuedUriCount: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
@@ -1533,15 +1584,6 @@ proto.veidemann.api.frontier.v1.CrawlHostGroup.deserializeBinaryFromReader = fun
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setPolitenessId(value);
-      break;
-    case 3:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setNextFetchTime(value);
-      break;
-    case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setBusy(value);
       break;
     case 5:
       var value = /** @type {number} */ (reader.readInt64());
@@ -1590,21 +1632,6 @@ proto.veidemann.api.frontier.v1.CrawlHostGroup.serializeBinaryToWriter = functio
       f
     );
   }
-  f = message.getNextFetchTime();
-  if (f != null) {
-    writer.writeMessage(
-      3,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-    );
-  }
-  f = message.getBusy();
-  if (f) {
-    writer.writeBool(
-      4,
-      f
-    );
-  }
   f = message.getQueuedUriCount();
   if (f !== 0) {
     writer.writeInt64(
@@ -1648,61 +1675,6 @@ proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.getPolitenessId = funct
  */
 proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.setPolitenessId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional google.protobuf.Timestamp next_fetch_time = 3;
- * @return {?proto.google.protobuf.Timestamp}
- */
-proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.getNextFetchTime = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
- * @return {!proto.veidemann.api.frontier.v1.CrawlHostGroup} returns this
-*/
-proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.setNextFetchTime = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.veidemann.api.frontier.v1.CrawlHostGroup} returns this
- */
-proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.clearNextFetchTime = function() {
-  return this.setNextFetchTime(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.hasNextFetchTime = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional bool busy = 4;
- * @return {boolean}
- */
-proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.getBusy = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.veidemann.api.frontier.v1.CrawlHostGroup} returns this
- */
-proto.veidemann.api.frontier.v1.CrawlHostGroup.prototype.setBusy = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 
@@ -1767,7 +1739,6 @@ proto.veidemann.api.frontier.v1.CrawlExecutionStatus.toObject = function(include
     state: jspb.Message.getFieldWithDefault(msg, 2, 0),
     jobId: jspb.Message.getFieldWithDefault(msg, 3, ""),
     seedId: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    scope: (f = msg.getScope()) && config_v1_resources_pb.CrawlScope.toObject(includeInstance, f),
     startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     documentsCrawled: jspb.Message.getFieldWithDefault(msg, 8, 0),
@@ -1833,11 +1804,6 @@ proto.veidemann.api.frontier.v1.CrawlExecutionStatus.deserializeBinaryFromReader
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setSeedId(value);
-      break;
-    case 5:
-      var value = new config_v1_resources_pb.CrawlScope;
-      reader.readMessage(value,config_v1_resources_pb.CrawlScope.deserializeBinaryFromReader);
-      msg.setScope(value);
       break;
     case 6:
       var value = new google_protobuf_timestamp_pb.Timestamp;
@@ -1955,14 +1921,6 @@ proto.veidemann.api.frontier.v1.CrawlExecutionStatus.serializeBinaryToWriter = f
     writer.writeString(
       4,
       f
-    );
-  }
-  f = message.getScope();
-  if (f != null) {
-    writer.writeMessage(
-      5,
-      f,
-      config_v1_resources_pb.CrawlScope.serializeBinaryToWriter
     );
   }
   f = message.getStartTime();
@@ -2156,43 +2114,6 @@ proto.veidemann.api.frontier.v1.CrawlExecutionStatus.prototype.getSeedId = funct
  */
 proto.veidemann.api.frontier.v1.CrawlExecutionStatus.prototype.setSeedId = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
-};
-
-
-/**
- * optional veidemann.api.config.v1.CrawlScope scope = 5;
- * @return {?proto.veidemann.api.config.v1.CrawlScope}
- */
-proto.veidemann.api.frontier.v1.CrawlExecutionStatus.prototype.getScope = function() {
-  return /** @type{?proto.veidemann.api.config.v1.CrawlScope} */ (
-    jspb.Message.getWrapperField(this, config_v1_resources_pb.CrawlScope, 5));
-};
-
-
-/**
- * @param {?proto.veidemann.api.config.v1.CrawlScope|undefined} value
- * @return {!proto.veidemann.api.frontier.v1.CrawlExecutionStatus} returns this
-*/
-proto.veidemann.api.frontier.v1.CrawlExecutionStatus.prototype.setScope = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.veidemann.api.frontier.v1.CrawlExecutionStatus} returns this
- */
-proto.veidemann.api.frontier.v1.CrawlExecutionStatus.prototype.clearScope = function() {
-  return this.setScope(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.veidemann.api.frontier.v1.CrawlExecutionStatus.prototype.hasScope = function() {
-  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -3769,7 +3690,6 @@ proto.veidemann.api.frontier.v1.CrawlLog.toObject = function(includeInstance, ms
   var f, obj = {
     warcId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     timeStamp: (f = msg.getTimeStamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    surt: jspb.Message.getFieldWithDefault(msg, 3, ""),
     statusCode: jspb.Message.getFieldWithDefault(msg, 4, 0),
     size: jspb.Message.getFieldWithDefault(msg, 5, 0),
     requestedUri: jspb.Message.getFieldWithDefault(msg, 6, ""),
@@ -3835,10 +3755,6 @@ proto.veidemann.api.frontier.v1.CrawlLog.deserializeBinaryFromReader = function(
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimeStamp(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSurt(value);
       break;
     case 4:
       var value = /** @type {number} */ (reader.readInt32());
@@ -3968,13 +3884,6 @@ proto.veidemann.api.frontier.v1.CrawlLog.serializeBinaryToWriter = function(mess
       2,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-    );
-  }
-  f = message.getSurt();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
     );
   }
   f = message.getStatusCode();
@@ -4181,24 +4090,6 @@ proto.veidemann.api.frontier.v1.CrawlLog.prototype.clearTimeStamp = function() {
  */
 proto.veidemann.api.frontier.v1.CrawlLog.prototype.hasTimeStamp = function() {
   return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional string surt = 3;
- * @return {string}
- */
-proto.veidemann.api.frontier.v1.CrawlLog.prototype.getSurt = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.veidemann.api.frontier.v1.CrawlLog} returns this
- */
-proto.veidemann.api.frontier.v1.CrawlLog.prototype.setSurt = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

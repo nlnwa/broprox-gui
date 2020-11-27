@@ -1,19 +1,9 @@
 import {Injectable} from '@angular/core';
-import {from, Observable, of} from 'rxjs';
+import {from, Observable} from 'rxjs';
 import {count, mergeMap} from 'rxjs/operators';
 
-import {FieldMask, ListRequest, UpdateRequest} from '../../../api';
-import {
-  BrowserConfig,
-  ConfigObject,
-  ConfigRef,
-  CrawlConfig,
-  CrawlJob,
-  Kind,
-  Label,
-  RoleMapping,
-  Seed
-} from '../../../shared/models';
+import {FieldMask, GetScriptAnnotationsRequest, ListRequest, UpdateRequest} from '../../../api';
+import {BrowserConfig, ConfigObject, ConfigRef, CrawlConfig, CrawlJob, Kind, Label, RoleMapping, Seed} from '../../../shared/models';
 import {LoadingService} from '../../../shared/services';
 import {ConfigApiService} from '../../core/services';
 import {ConfigQuery, escapeRegex} from '../../../shared/func';
@@ -262,5 +252,18 @@ export class ConfigService
       }
     }
     return listRequest;
+  }
+
+  private getScriptAnnotations(configObject: ConfigObject): Observable<any> {
+    const request = new GetScriptAnnotationsRequest();
+    if (configObject.kind === Kind.CRAWLJOB) {
+      request.setJob(ConfigRef.toProto(new ConfigRef({kind: Kind.CRAWLJOB, id: configObject.id})));
+    }
+    if (configObject.kind === Kind.SEED) {
+      request.setSeed(ConfigRef.toProto(new ConfigRef({kind: Kind.SEED, id: configObject.id})));
+      // todo make requests for all jobs for a seed
+      request.setJob(ConfigRef.toProto(new ConfigRef({kind: Kind.CRAWLJOB, id: configObject.seed.jobRefList[0].id})));
+    }
+    return this.configApiService.getScriptAnnotations(request);
   }
 }

@@ -258,11 +258,6 @@ export class Seed extends jspb.Message {
   hasEntityRef(): boolean;
   clearEntityRef(): Seed;
 
-  getScope(): CrawlScope | undefined;
-  setScope(value?: CrawlScope): Seed;
-  hasScope(): boolean;
-  clearScope(): Seed;
-
   getJobRefList(): Array<ConfigRef>;
   setJobRefList(value: Array<ConfigRef>): Seed;
   clearJobRefList(): Seed;
@@ -282,7 +277,6 @@ export class Seed extends jspb.Message {
 export namespace Seed {
   export type AsObject = {
     entityRef?: ConfigRef.AsObject,
-    scope?: CrawlScope.AsObject,
     jobRefList: Array<ConfigRef.AsObject>,
     disabled: boolean,
   }
@@ -304,6 +298,11 @@ export class CrawlJob extends jspb.Message {
   hasCrawlConfigRef(): boolean;
   clearCrawlConfigRef(): CrawlJob;
 
+  getScopeScriptRef(): ConfigRef | undefined;
+  setScopeScriptRef(value?: ConfigRef): CrawlJob;
+  hasScopeScriptRef(): boolean;
+  clearScopeScriptRef(): CrawlJob;
+
   getDisabled(): boolean;
   setDisabled(value: boolean): CrawlJob;
 
@@ -320,6 +319,7 @@ export namespace CrawlJob {
     scheduleRef?: ConfigRef.AsObject,
     limits?: CrawlLimitsConfig.AsObject,
     crawlConfigRef?: ConfigRef.AsObject,
+    scopeScriptRef?: ConfigRef.AsObject,
     disabled: boolean,
   }
 }
@@ -371,9 +371,6 @@ export namespace CrawlConfig {
 }
 
 export class ExtraConfig extends jspb.Message {
-  getExtractText(): boolean;
-  setExtractText(value: boolean): ExtraConfig;
-
   getCreateScreenshot(): boolean;
   setCreateScreenshot(value: boolean): ExtraConfig;
 
@@ -387,7 +384,6 @@ export class ExtraConfig extends jspb.Message {
 
 export namespace ExtraConfig {
   export type AsObject = {
-    extractText: boolean,
     createScreenshot: boolean,
   }
 }
@@ -422,28 +418,7 @@ export namespace CrawlScheduleConfig {
   }
 }
 
-export class CrawlScope extends jspb.Message {
-  getSurtPrefix(): string;
-  setSurtPrefix(value: string): CrawlScope;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CrawlScope.AsObject;
-  static toObject(includeInstance: boolean, msg: CrawlScope): CrawlScope.AsObject;
-  static serializeBinaryToWriter(message: CrawlScope, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CrawlScope;
-  static deserializeBinaryFromReader(message: CrawlScope, reader: jspb.BinaryReader): CrawlScope;
-}
-
-export namespace CrawlScope {
-  export type AsObject = {
-    surtPrefix: string,
-  }
-}
-
 export class CrawlLimitsConfig extends jspb.Message {
-  getDepth(): number;
-  setDepth(value: number): CrawlLimitsConfig;
-
   getMaxDurationS(): number;
   setMaxDurationS(value: number): CrawlLimitsConfig;
 
@@ -460,7 +435,6 @@ export class CrawlLimitsConfig extends jspb.Message {
 
 export namespace CrawlLimitsConfig {
   export type AsObject = {
-    depth: number,
     maxDurationS: number,
     maxBytes: number,
   }
@@ -619,6 +593,7 @@ export namespace BrowserScript {
     REPLACEMENT = 2,
     ON_LOAD = 3,
     ON_NEW_DOCUMENT = 4,
+    SCOPE_CHECK = 5,
   }
 }
 

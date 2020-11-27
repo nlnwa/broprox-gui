@@ -71,6 +71,13 @@ export class ConfigClient {
                response: config_v1_resources_pb.LogLevels) => void
   ): grpcWeb.ClientReadableStream<config_v1_resources_pb.LogLevels>;
 
+  getScriptAnnotations(
+    request: config_v1_config_pb.GetScriptAnnotationsRequest,
+    metadata: grpcWeb.Metadata | undefined,
+    callback: (err: grpcWeb.Error,
+               response: config_v1_config_pb.GetScriptAnnotationsResponse) => void
+  ): grpcWeb.ClientReadableStream<config_v1_config_pb.GetScriptAnnotationsResponse>;
+
 }
 
 export class ConfigPromiseClient {
@@ -122,6 +129,11 @@ export class ConfigPromiseClient {
     request: config_v1_resources_pb.LogLevels,
     metadata?: grpcWeb.Metadata
   ): Promise<config_v1_resources_pb.LogLevels>;
+
+  getScriptAnnotations(
+    request: config_v1_config_pb.GetScriptAnnotationsRequest,
+    metadata?: grpcWeb.Metadata
+  ): Promise<config_v1_config_pb.GetScriptAnnotationsResponse>;
 
 }
 

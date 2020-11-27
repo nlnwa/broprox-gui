@@ -4,6 +4,7 @@ import * as commons_v1_resources_pb from '../../commons/v1/resources_pb';
 import * as config_v1_resources_pb from '../../config/v1/resources_pb';
 import * as frontier_v1_resources_pb from '../../frontier/v1/resources_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 
 export class CrawlSeedRequest extends jspb.Message {
@@ -20,6 +21,11 @@ export class CrawlSeedRequest extends jspb.Message {
   hasSeed(): boolean;
   clearSeed(): CrawlSeedRequest;
 
+  getTimeout(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimeout(value?: google_protobuf_timestamp_pb.Timestamp): CrawlSeedRequest;
+  hasTimeout(): boolean;
+  clearTimeout(): CrawlSeedRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CrawlSeedRequest.AsObject;
   static toObject(includeInstance: boolean, msg: CrawlSeedRequest): CrawlSeedRequest.AsObject;
@@ -33,6 +39,7 @@ export namespace CrawlSeedRequest {
     jobExecutionId: string,
     job?: config_v1_resources_pb.ConfigObject.AsObject,
     seed?: config_v1_resources_pb.ConfigObject.AsObject,
+    timeout?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
