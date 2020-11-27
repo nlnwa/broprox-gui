@@ -24,6 +24,9 @@ export class CrawlJobDetailsComponent implements OnChanges {
   @Input()
   crawlConfigs: ConfigObject[];
 
+  @Input()
+  scopeScripts: ConfigObject[];
+
   @Output()
   save = new EventEmitter<ConfigObject>();
 
@@ -72,10 +75,6 @@ export class CrawlJobDetailsComponent implements OnChanges {
     return this.form.get('meta').value.name;
   }
 
-  get depth() {
-    return this.form.get('limits.depth');
-  }
-
   get maxDurationSeconds() {
     return this.form.get('limits.maxDurationS');
   }
@@ -94,6 +93,10 @@ export class CrawlJobDetailsComponent implements OnChanges {
 
   get crawlConfigRef() {
     return this.form.get('crawlConfigRef');
+  }
+
+  get scopeScriptRef() {
+    return this.form.get('scopeScriptRef');
   }
 
   get showShortcuts(): boolean {
@@ -126,7 +129,7 @@ export class CrawlJobDetailsComponent implements OnChanges {
   }
 
   onRunCrawlJob() {
-  this.runCrawl.emit(this.configObject);
+    this.runCrawl.emit(this.configObject);
   }
 
   protected createForm() {
@@ -140,9 +143,12 @@ export class CrawlJobDetailsComponent implements OnChanges {
         id: ['', Validators.required],
         kind: Kind.CRAWLCONFIG,
       }),
+      scopeScriptRef: this.fb.group({
+        id: [''],
+        kind: Kind.BROWSERSCRIPT,
+      }),
       disabled: '',
       limits: this.fb.group({
-        depth: ['', [Validators.min(0)]],
         maxDurationS: ['', [Validators.pattern(NUMBER_OR_EMPTY_STRING)]],
         maxBytes: '',
       }),
@@ -156,8 +162,8 @@ export class CrawlJobDetailsComponent implements OnChanges {
       disabled: this.configObject.crawlJob.disabled,
       scheduleRef: this.configObject.crawlJob.scheduleRef,
       crawlConfigRef: this.configObject.crawlJob.crawlConfigRef,
+      scopeScriptRef: this.configObject.crawlJob.scopeScriptRef,
       limits: {
-        depth: this.configObject.crawlJob.limits.depth || '',
         maxDurationS: this.configObject.crawlJob.limits.maxDurationS || '',
         maxBytes: this.configObject.crawlJob.limits.maxBytes || 0,
       },
@@ -181,9 +187,18 @@ export class CrawlJobDetailsComponent implements OnChanges {
 
     const crawlJob = new CrawlJob();
     crawlJob.disabled = formModel.disabled;
-    crawlJob.crawlConfigRef = formModel.crawlConfigRef.id ? new ConfigRef({id: formModel.crawlConfigRef.id, kind: Kind.CRAWLCONFIG}) : null;
-    crawlJob.scheduleRef = formModel.scheduleRef.id ? new ConfigRef({id: formModel.scheduleRef.id, kind: Kind.CRAWLSCHEDULECONFIG}) : null;
-    crawlJob.limits.depth = parseInt(formModel.limits.depth, 10);
+    crawlJob.crawlConfigRef = formModel.crawlConfigRef.id ? new ConfigRef({
+      id: formModel.crawlConfigRef.id,
+      kind: Kind.CRAWLCONFIG
+    }) : null;
+    crawlJob.scheduleRef = formModel.scheduleRef.id ? new ConfigRef({
+      id: formModel.scheduleRef.id,
+      kind: Kind.CRAWLSCHEDULECONFIG
+    }) : null;
+    crawlJob.scopeScriptRef = formModel.scopeScriptRef.id ? new ConfigRef({
+      id: formModel.scopeScriptRef.id,
+      kind: Kind.BROWSERSCRIPT
+    }) : null;
     crawlJob.limits.maxDurationS = parseInt(formModel.limits.maxDurationS, 10);
     crawlJob.limits.maxBytes = formModel.limits.maxBytes || 0;
 

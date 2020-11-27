@@ -28,6 +28,7 @@ export class CrawlJobMultiDialogComponent extends CrawlJobDetailsComponent imple
     this.configObject = this.data.configObject;
     this.crawlScheduleConfigs = this.data.options.crawlScheduleConfigs;
     this.crawlConfigs = this.data.options.crawlConfigs;
+    this.scopeScripts = this.data.options.scopeScripts;
     this.allSelected = this.data.allSelected;
   }
 
@@ -79,9 +80,12 @@ export class CrawlJobMultiDialogComponent extends CrawlJobDetailsComponent imple
         id: '',
         kind: Kind.CRAWLCONFIG,
       }),
+      scopeScriptRef: this.fb.group({
+        id: '',
+        kind: Kind.BROWSERSCRIPT,
+      }),
       disabled: {value: '', disabled: true},
       limits: this.fb.group({
-        depth: ['', [Validators.pattern(NUMBER_OR_EMPTY_STRING)]],
         maxDurationS: ['', [Validators.pattern(NUMBER_OR_EMPTY_STRING)]],
         maxBytes: ['', [Validators.pattern(NUMBER_OR_EMPTY_STRING)]],
       })
@@ -99,8 +103,8 @@ export class CrawlJobMultiDialogComponent extends CrawlJobDetailsComponent imple
       disabled: !!this.configObject.crawlJob.disabled,
       scheduleRef: this.configObject.crawlJob.scheduleRef,
       crawlConfigRef: this.configObject.crawlJob.crawlConfigRef,
+      scopeScriptRef: this.configObject.crawlJob.scopeScriptRef,
       limits: {
-        depth: this.configObject.crawlJob.limits.depth || '',
         maxDurationS: this.configObject.crawlJob.limits.maxDurationS || '',
         maxBytes: this.configObject.crawlJob.limits.maxBytes || '',
       },
@@ -134,12 +138,6 @@ export class CrawlJobMultiDialogComponent extends CrawlJobDetailsComponent imple
       pathList.push('crawlJob.disabled');
     }
 
-    if (this.depth.dirty &&
-      (this.allSelected || formModel.limits.depth !== this.configObject.crawlJob.limits.depth)) {
-      crawlJob.limits.depth = formModel.limits.depth;
-      pathList.push('crawlJob.limits.depth');
-    }
-
     if (this.maxBytes.dirty &&
       (this.allSelected || formModel.limits.maxBytes !== this.configObject.crawlJob.limits.maxBytes)) {
       crawlJob.limits.maxBytes = formModel.limits.maxBytes;
@@ -166,6 +164,14 @@ export class CrawlJobMultiDialogComponent extends CrawlJobDetailsComponent imple
       pathList.push('crawlJob.crawlConfigRef');
     } else {
       crawlJob.crawlConfigRef = null;
+    }
+
+    if (formModel.scopeScriptRef.id && this.scopeScriptRef.dirty &&
+      (this.allSelected || formModel.scopeScriptRef !== this.configObject.crawlJob.scopeScriptRef)) {
+      crawlJob.scopeScriptRef = formModel.scopeScriptRef;
+      pathList.push('crawlJob.scopeScriptRef');
+    } else {
+      crawlJob.scopeScriptRef = null;
     }
 
     return {updateTemplate, pathList};

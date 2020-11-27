@@ -34,6 +34,7 @@ export interface ConfigOptions {
   collections?: ConfigObject[];
   politenessConfigs?: ConfigObject[];
   browserScripts?: ConfigObject[];
+  scopeScripts?: ConfigObject[];
   browserScriptTypes?: BrowserScriptType[];
   robotsPolicies?: RobotsPolicy[];
   crawlJobs?: ConfigObject[];

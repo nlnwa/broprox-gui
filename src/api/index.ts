@@ -13,7 +13,6 @@ export {
   CrawlJob as CrawlJobProto,
   CrawlLimitsConfig as CrawlLimitsConfigProto,
   CrawlScheduleConfig as CrawlScheduleConfigProto,
-  CrawlScope as CrawlScopeProto,
   ExtraConfig,
   Kind as KindProto,
   Label,

@@ -4,23 +4,19 @@ import {ConfigObject} from './configobject.model';
 import {Kind} from './kind.model';
 
 export class CrawlLimitsConfig {
-  depth?: number;
   maxDurationS?: number; // int64
   maxBytes?: number; // int64
 
   constructor({
-                depth = 0,
                 maxDurationS = 0,
                 maxBytes = 0,
               }: Partial<CrawlLimitsConfig> = {}) {
-    this.depth = depth;
     this.maxDurationS = maxDurationS;
     this.maxBytes = maxBytes;
   }
 
   static fromProto(proto: CrawlLimitsConfigProto): CrawlLimitsConfig {
     return new CrawlLimitsConfig({
-      depth: proto.getDepth(),
       maxDurationS: proto.getMaxDurationS(),
       maxBytes: proto.getMaxBytes()
     });
@@ -28,7 +24,6 @@ export class CrawlLimitsConfig {
 
   static toProto(crawlLimitsConfig): CrawlLimitsConfigProto {
     const proto = new CrawlLimitsConfigProto();
-    proto.setDepth(crawlLimitsConfig.depth || 0);
     proto.setMaxDurationS(crawlLimitsConfig.maxDurationS || 0);
     proto.setMaxBytes(crawlLimitsConfig.maxBytes || 0);
     return proto;
@@ -37,18 +32,21 @@ export class CrawlLimitsConfig {
 
 export class CrawlJob {
   scheduleRef?: ConfigRef;
-  limits: CrawlLimitsConfig;
   crawlConfigRef?: ConfigRef;
+  scopeScriptRef?: ConfigRef;
+  limits: CrawlLimitsConfig;
   disabled: boolean;
 
   constructor({
                 scheduleRef,
                 crawlConfigRef,
+                scopeScriptRef,
                 limits,
                 disabled = false
               }: Partial<CrawlJob> = {}) {
     this.scheduleRef = new ConfigRef(scheduleRef || {kind: Kind.CRAWLSCHEDULECONFIG});
     this.crawlConfigRef = new ConfigRef(crawlConfigRef || {kind: Kind.CRAWLCONFIG});
+    this.scopeScriptRef = new ConfigRef(scopeScriptRef || {kind: Kind.BROWSERSCRIPT});
     this.limits = new CrawlLimitsConfig(limits);
     this.disabled = disabled;
   }
@@ -56,8 +54,9 @@ export class CrawlJob {
   static fromProto(proto: CrawlJobProto): CrawlJob {
     return new CrawlJob({
       scheduleRef: proto.getScheduleRef() ? ConfigRef.fromProto(proto.getScheduleRef()) : undefined,
-      limits: CrawlLimitsConfig.fromProto(proto.getLimits()),
       crawlConfigRef: proto.getCrawlConfigRef() ? ConfigRef.fromProto(proto.getCrawlConfigRef()) : undefined,
+      scopeScriptRef: proto.getScopeScriptRef() ? ConfigRef.fromProto(proto.getScopeScriptRef()) : undefined,
+      limits: CrawlLimitsConfig.fromProto(proto.getLimits()),
       disabled: proto.getDisabled(),
     });
   }
@@ -65,8 +64,9 @@ export class CrawlJob {
   static toProto(crawlJob: CrawlJob): CrawlJobProto {
     const proto = new CrawlJobProto();
     proto.setScheduleRef(ConfigRef.toProto(crawlJob.scheduleRef));
-    proto.setLimits(CrawlLimitsConfig.toProto(crawlJob.limits));
+    proto.setScopeScriptRef(ConfigRef.toProto(crawlJob.scopeScriptRef));
     proto.setCrawlConfigRef(ConfigRef.toProto(crawlJob.crawlConfigRef));
+    proto.setLimits(CrawlLimitsConfig.toProto(crawlJob.limits));
     proto.setDisabled(crawlJob.disabled);
     return proto;
   }
@@ -77,14 +77,14 @@ export class CrawlJob {
 
     const equalDisabledStatus = configObjects.every((cfg: ConfigObject) => cfg.crawlJob.disabled === compareObj.disabled);
 
-    const equalDepth = configObjects.every((cfg: ConfigObject) => cfg.crawlJob.limits.depth === compareObj.limits.depth);
-
     const equalMaxDuration = configObjects.every(
       (cfg: ConfigObject) => cfg.crawlJob.limits.maxDurationS === compareObj.limits.maxDurationS);
 
     const equalMaxBytes = configObjects.every((cfg: ConfigObject) => cfg.crawlJob.limits.maxBytes === compareObj.limits.maxBytes);
 
     const equalSchedule = configObjects.every((cfg: ConfigObject) => cfg.crawlJob.scheduleRef.id === compareObj.scheduleRef.id);
+
+    const equalScopeScript = configObjects.every((cfg: ConfigObject) => cfg.crawlJob.scopeScriptRef.id === compareObj.scopeScriptRef.id);
 
     const equalCrawlConfig = configObjects.every(
       cfg => cfg.crawlJob.crawlConfigRef.id === compareObj.crawlConfigRef.id);
@@ -93,10 +93,6 @@ export class CrawlJob {
       crawlJob.disabled = compareObj.disabled;
     } else {
       crawlJob.disabled = undefined;
-    }
-
-    if (equalDepth) {
-      crawlJob.limits.depth = compareObj.limits.depth;
     }
 
     if (equalMaxDuration) {
@@ -112,6 +108,8 @@ export class CrawlJob {
     crawlJob.scheduleRef = equalSchedule ? compareObj.scheduleRef : crawlJob.scheduleRef = new ConfigRef({kind: Kind.CRAWLSCHEDULECONFIG});
 
     crawlJob.crawlConfigRef = equalCrawlConfig ? compareObj.crawlConfigRef : new ConfigRef({kind: Kind.CRAWLCONFIG});
+
+    crawlJob.scopeScriptRef = equalScopeScript ? compareObj.scopeScriptRef : new ConfigRef({kind: Kind.BROWSERSCRIPT});
 
     return crawlJob;
   }

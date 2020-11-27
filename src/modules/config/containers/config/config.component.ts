@@ -29,6 +29,7 @@ export interface ConfigOptions {
   robotsPolicies?: RobotsPolicy[];
   crawlJobs?: ConfigObject[];
   roles?: Role[];
+  scopeScripts?: ConfigObject[];
 }
 
 @Component({

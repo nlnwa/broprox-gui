@@ -4,7 +4,7 @@ import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../../../core/services/auth';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ConfigDialogData} from '../../../func';
-import {ConfigObject} from '../../../../../shared/models/config';
+import {BrowserScriptType, ConfigObject} from '../../../../../shared/models/config';
 
 @Component({
   selector: 'app-crawljob-dialog',
@@ -22,6 +22,7 @@ export class CrawlJobDialogComponent extends CrawlJobDetailsComponent implements
     this.configObject = this.data.configObject;
     this.crawlConfigs = this.data.options.crawlConfigs;
     this.crawlScheduleConfigs = this.data.options.crawlScheduleConfigs;
+    this.scopeScripts = this.data.options.scopeScripts;
   }
 
   ngOnInit(): void {

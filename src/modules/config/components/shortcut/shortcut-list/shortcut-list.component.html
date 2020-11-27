@@ -30,6 +30,13 @@
           {{configObject | getCrawlConfigName | async}}
         </a>
       </ng-container>
+      <ng-container *ngIf="configObject.crawlJob.scopeScriptRef && ('read' | able: Kind[Kind.BROWSERSCRIPT])">
+        <h2 mat-subheader>Scope script</h2>
+        <a mat-list-item [routerLink]="['/config/browserscript/' + configObject.crawlJob.scopeScriptRef.id]">
+          <mat-icon mat-list-icon>web_asset</mat-icon>
+          {{configObject.crawlJob.scopeScriptRef.id | getBrowserScriptName}}
+        </a>
+      </ng-container>
     </mat-nav-list>
   </ng-container>
 

@@ -1,11 +1,21 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
-import {browserScriptTypes, Kind, robotsPolicies, roles, rotationPolicies, subCollectionTypes} from '../../../shared/models';
-import {map, toArray} from 'rxjs/operators';
+import {
+  BrowserScript,
+  BrowserScriptType,
+  browserScriptTypes,
+  Kind,
+  robotsPolicies,
+  roles,
+  rotationPolicies,
+  subCollectionTypes
+} from '../../../shared/models';
+import {map, tap, toArray} from 'rxjs/operators';
 import {ConfigApiService} from '../../core/services';
 import {combineLatest, Observable, of} from 'rxjs';
 import {ConfigOptions, ConfigPath} from '../func';
 import {createListRequest} from '../func/query';
+import {FieldMask} from '../../../api';
 
 @Injectable()
 export class OptionsResolver implements Resolve<ConfigOptions> {
@@ -26,8 +36,17 @@ export class OptionsResolver implements Resolve<ConfigOptions> {
           toArray(),
         );
 
-        return combineLatest([crawlScheduleConfig$, crawlConfig$]).pipe(
-          map(([crawlScheduleConfigs, crawlConfigs]) => ({crawlScheduleConfigs, crawlConfigs}))
+        const scopeScript$ = this.backendService.list(createListRequest(Kind.BROWSERSCRIPT.valueOf(),
+          {browserScript: new BrowserScript({browserScriptType: BrowserScriptType.SCOPE_CHECK.valueOf()})},
+          new FieldMask().addPaths('browserScript.browserScriptType')
+        ))
+          .pipe(
+            toArray()
+          );
+
+        return combineLatest([crawlScheduleConfig$, crawlConfig$, scopeScript$]).pipe(
+          map(([crawlScheduleConfigs, crawlConfigs, scopeScripts]) =>
+            ({crawlScheduleConfigs, crawlConfigs, scopeScripts}))
         );
 
       case Kind.CRAWLCONFIG:
