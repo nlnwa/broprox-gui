@@ -14,9 +14,8 @@ export class BrowserScriptDetailsComponent implements OnChanges {
   readonly BrowserScriptType = BrowserScriptType;
 
   editorOptions = {theme: 'vs', language: 'javascript'};
-  code = ' console.log("hello world")';
-
   editorThemes = ['vs', 'vs-dark', 'hc-black'];
+  editorLanguages = ['javascript', 'typescript'];
 
   @Input()
   browserScriptTypes: BrowserScriptType[] = [];
@@ -84,14 +83,11 @@ export class BrowserScriptDetailsComponent implements OnChanges {
     if (changes.configObject) {
       if (this.configObject) {
         this.updateForm();
-        let language = '';
         if (this.configObject.meta.name.endsWith('.js')) {
-          language = 'javascript';
-          this.editorOptions.language = 'javascript';
+          this.onChangeLanguage('javascript');
         }
         if (this.configObject.meta.name.endsWith('.ts')) {
-          language = 'typescript';
-          this.editorOptions = { ...this.editorOptions, language};
+          this.onChangeLanguage('typescript');
         }
       } else {
         this.form.reset();
@@ -214,7 +210,11 @@ export class BrowserScriptDetailsComponent implements OnChanges {
   }
 
   onChangeTheme(theme: string) {
-    this.editorOptions = { ...this.editorOptions, theme };
+    this.editorOptions = {...this.editorOptions, theme};
+  }
+
+  onChangeLanguage(language: string) {
+    this.editorOptions = {...this.editorOptions, language};
   }
 
 
