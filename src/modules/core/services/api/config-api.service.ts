@@ -4,7 +4,6 @@ import {from, Observable, Observer, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 import {
-  Annotation,
   ConfigObjectProto,
   ConfigPromiseClient,
   GetLabelKeysRequest,
@@ -15,7 +14,7 @@ import {
 } from '../../../../api';
 import {AuthService} from '../auth';
 import {AppConfigService} from '../app.config.service';
-import {ConfigObject, ConfigRef} from '../../../../shared/models/config';
+import {Annotation, ConfigObject, ConfigRef} from '../../../../shared/models/config';
 import {ApplicationErrorHandler} from '../error.handler';
 
 const catchConfigError = (errorService: ErrorHandler, returnValue: any) =>
@@ -102,7 +101,7 @@ export class ConfigApiService {
   getScriptAnnotations(request: GetScriptAnnotationsRequest): Observable<Array<Annotation>> {
     return from(this.configPromiseClient.getScriptAnnotations(request, this.authService.metadata))
       .pipe(
-        map((response: GetScriptAnnotationsResponse) => response.getAnnotationList()),
+        map((response: GetScriptAnnotationsResponse) => response.getAnnotationList().map(Annotation.fromProto)),
         catchConfigError(this.errorHandler, [])
       );
   }

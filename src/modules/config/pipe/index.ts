@@ -9,3 +9,4 @@ export * from './job-execution-status.pipe';
 export * from './politeness-config-name.pipe';
 export * from './browser-script-name.pipe';
 export * from './entity-name.pipe';
+export * from './script-annotations.pipe';

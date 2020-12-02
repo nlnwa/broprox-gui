@@ -35,6 +35,7 @@ import {
   SeedDetailsComponent,
   SeedMetaComponent,
   SelectorComponent,
+  ScriptAnnotationComponent,
 } from './components';
 import {
   BrowserConfigNamePipe,
@@ -47,6 +48,7 @@ import {
   PolitenessConfigNamePipe,
   BrowserScriptNamePipe,
   EntityNamePipe,
+  ScriptAnnotationsPipe,
 } from './pipe';
 
 import {ConfigService} from '../commons/services';
@@ -131,6 +133,7 @@ import {AbilityModule} from '@casl/angular';
     DurationPickerComponent,
     BrowserConfigNamePipe,
     PolitenessConfigNamePipe,
+    ScriptAnnotationsPipe,
     FilesizeInputComponent,
     AnnotationComponent,
     RunCrawlDialogComponent,
@@ -178,6 +181,7 @@ import {AbilityModule} from '@casl/angular';
     RoleMappingMultiDialogComponent,
     LabelMultiComponent,
     EntityNamePipe,
+    ScriptAnnotationComponent,
   ],
   entryComponents: [
     DeleteMultiDialogComponent,

@@ -34,7 +34,7 @@
         <h2 mat-subheader>Scope script</h2>
         <a mat-list-item [routerLink]="['/config/browserscript/' + configObject.crawlJob.scopeScriptRef.id]">
           <mat-icon mat-list-icon>web_asset</mat-icon>
-          {{configObject.crawlJob.scopeScriptRef.id | getBrowserScriptName}}
+          {{configObject.crawlJob.scopeScriptRef.id | getBrowserScriptName | async}}
         </a>
       </ng-container>
     </mat-nav-list>

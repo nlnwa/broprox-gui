@@ -26,3 +26,4 @@ export * from './run-crawl-dialog/run-crawl-dialog.component';
 export * from './running-crawl-dialog/running-crawl-dialog.component';
 export * from './crawl-execution-status/crawl-execution-status.component';
 export * from './entity/entity-dialog/entity-dialog.component';
+export * from './annotation/script-annotation/script-annotation.component';

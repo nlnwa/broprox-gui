@@ -63,6 +63,17 @@
                           [value]="crawlJob.id">{{crawlJob.meta.name}}</mat-option>
             </mat-select>
           </mat-form-field>
+          <div fxLayout="row">
+          <mat-tab-group>
+            <mat-tab *ngFor=" let job of configObject.seed.jobRefList" label="{{job.id | getJobNamePipe | async}}">
+              <div fxLayout="column">
+                <app-script-annotation
+                                       [annotations]=" job.id | getScriptAnnotations: configObject.id | async">
+                </app-script-annotation>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+          </div>
         </div>
       </div>
     </mat-card-content>

@@ -1,0 +1,7 @@
+<div fxLayout="column">
+<mat-chip-list *ngIf="annotations">
+  <mat-chip *ngFor="let annotation of annotations">
+    {{annotation.key}}:{{annotation.value}}
+  </mat-chip>
+</mat-chip-list>
+</div>

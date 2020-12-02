@@ -80,10 +80,11 @@
             <input type="hidden" formControlName="kind">
           </ng-container>
           <ng-container>
-            <mat-label>Calculated script annotations</mat-label>
-            <div *ngFor="let annotation of scriptAnnotations">
-              <p>{{annotation.getKey()}}:{{annotation.getValue()}}</p>
-            </div>
+            <mat-label>Script annotations</mat-label>
+            <ng-container>
+              <app-script-annotation
+                [annotations]="this.configObject.id | getScriptAnnotations | async"></app-script-annotation>
+            </ng-container>
           </ng-container>
         </div>
       </div>
