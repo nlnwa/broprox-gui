@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {BrowserScriptDetailsComponent} from '..';
 import {FormBuilder} from '@angular/forms';
 import {AuthService} from '../../../../core/services/auth';
@@ -11,8 +11,8 @@ import {ConfigObject} from '../../../../../shared/models/config';
   templateUrl: './browserscript-dialog.component.html',
   styleUrls: ['./browserscript-dialog.component.css']
 })
-export class BrowserScriptDialogComponent extends BrowserScriptDetailsComponent implements OnInit {
-
+//export class BrowserScriptDialogComponent extends BrowserScriptDetailsComponent implements OnInit, AfterViewInit {
+  export class BrowserScriptDialogComponent extends BrowserScriptDetailsComponent implements OnInit {
   constructor(protected fb: FormBuilder,
               protected authService: AuthService,
               @Inject(MAT_DIALOG_DATA) public data: ConfigDialogData,
@@ -26,6 +26,10 @@ export class BrowserScriptDialogComponent extends BrowserScriptDetailsComponent 
   ngOnInit(): void {
     this.updateForm();
   }
+
+  // ngAfterViewInit(): void{
+  //  this.updateForm();
+ // }
 
   onDialogClose(): ConfigObject {
     return this.prepareSave();

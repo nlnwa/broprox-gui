@@ -92,6 +92,7 @@ import { RoleMappingMultiDialogComponent } from './components/rolemapping/rolema
 import { LabelMultiComponent } from './components/label/label-multi/label-multi.component';
 import {AbilityModule} from '@casl/angular';
 import {MonacoEditorModule} from 'ngx-monaco-editor';
+import {MonacoEditorComponent} from './components/browserscript/monaco-editor/monaco-editor.component';
 
 
 @NgModule({
@@ -179,6 +180,7 @@ import {MonacoEditorModule} from 'ngx-monaco-editor';
     RoleMappingMultiDialogComponent,
     LabelMultiComponent,
     EntityNamePipe,
+    MonacoEditorComponent,
   ],
   entryComponents: [
     DeleteMultiDialogComponent,

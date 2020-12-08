@@ -31,36 +31,10 @@
             <mat-option *ngFor="let type of browserScriptTypes" [value]="type">{{BrowserScriptType[type]}}</mat-option>
           </mat-select>
         </mat-form-field>
-<!--        <fieldset style="border: 0px;">-->
-<!--          <legend>{{name}}</legend>-->
-
-<!--          <div appScriptEditor #editor formControlName="script"></div>-->
-<!--          <mat-error *ngIf="editor.value === ''"-->
-<!--                     i18n="@@browserscriptFormScriptRequiredError">-->
-<!--            Script is required.-->
-<!--          </mat-error>-->
-<!--        </fieldset>-->
-        <div style="border: 1px solid black;">
-          <mat-toolbar><p>{{this.configObject.meta.name}}</p>
-            <span fxFlex></span>
-          <mat-form-field style="margin-right: 16px; font-size: 0.75em">
-              <mat-select placeholder="Language"
-                          [value]="editorOptions.language"
-                          (selectionChange)="onChangeLanguage($event.value)">
-                <mat-option *ngFor="let language of editorLanguages" [value]="language">{{language}}</mat-option>
-              </mat-select>
-          </mat-form-field>
-          <mat-form-field style="font-size: 0.75em">
-            <mat-select placeholder="Theme" [value]="editorOptions.theme" (selectionChange)="onChangeTheme($event.value)">
-              <mat-option *ngFor="let theme of editorThemes" [value]="theme">
-                {{theme}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          </mat-toolbar>
-          <ngx-monaco-editor [options]="editorOptions" formControlName="script" style="margin-top: 24px"></ngx-monaco-editor>
-        </div>
-
+        <app-monaco-editor [configObject]="configObject"
+                           formControlName="script"
+                           style="margin-top: 24px">
+        </app-monaco-editor>
         <mat-form-field>
           <mat-chip-list #chipList>
             <mat-chip *ngFor="let regex of urlRegexpList"

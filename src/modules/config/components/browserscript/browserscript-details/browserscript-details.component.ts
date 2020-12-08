@@ -13,10 +13,6 @@ import {MatChipInputEvent} from '@angular/material/chips';
 export class BrowserScriptDetailsComponent implements OnChanges {
   readonly BrowserScriptType = BrowserScriptType;
 
-  editorOptions = {theme: 'vs', language: 'javascript'};
-  editorThemes = ['vs', 'vs-dark', 'hc-black'];
-  editorLanguages = ['javascript', 'typescript'];
-
   @Input()
   browserScriptTypes: BrowserScriptType[] = [];
 
@@ -81,16 +77,9 @@ export class BrowserScriptDetailsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.configObject) {
+      this.form.reset();
       if (this.configObject) {
         this.updateForm();
-        if (this.configObject.meta.name.endsWith('.js')) {
-          this.onChangeLanguage('javascript');
-        }
-        if (this.configObject.meta.name.endsWith('.ts')) {
-          this.onChangeLanguage('typescript');
-        }
-      } else {
-        this.form.reset();
       }
     }
   }
@@ -200,6 +189,7 @@ export class BrowserScriptDetailsComponent implements OnChanges {
     configObject.meta = formModel.meta;
     configObject.browserScript = browserScript;
 
+    this.form.markAsPristine();
     return configObject;
   }
 
@@ -208,14 +198,4 @@ export class BrowserScriptDetailsComponent implements OnChanges {
       return regex === regexp;
     });
   }
-
-  onChangeTheme(theme: string) {
-    this.editorOptions = {...this.editorOptions, theme};
-  }
-
-  onChangeLanguage(language: string) {
-    this.editorOptions = {...this.editorOptions, language};
-  }
-
-
 }

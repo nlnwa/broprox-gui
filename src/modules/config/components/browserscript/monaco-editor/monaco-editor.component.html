@@ -1,0 +1,20 @@
+<mat-card  class="editorCard mat-elevation-z4">
+  <mat-toolbar><p>{{this.configObject.meta.name}}</p>
+    <span fxFlex></span>
+    <mat-form-field style="margin-right: 16px; font-size: 0.75em">
+      <mat-select placeholder="Language"
+                  [value]="editorOptions.language"
+                  (selectionChange)="onChangeLanguage($event.value)">
+        <mat-option *ngFor="let language of editorLanguages" [value]="language">{{language}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="font-size: 0.75em">
+      <mat-select placeholder="Theme" [value]="editorOptions.theme" (selectionChange)="onChangeTheme($event.value)">
+        <mat-option *ngFor="let theme of editorThemes" [value]="theme">
+          {{theme}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-toolbar>
+  <ngx-monaco-editor class=editor [options]="editorOptions" [(ngModel)]="value"></ngx-monaco-editor>
+</mat-card>

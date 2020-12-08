@@ -12,15 +12,10 @@
         <mat-option *ngFor="let type of browserScriptTypes" [value]="type">{{BrowserScriptType[type]}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <fieldset style="border: 0px;">
-      <legend>{{name}}</legend>
-
-      <div appScriptEditor #editor formControlName="script"></div>
-      <mat-error *ngIf="editor.value === ''"
-                 i18n="@@browserscriptFormScriptRequiredError">
-        Script is required.
-      </mat-error>
-    </fieldset>
+    <app-monaco-editor
+      [configObject]="configObject"
+      formControlName="script">
+    </app-monaco-editor>
     <mat-form-field>
       <mat-chip-list #chipList>
         <mat-chip *ngFor="let regex of urlRegexpList"
