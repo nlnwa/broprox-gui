@@ -7,6 +7,8 @@
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
+/* eslint-disable */
+// @ts-nocheck
 
 var jspb = require('google-protobuf');
 var goog = jspb;
@@ -5556,8 +5558,10 @@ proto.veidemann.api.config.v1.RoleMapping.deserializeBinaryFromReader = function
       msg.setGroup(value);
       break;
     case 4:
-      var value = /** @type {!Array<!proto.veidemann.api.config.v1.Role>} */ (reader.readPackedEnum());
-      msg.setRoleList(value);
+      var values = /** @type {!Array<!proto.veidemann.api.config.v1.Role>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addRole(values[i]);
+      }
       break;
     default:
       reader.skipField();
