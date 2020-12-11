@@ -7,8 +7,6 @@
  * @public
  */
 // GENERATED CODE -- DO NOT EDIT!
-/* eslint-disable */
-// @ts-nocheck
 
 var jspb = require('google-protobuf');
 var goog = jspb;
@@ -1635,10 +1633,8 @@ proto.veidemann.api.report.v1.CrawlExecutionsListRequest.deserializeBinaryFromRe
       msg.addId(value);
       break;
     case 2:
-      var values = /** @type {!Array<!proto.veidemann.api.frontier.v1.CrawlExecutionStatus.State>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addState(values[i]);
-      }
+      var value = /** @type {!Array<!proto.veidemann.api.frontier.v1.CrawlExecutionStatus.State>} */ (reader.readPackedEnum());
+      msg.setStateList(value);
       break;
     case 3:
       var value = new google_protobuf_timestamp_pb.Timestamp;
@@ -2276,10 +2272,8 @@ proto.veidemann.api.report.v1.JobExecutionsListRequest.deserializeBinaryFromRead
       msg.addId(value);
       break;
     case 2:
-      var values = /** @type {!Array<!proto.veidemann.api.frontier.v1.JobExecutionStatus.State>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addState(values[i]);
-      }
+      var value = /** @type {!Array<!proto.veidemann.api.frontier.v1.JobExecutionStatus.State>} */ (reader.readPackedEnum());
+      msg.setStateList(value);
       break;
     case 3:
       var value = new google_protobuf_timestamp_pb.Timestamp;
