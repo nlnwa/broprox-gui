@@ -4,6 +4,7 @@ import {AuthService} from '../../../../core/services/auth';
 import {NUMBER_OR_EMPTY_STRING} from '../../../../../shared/validation/patterns';
 import {ConfigObject, ConfigRef, CrawlJob, Kind, Meta} from '../../../../../shared/models';
 import {UnitOfTime} from '../../../../../shared/models/duration/unit-time.model';
+import {config} from 'rxjs';
 
 
 @Component({
@@ -144,7 +145,7 @@ export class CrawlJobDetailsComponent implements OnChanges {
         kind: Kind.CRAWLCONFIG,
       }),
       scopeScriptRef: this.fb.group({
-        id: [''],
+        id: ['', Validators.required],
         kind: Kind.BROWSERSCRIPT,
       }),
       disabled: '',

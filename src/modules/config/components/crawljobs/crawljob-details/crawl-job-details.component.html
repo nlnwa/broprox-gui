@@ -70,22 +70,25 @@
           </ng-container>
           <ng-container formGroupName="scopeScriptRef">
             <mat-form-field>
-              <mat-select placeholder="Scope script" formControlName="id"
+              <mat-select placeholder="Scope script" formControlName="id" required
                           i18n-placeholder="@@crawlJobDetailsFormScopeScriptDropdownPlaceholder">
                 <mat-option>None</mat-option>
                 <mat-option *ngFor="let option of scopeScripts"
                             [value]="option.id">{{option.meta.name}}</mat-option>
               </mat-select>
+              <mat-error *ngIf="scopeScriptRef.invalid" i18n="@@crawlJobScopeScriptRefRequiredError">
+                A scope script is required
+              </mat-error>
             </mat-form-field>
             <input type="hidden" formControlName="kind">
           </ng-container>
-          <ng-container>
-            <mat-label>Script annotations</mat-label>
-            <ng-container>
-              <app-script-annotation
-                [annotations]="this.configObject.id | getScriptAnnotations | async"></app-script-annotation>
+            <ng-container *ngIf="this.configObject.id | getScriptAnnotations | async as scriptAnnotations">
+              <mat-label *ngIf="scriptAnnotations.length > 0">Script annotations</mat-label>
+              <ng-container>
+                <app-script-annotation
+                  [annotations]="scriptAnnotations"></app-script-annotation>
+              </ng-container>
             </ng-container>
-          </ng-container>
         </div>
       </div>
     </mat-card-content>

@@ -1,4 +1,4 @@
-<div fxLayout="column">
+<div fxLayout="column" *ngIf="'read' | able: 'annotation'">
 <mat-chip-list *ngIf="annotations">
   <mat-chip *ngFor="let annotation of annotations">
     {{annotation.key}}:{{annotation.value}}

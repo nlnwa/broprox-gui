@@ -7,7 +7,8 @@ import {
   ConfigObjectProto,
   ConfigPromiseClient,
   GetLabelKeysRequest,
-  GetScriptAnnotationsRequest, GetScriptAnnotationsResponse,
+  GetScriptAnnotationsRequest,
+  GetScriptAnnotationsResponse,
   LabelKeysResponse,
   ListRequest,
   UpdateRequest
