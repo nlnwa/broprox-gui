@@ -1,0 +1,12 @@
+<div fxLayout="column" class="container">
+  <!--  <mat-progress-bar mode="indeterminate" *ngIf="loading$ | async"></mat-progress-bar>-->
+  <div fxFlex fxLayout="row" class="no-scroll">
+    <app-event-list [pageIndex]="pageIndex$ | async"
+                    [pageSize]="pageSize$ | async"
+                    [sortDirection]="sortDirection$ | async"
+                    [sortActive]="sortActive$ | async"
+                    (sort)="onSort($event)"
+                    (page)="onPage($event)">
+    </app-event-list>
+  </div>
+</div>

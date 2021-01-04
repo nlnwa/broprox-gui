@@ -24,6 +24,11 @@ const routes: Routes = [
     loadChildren: () => import('../../log/log.module').then(m => m.LogModule),
     canActivate: [GuardService],
   },
+  {
+    path: 'event',
+    loadChildren: () => import('../../event/event.module').then(m => m.EventModule),
+    canActivate: [GuardService]
+  },
 ];
 
 @NgModule({

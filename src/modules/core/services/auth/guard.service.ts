@@ -24,6 +24,8 @@ export class GuardService implements CanActivate {
     const ability = this.authService.getAbility();
     const path = route.url.map(segment => segment.path);
     switch (path[0]) {
+      case 'event':
+        return of(ability.can('read', 'event'));
       case 'report':
         return of(ability.can('read', 'report'));
       case 'jobexecution' :

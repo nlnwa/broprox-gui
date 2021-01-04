@@ -1,4 +1,4 @@
-import {ActivityProto, DataProto, EventObjectProto} from '../../../api';
+import {ActivityProto, DataProto, EventObjectProto, EventRefProto} from '../../../api';
 import {fromTimestampProto, intersectString} from '../../func';
 
 export enum State {
@@ -81,9 +81,35 @@ export class Activity {
   }
 }
 
+export class EventRef {
+  id?: string;
+
+  constructor({
+                id = ''
+              }: Partial<EventRef> = {}) {
+    this.id = id;
+  }
+
+  static fromProto(proto: EventRefProto): EventRef {
+    return new EventRef({
+      id: proto.getId()
+    });
+  }
+
+  static toProto(eventRef: EventRef): EventRefProto {
+    if (!eventRef) {
+      return undefined;
+    }
+
+    const proto = new EventRefProto();
+    proto.setId(eventRef.id);
+    return proto;
+  }
+}
+
 
 export class EventObject {
-  id?: string;
+  id: string;
   type?: string;
   source?: string;
   state: State;

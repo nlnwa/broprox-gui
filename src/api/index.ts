@@ -59,7 +59,10 @@ export {
   ListCountResponse as EventListCountResponse,
   ListRequest as EventListRequest,
   UpdateRequest as EventUpdateRequest,
-  UpdateResponse as EventUpdateResponse
+  UpdateResponse as EventUpdateResponse,
+  SaveRequest as EventSaveRequest,
+  ListLabelRequest as ListLabelRequest
+
 } from './gen/eventhandler/v1/eventhandler_pb';
 
 export {

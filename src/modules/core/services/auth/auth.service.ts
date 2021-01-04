@@ -167,6 +167,7 @@ export class AuthService {
       can('runCrawl', [Kind[Kind.SEED], Kind[Kind.CRAWLJOB]]);
       can('abort', ['jobexecution', 'crawlexecution']);
       can(['read', 'update'], 'logconfig');
+      can('read', 'event');
     }
 
     if (this.isCurator()) {
@@ -178,6 +179,7 @@ export class AuthService {
       can(['read', 'update'], 'annotation');
       can('read', 'configs');
       can('read', reports);
+      can('read', 'event');
     }
 
     if (this.isConsultant()) {
@@ -186,6 +188,7 @@ export class AuthService {
       can(['create', 'read', 'update'], [Kind[Kind.CRAWLENTITY], Kind[Kind.SEED]]);
       can('read', 'configs');
       can('read', reports);
+      can('read', 'event');
     }
 
     if (this.isAnyUser()) {
