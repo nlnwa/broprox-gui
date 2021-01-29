@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>
+  <ng-container i18n="@@eventDetailDialogCardTitle">Event</ng-container>
+</h2>
+
+<mat-dialog-content>
+  <form *ngIf="eventObject" [formGroup]="form">
+    <div fxLayout="row wrap" fxLayoutGap="24px">
+      <div fxFlex fxLayout="column">
+        <mat-form-field>
+          <input matInput
+                 placeholder="Type"
+                 formControlName="type"
+                 readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 placeholder="Source"
+                 formControlName="source"
+                 readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="State" formControlName="state">
+            <mat-option *ngFor="let state of States" [value]="state">
+              {{State[state]}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Severity" formControlName="severity">
+            <mat-option *ngFor="let severity of Severities" [value]="severity">
+              {{Severity[severity]}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 placeholder="Assignee"
+                 i18n-placeholder="@@eventDetailsAssigneePlaceholder"
+                 formControlName="assignee">
+        </mat-form-field>
+        <mat-list *ngIf="eventObject.labelList.length">
+          <h3 matSubheader>Labels</h3>
+          <mat-chip-list>
+            <mat-chip *ngFor="let label of eventObject.labelList">{{label}}</mat-chip>
+          </mat-chip-list>
+        </mat-list>
+        <mat-list *ngIf="eventObject.dataList.length">
+          <h3 matSubheader>Data</h3>
+          <ng-container *ngFor="let data of eventObject.dataList">
+            <mat-list-item>{{data.key}}:{{data.value}}</mat-list-item>
+          </ng-container>
+        </mat-list>
+      </div>
+
+      <div fxFlex fxLayout="column">
+        <app-event-activity [activities]="eventObject.activityList"></app-event-activity>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="canEdit">
+  <button mat-raised-button color="accent"
+          *ngIf="!showSave"
+          [disabled]="!canUpdate"
+          [mat-dialog-close]="onDialogClose()"
+          i18n="@@commonButtonSave">UPDATE
+  </button>
+  <button mat-button
+          (click)="onRevert()"
+          [disabled]="!form.dirty"
+          i18n="@@commonButtonRevert">
+    REVERT
+  </button>
+  <button mat-button
+          mat-dialog-close
+          i18n="@@commonButtonCancel">CANCEL
+  </button>
+  <span fxFlex></span>
+</mat-dialog-actions>

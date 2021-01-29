@@ -1,0 +1,86 @@
+<form *ngIf="eventObject" [formGroup]="form">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title i18n="@@eventDetailsCardTitle">Event</mat-card-title>
+      <mat-card-subtitle>{{eventObject.id}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div fxLayout="row wrap" fxLayoutGap="24px">
+        <div fxFlex fxLayout="column">
+          <mat-form-field>
+            <input matInput
+                   placeholder="Type"
+                   formControlName="type"
+                   readonly>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Source"
+                   formControlName="source"
+                   readonly>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="State" formControlName="state">
+              <mat-option *ngFor="let state of States" [value]="state">
+                {{State[state]}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Severity" formControlName="severity">
+              <mat-option *ngFor="let severity of Severities" [value]="severity">
+                {{Severity[severity]}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Assignee"
+                   i18n-placeholder="@@eventDetailsAssigneePlaceholder"
+                   formControlName="assignee">
+          </mat-form-field>
+          <mat-list *ngIf="eventObject.labelList.length">
+            <h3 matSubheader>Labels</h3>
+            <mat-chip-list>
+              <mat-chip *ngFor="let label of eventObject.labelList">{{label}}</mat-chip>
+            </mat-chip-list>
+          </mat-list>
+          <mat-list *ngIf="eventObject.dataList.length">
+            <h3 matSubheader>Data</h3>
+            <ng-container *ngFor="let data of eventObject.dataList">
+              <mat-list-item>{{data.key}}:{{data.value}}</mat-list-item>
+            </ng-container>
+          </mat-list>
+        </div>
+
+        <div fxFlex fxLayout="column">
+          <app-event-activity [activities]="eventObject.activityList"></app-event-activity>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="canEdit">
+      <button mat-raised-button color="accent"
+              *ngIf="!showSave"
+              [disabled]="!canUpdate"
+              (click)="onUpdate()"
+              i18n="@@commonButtonSave">
+        UPDATE
+      </button>
+      <button mat-button
+              (click)="onRevert()"
+              [disabled]="!canRevert"
+              i18n="@@commonButtonRevert">
+        REVERT
+      </button>
+      <span fxFlex></span>
+      <button mat-button
+              *ngIf="!showSave && canDelete"
+              (click)="onDelete(eventObject)"
+              i18n="@@commonButtonDelete">
+        DELETE
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
