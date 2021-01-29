@@ -1,0 +1,21 @@
+<div class="content-padding" fxLayout="column" fxLayoutGap="16px" *ngIf="event">
+  <div fxFlex fxLayout="row">
+    <div fxLayout="column">
+      <mat-list *ngIf="event.labelList.length">
+        <h3 matSubheader>Labels</h3>
+      <mat-chip-list>
+        <mat-chip *ngFor="let label of event.labelList">{{label}}</mat-chip>
+      </mat-chip-list>
+      </mat-list>
+      <mat-list *ngIf="event.dataList.length">
+        <h3 matSubheader>Data</h3>
+        <ng-container *ngFor="let data of event.dataList">
+          <mat-list-item>{{data.key}}:{{data.value}}</mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div fxFlex fxLayout="column">
+      <app-event-activity [activities]="event.activityList"></app-event-activity>
+    </div>
+  </div>
+</div>
