@@ -1,1 +1,93 @@
-<p>event-list works!</p>
+<div fxLayout="column" class="container">
+  <div fxFlex class="scroll">
+    <table mat-table [dataSource]="dataSource"
+           matSort
+           matSortStart="desc"
+           [matSortActive]="sortActive"
+           [matSortDirection]="sortDirection"
+           (matSortChange)="onSortChange($event)"
+           multiTemplateDataRows  >
+
+      <ng-coontainer matColumnDef="type">
+        <th i18n="@@EventTypeHeaderCell" mat-header-cell  mat-sort-header *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let row">{{row.type}}</td>
+      </ng-coontainer>
+
+      <ng-coontainer matColumnDef="source">
+        <th i18n="@@EventSourceHeaderCell" mat-header-cell mat-sort-header *matHeaderCellDef>Source</th>
+        <td mat-cell *matCellDef="let row">{{row.source}}</td>
+      </ng-coontainer>
+
+      <ng-coontainer matColumnDef="state">
+        <th i18n="@@EventStateHeaderCell" mat-header-cell mat-sort-header *matHeaderCellDef>State</th>
+        <td mat-cell *matCellDef="let row">{{State[row.state]}}</td>
+      </ng-coontainer>
+
+      <ng-coontainer matColumnDef="severity">
+        <th i18n="@@EventSeverityHeaderCell" mat-header-cell mat-sort-header *matHeaderCellDef>Severity</th>
+        <td mat-cell *matCellDef="let row">{{Severity[row.severity]}}</td>
+      </ng-coontainer>
+
+      <ng-coontainer matColumnDef="assignee">
+        <th i18n="@@EventAssigneeHeaderCell" mat-header-cell mat-sort-header *matHeaderCellDef>Assignee</th>
+        <td mat-cell *matCellDef="let row">{{row.assignee}}</td>
+      </ng-coontainer>
+
+      <ng-container matColumnDef="extra">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <ng-container *ngFor="let extraTemplate of extraTemplates">
+            <ng-container *ngTemplateOutlet="extraTemplate; context: {$implicit: row}"></ng-container>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row" (click)="$event.stopPropagation()">
+          <div class="action">
+            <button mat-icon-button [matMenuTriggerFor]="actionMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #actionMenu>
+              <ng-container *ngFor="let filterTemplate of filterButtonTemplates">
+                <ng-container *ngTemplateOutlet="filterTemplate; context: {$implicit: row}"></ng-container>
+              </ng-container>
+              <ng-container *ngFor="let shortcutTemplate of shortcutButtonTemplates">
+                <ng-container *ngTemplateOutlet="shortcutTemplate; context: {$implicit: row}"></ng-container>
+              </ng-container>
+              <ng-container *ngFor="let actionButtonTemplate of actionButtonTemplates">
+                <ng-container *ngTemplateOutlet="actionButtonTemplate; context: {$implicit: row}"></ng-container>
+              </ng-container>
+            </mat-menu>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Expanded Content Column -->
+      <ng-container matColumnDef="expandedPreview">
+        <td mat-cell [class.expanded-preview-cell]="row === selectedRow" *matCellDef="let row"
+            [attr.colspan]="displayedColumns.length">
+          <div [@detailExpand]="row === selectedRow ? 'expanded' : 'collapsed'">
+            <app-event-preview *ngIf="row === selectedRow" [event]="row"></app-event-preview>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"
+          class="item-row"
+          [class.expanded-row]="selectedRow === row"
+          [ngClass]="isSelected(row) ? 'row-selected' : isChecked(row) ? 'row-checked': ''"
+          (click)="onRowClick(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedPreview']" class="preview-row"></tr>
+    </table>
+  </div>
+  <mat-paginator
+    (page)="onPage($event)"
+    [length]="length$ | async"
+    [pageIndex]="pageIndex"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageOptions">
+  </mat-paginator>
+</div>

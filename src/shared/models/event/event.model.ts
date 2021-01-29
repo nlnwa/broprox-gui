@@ -1,5 +1,5 @@
 import {ActivityProto, DataProto, EventObjectProto, EventRefProto} from '../../../api';
-import {fromTimestampProto, intersectString} from '../../func';
+import {fromTimestampProto, intersectString, isNumeric} from '../../func';
 
 export enum State {
   NEW = 0,
@@ -7,11 +7,17 @@ export enum State {
   CLOSED = 2
 }
 
+export const States: State[] =
+  Object.keys(State).filter(p => !isNumeric(p)).map(state => State[state]);
+
 export enum Severity {
   INFO = 0,
   WARN = 1,
   ERROR = 2
 }
+
+export const Severities: Severity[] =
+  Object.keys(Severity).filter(p => !isNumeric(p)).map(severity => Severity[severity]);
 
 export enum ChangeType {
   CREATED = 0,
@@ -19,6 +25,9 @@ export enum ChangeType {
   ARRAY_ADD = 2,
   ARRAY_DEL = 3
 }
+
+export const ChangeTypes: ChangeType[] =
+  Object.keys(ChangeType).filter(p => !isNumeric(p)).map(changeType => ChangeType[changeType]);
 
 export class Data {
   key?: string;

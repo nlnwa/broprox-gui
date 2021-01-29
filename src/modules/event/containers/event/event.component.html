@@ -1,12 +1,42 @@
 <div fxLayout="column" class="container">
-  <!--  <mat-progress-bar mode="indeterminate" *ngIf="loading$ | async"></mat-progress-bar>-->
-  <div fxFlex fxLayout="row" class="no-scroll">
-    <app-event-list [pageIndex]="pageIndex$ | async"
+  <mat-progress-bar mode="indeterminate" *ngIf="loading$ | async"></mat-progress-bar>
+  <div fxFlex class="no-scroll" fxLayout="row" *ngIf="query$ | async as query">
+    <app-event-query class="content-padding scroll"
+                     [query]="query"
+                     (queryChange)="onQueryChange($event)">
+    </app-event-query>
+    <app-event-list fxFlex
+                    appQueryEvent
+                    [query]="query"
+                    [pageIndex]="pageIndex$ | async"
                     [pageSize]="pageSize$ | async"
                     [sortDirection]="sortDirection$ | async"
                     [sortActive]="sortActive$ | async"
+                    [length]="length$ | async"
                     (sort)="onSort($event)"
                     (page)="onPage($event)">
+      <ng-container *appShortcut="let row"></ng-container>
+      <ng-container *appFilter="let row"></ng-container>
+      <ng-container *appAction="let row">
+        <button *ngIf="canEdit(row)" mat-menu-item (click)="onEdit(row)"
+                i18n="@@configListActionButtonEditConfig">
+          <mat-icon>edit</mat-icon>
+          Edit
+        </button>
+        <a mat-menu-item
+           (click)="onAssignToMe(row)" i18n="@@eventListActionButtonAssignToMe">
+          <mat-icon>account_circle</mat-icon>
+          Assign to me
+        </a>
+      </ng-container>
+      <ng-container *appAction="let row">
+        <button mat-menu-item
+                i18n="@@eventListActionButtonShowEventDetails"
+                (click)="onShowDetails(row)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+          Show details
+        </button>
+      </ng-container>
     </app-event-list>
   </div>
 </div>

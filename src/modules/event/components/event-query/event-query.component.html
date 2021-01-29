@@ -1,0 +1,37 @@
+<form [formGroup]="form" fxLayout="column">
+  <mat-form-field>
+    <input matInput
+           size="37"
+           formControlName="assignee"
+           placeholder="Assignee"
+           i18n-placeholder="@@eventHandlerQueryAssigneePlaceholder">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+           size="37"
+           formControlName="source"
+           placeholder="Source"
+           i18n-placeholder="@@eventHandlerQueryFilterSourcePlaceholder">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Severity"  formControlName="severity"
+                i18n-placeholder="@@eventHandlerQueryFilterSeverityPlaceholder">
+      <mat-option *ngFor="let severity of Severities" [value]="severity.toString(10)">
+        {{Severity[severity]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="State" formControlName="state"
+                i18n-placeholder="@@eventHandlerQueryFilterStatePlaceholder">
+      <mat-option *ngFor="let state of States" [value]="state.toString(10)">
+        {{State[state]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox labelPosition="after" formControlName="assignedToMe"
+                (change)="onShowAssignedToMe($event)"
+                i18n-placeholder="@@crawlExecutionReportFilterHasErrorLabel">
+    Show assigned to me
+  </mat-checkbox>
+</form>

@@ -1,13 +1,14 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import {BaseListComponent} from '../../../commons/components';
 import {EventObject, ListDataSource} from '../../../../shared/models';
 import {BASE_LIST} from '../../../../shared/directives';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Severity, State} from 'src/shared/models/event/event.model';
 
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css', '../../../commons/components/base-list/base-list.scss'],
+  styleUrls: ['../../../commons/components/base-list/base-list.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     ListDataSource,
@@ -25,12 +26,17 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ],
 })
 export class EventListComponent extends BaseListComponent<EventObject> {
+  readonly State = State;
+  readonly Severity = Severity;
 
-  displayedColumns: string[] = ['type', 'source', 'state', 'severity', 'assignee'];
+  multiSelect = false;
+
+  displayedColumns: string[] = ['type', 'source', 'state', 'severity', 'assignee', 'action'];
+
+  @Input()
+  sortActive = 'severity';
 
   constructor() {
     super();
   }
-
-
 }

@@ -12,7 +12,7 @@ import {ErrorService} from '../error.service';
 import {EMPTY, from, Observable, Observer} from 'rxjs';
 import {EventObject} from '../../../../shared/models';
 
-import {catchError, map} from 'rxjs/operators';
+import {catchError, first, map} from 'rxjs/operators';
 import {EventRef} from '../../../../shared/models/event/event.model';
 
 
@@ -43,7 +43,7 @@ export class EventHandlerApiService {
   list(listRequest: EventListRequest): Observable<EventObject> {
     return new Observable((observer: Observer<EventObjectProto>) => {
       const stream = this.eventHandlerPromiseClient.listEventObjects(listRequest, this.authService.metadata)
-        .on('data', (data) => observer.next(data))
+        .on('data', (data) =>  observer.next(data))
         .on('error', error => observer.error(error))
         .on('end', () => observer.complete());
       return () => stream.cancel();
@@ -105,6 +105,20 @@ export class EventHandlerApiService {
     return from(this.eventHandlerPromiseClient.listLabels(request, this.authService.metadata))
       .pipe(
         map(listLabelResponse => listLabelResponse.getLabelList()),
+        catchError(error => {
+          this.errorService.dispatch(error);
+          return EMPTY;
+        })
+      );
+  }
+
+  countEventObjects(listRequest: EventListRequest): Observable<number> {
+    const metadata = this.authService.metadata;
+
+    return from(this.eventHandlerPromiseClient.countEventObjects(listRequest, metadata))
+      .pipe(
+        map(listCountResponse => listCountResponse.getCount()),
+        first(),
         catchError(error => {
           this.errorService.dispatch(error);
           return EMPTY;
