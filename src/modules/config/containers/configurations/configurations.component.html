@@ -4,16 +4,16 @@
     <div fxLayout="column" class="scroll">
       <mat-action-list>
         <ng-container *ngIf="kind$ | async as kind">
-        <button mat-list-item
-                *ngIf="('create' | able: Kind[kind]) && showCreateButton$ | async"
-                (click)="onCreateConfigWithDialog()"
-                i18n="@@configurationSideBarMenuAddConfigButton"
-                matTooltip="Create a new configuration"
-                i18n-matTooltip="@@configurationSideBarMenuAddConfigButtonTooltip">
-          <mat-icon mat-list-icon>add_circle
-          </mat-icon>
-          Create new
-        </button>
+          <button mat-list-item
+                  *ngIf="('create' | able: Kind[kind]) && showCreateButton$ | async"
+                  (click)="onCreateConfigWithDialog()"
+                  i18n="@@configurationSideBarMenuAddConfigButton"
+                  matTooltip="Create a new configuration"
+                  i18n-matTooltip="@@configurationSideBarMenuAddConfigButtonTooltip">
+            <mat-icon mat-list-icon>add_circle
+            </mat-icon>
+            Create new
+          </button>
         </ng-container>
       </mat-action-list>
       <app-config-query [options]="options$ | async" [query]="query$ | async"
@@ -48,6 +48,8 @@
         </app-rolemapping-details>
       </div>
       <div fxFlex fxLayout="column" *ngSwitchDefault>
+        <app-buffer *ngIf="kind === Kind.CRAWLENTITY || kind === Kind.SEED"
+        (list)="onListBuffer($event)"></app-buffer>
         <app-entity-view *ngIf="entity$ | async as entity"
                          [configObject]="entity"></app-entity-view>
         <app-config-list fxFlex
@@ -62,29 +64,6 @@
                          (selectAll)="onSelectAll()"
                          (sort)="onSort($event)"
                          (page)="onPage($event)">
-
-          <button mat-icon-button
-                  *ngIf="!isAllSelected && ('update' | able: Kind[kind])"
-                  (click)="onEditSelected()">
-            <mat-icon matTooltip="Edit selected configurations"
-                      i18n-matTooltip="@@configurationEditSelectedConfigurationsButtonTooltip">edit
-            </mat-icon>
-          </button>
-          <button mat-icon-button
-                  *ngIf="isAllSelected && ('updateAll' | able: Kind[kind])"
-                  (click)="onEditSelected()">
-            <mat-icon matTooltip="Edit all configurations in database"
-                      i18n-matTooltip="@@configurationEditAllConfigurationsInDbButtonTooltip">edit
-            </mat-icon>
-          </button>
-
-          <button mat-icon-button
-                  *ngIf="!isAllSelected && ('delete' | able: Kind[kind])"
-                  (click)="onDeleteSelectedConfigs()">
-            <mat-icon matTooltip="Delete selected configurations"
-                      i18n-matTooltip="@@configurationDeleteSelectedConfigurationsButtonTooltip">delete
-            </mat-icon>
-          </button>
 
           <ng-container *ngIf="kind === Kind.COLLECTION">
             <ng-container *appFilter="let row">
@@ -123,6 +102,24 @@
           </ng-container>
 
           <ng-container *ngIf="kind === Kind.SEED">
+            <button mat-icon-button
+                    *ngIf="!isAllSelected && ('update' | able: kind)"
+                    (click)="onCopySelected()">
+              <mat-icon matTooltip="Copy seeds to buffer"
+                        i18n-matTooltip="@@configurationCopySeedsToBufferTooltip">copy_all
+              </mat-icon>
+            </button>
+
+            <ng-container *ngIf="entity$ | async as entity">
+              <button mat-icon-button
+                      *ngIf="buffer.hasValue() && ('update' | able: kind)"
+                      (click)="onPasteBuffer(entity)">
+                <mat-icon matTooltip="Copy seeds to buffer"
+                          i18n-matTooltip="@@configurationCopySeedsToBufferTooltip">content_paste
+                </mat-icon>
+              </button>
+            </ng-container>
+
             <ng-container *ngIf="'read' | able: 'CrawlExecution'">
               <a *appFilter="let row" mat-menu-item
                  [routerLink]="['/report/crawlexecution']"
@@ -363,6 +360,31 @@
               Show details
             </button>
           </ng-container>
+
+
+          <button mat-icon-button
+                  *ngIf="!isAllSelected && ('update' | able: Kind[kind])"
+                  (click)="onEditSelected()">
+            <mat-icon matTooltip="Edit selected configurations"
+                      i18n-matTooltip="@@configurationEditSelectedConfigurationsButtonTooltip">edit
+            </mat-icon>
+          </button>
+          <button mat-icon-button
+                  *ngIf="isAllSelected && ('updateAll' | able: Kind[kind])"
+                  (click)="onEditSelected()">
+            <mat-icon matTooltip="Edit all configurations in database"
+                      i18n-matTooltip="@@configurationEditAllConfigurationsInDbButtonTooltip">edit
+            </mat-icon>
+          </button>
+
+          <button mat-icon-button
+                  *ngIf="!isAllSelected && ('delete' | able: Kind[kind])"
+                  (click)="onDeleteSelectedConfigs()">
+            <mat-icon matTooltip="Delete selected configurations"
+                      i18n-matTooltip="@@configurationDeleteSelectedConfigurationsButtonTooltip">delete
+            </mat-icon>
+          </button>
+
         </app-config-list>
       </div>
     </ng-container>

@@ -19,6 +19,7 @@ import {LoadingService} from '../../../shared/services';
 import {ConfigApiService} from '../../core/services';
 import {ConfigQuery, escapeRegex} from '../../../shared/func';
 import {Getter, Searcher} from '../../../shared/directives';
+import {BufferService} from '../../config/services';
 
 
 @Injectable()
@@ -31,7 +32,8 @@ export class ConfigService
 
   // private cache: Map<string, string>;
 
-  constructor(private configApiService: ConfigApiService) {
+  constructor(private configApiService: ConfigApiService,
+              private bufferService: BufferService) {
     super();
   }
 

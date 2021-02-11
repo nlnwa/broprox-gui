@@ -24,9 +24,10 @@ import {PageEvent} from '@angular/material/paginator';
 import {SortDirection} from '@angular/material/sort';
 import {ConfigService} from '../../../commons/services';
 import {ConfigQuery, distinctUntilArrayChanged, Sort} from '../../../../shared/func';
-import {KindService, OptionsService} from '../../services';
+import {BufferService, KindService, OptionsService} from '../../services';
 import {ConfigDialogData, ConfigOptions, dialogByKind, multiDialogByKind} from '../../func';
 import {ReferrerError} from '../../../../shared/error';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-configurations',
@@ -45,6 +46,7 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
 
   // checked (selected by checkbox) configObjects
   private selectedConfigs: ConfigObject[];
+  private buffer: SelectionModel<ConfigObject>;
 
   isAllSelected = false;
 
@@ -83,7 +85,8 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private controllerApiService: ControllerApiService,
               private kindService: KindService,
-              private optionsService: OptionsService) {
+              private optionsService: OptionsService,
+              private bufferService: BufferService) {
 
     this.options$ = this.optionsService.options$.pipe(
       tap(options => this.options = options)
@@ -97,6 +100,7 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
 
     this.configObject$ = new BehaviorSubject<ConfigObject>(null);
     this.selectedConfigs = [];
+    this.buffer = new SelectionModel(true);
 
     // for reloading the current query (on save, delete, etc.)
     this.reload = new Subject();
@@ -108,6 +112,7 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
     const queryParam$ = this.route.queryParamMap.pipe(
       debounceTime(0), // synchronize multiple query changes
       map(query => ({
+        idList: query.getAll('id'),
         q: query.get('q'),
         entityId: query.get('entity_id'),
         scheduleId: query.get('schedule_id'),
@@ -125,6 +130,10 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
       })),
       share(),
     );
+
+    const id$ = queryParam$.pipe(
+      map(({idList}) => idList),
+      distinctUntilArrayChanged);
 
     const q$: Observable<string> = queryParam$.pipe(
       map(({q}) => q),
@@ -199,6 +208,7 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
 
     const query$: Observable<ConfigQuery> = combineLatest([
       this.kind$.pipe(filter(kind => kind !== Kind.UNDEFINED)),
+      id$,
       entityId$,
       scheduleId$,
       crawlConfigId$,
@@ -218,6 +228,7 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
       debounceTime<any>(0), // synchronize observables
       map(([
              kind,
+             idList,
              entityId,
              scheduleId,
              crawlConfigId,
@@ -234,6 +245,7 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
              pageSize
            ]) => ({
         kind,
+        idList,
         entityId,
         scheduleId,
         crawlConfigId,
@@ -530,6 +542,17 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
     const configObject = new ConfigObject({kind: Kind.SEED, seed: new Seed({entityRef})});
 
     this.onCreateConfigWithDialog(configObject);
+  }
+
+  onListBuffer() {
+
+  }
+
+  onCopySelected() {
+    this.bufferService.select(...this.selectedConfigs);
+  }
+
+  onPasteBuffer(entity: ConfigObject) {
   }
 
   onMoveSeed(parcel: Parcel) {

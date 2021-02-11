@@ -92,6 +92,8 @@ import {PolitenessConfigMultiDialogComponent} from './components/politenessconfi
 import {RoleMappingMultiDialogComponent} from './components/rolemapping/rolemapping-multi-dialog/rolemapping-multi-dialog.component';
 import {LabelMultiComponent} from './components/label/label-multi/label-multi.component';
 import {AbilityModule} from '@casl/angular';
+import {BufferService} from './services/buffer.service';
+import {BufferComponent} from './components/buffer/buffer.component';
 
 @NgModule({
   declarations: [
@@ -179,6 +181,7 @@ import {AbilityModule} from '@casl/angular';
     LabelMultiComponent,
     EntityNamePipe,
     ScriptAnnotationComponent,
+    BufferComponent,
   ],
   entryComponents: [
     DeleteMultiDialogComponent,
@@ -208,6 +211,7 @@ import {AbilityModule} from '@casl/angular';
     KindService,
     OptionsService,
     LabelService,
+    BufferService,
   ]
 })
 export class ConfigurationsModule {

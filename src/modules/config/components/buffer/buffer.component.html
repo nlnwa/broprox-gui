@@ -1,0 +1,9 @@
+<mat-chip-list fxLayout="row wrap">
+  <mat-chip *ngFor="let label of label$ | async"
+            [selectable]="false"
+            [removable]="false">
+    {{label.key + ':' + label.value}}
+  </mat-chip>
+</mat-chip-list>
+
+<button (click)="onApply()" mat-button mat-flat-button><mat-icon>inventory</mat-icon></button>

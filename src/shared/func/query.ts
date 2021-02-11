@@ -25,6 +25,7 @@ export interface State {
 
 export interface ConfigQuery extends Sort, Page {
   kind: Kind;
+  idList: string[];
   entityId: string;
   scheduleId: string;
   crawlConfigId: string;
