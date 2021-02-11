@@ -28,7 +28,7 @@
                               (rowClick)="onRowClick($event)"
                               (selectAll)="onSelectAll()">
           <button mat-icon-button
-                  (click)="onUpdateMultiWithDialog(mergedConfig)">
+                  (click)="onEditSelected()">
             <mat-icon matTooltip="Edit selected configurations"
                       i18n-matTooltip="@@configurationEditSelectedConfigurationsButtonTooltip">edit
             </mat-icon>
@@ -64,22 +64,22 @@
                          (page)="onPage($event)">
 
           <button mat-icon-button
-                  *ngIf="!isAllSelected && ('update' | able: Kind[mergedConfig?.kind])"
-                  (click)="onUpdateMultiWithDialog(mergedConfig)">
+                  *ngIf="!isAllSelected && ('update' | able: Kind[kind])"
+                  (click)="onEditSelected()">
             <mat-icon matTooltip="Edit selected configurations"
                       i18n-matTooltip="@@configurationEditSelectedConfigurationsButtonTooltip">edit
             </mat-icon>
           </button>
           <button mat-icon-button
-                  *ngIf="isAllSelected && ('updateAll' | able: Kind[mergedConfig?.kind])"
-                  (click)="onUpdateMultiWithDialog(updateAllConfigObject)">
+                  *ngIf="isAllSelected && ('updateAll' | able: Kind[kind])"
+                  (click)="onEditSelected()">
             <mat-icon matTooltip="Edit all configurations in database"
                       i18n-matTooltip="@@configurationEditAllConfigurationsInDbButtonTooltip">edit
             </mat-icon>
           </button>
 
           <button mat-icon-button
-                  *ngIf="!isAllSelected && ('delete' | able: Kind[mergedConfig?.kind])"
+                  *ngIf="!isAllSelected && ('delete' | able: Kind[kind])"
                   (click)="onDeleteSelectedConfigs()">
             <mat-icon matTooltip="Delete selected configurations"
                       i18n-matTooltip="@@configurationDeleteSelectedConfigurationsButtonTooltip">delete

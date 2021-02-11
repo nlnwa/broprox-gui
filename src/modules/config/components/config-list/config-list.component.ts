@@ -31,4 +31,8 @@ export class ConfigListComponent extends BaseListComponent<ConfigObject> {
   constructor() {
     super();
   }
+
+  isDisabled(config: ConfigObject): boolean {
+    return config?.crawlJob?.disabled || config?.seed?.disabled;
+  }
 }

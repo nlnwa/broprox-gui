@@ -43,7 +43,8 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
   sortDirection$: Observable<SortDirection>;
   sortActive$: Observable<string>;
 
-  private selectedConfigs: ConfigObject[] = [];
+  // checked (selected by checkbox) configObjects
+  private selectedConfigs: ConfigObject[];
 
   isAllSelected = false;
 
@@ -65,29 +66,12 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
   kind: Kind;
   kind$: Observable<Kind>;
 
+  // selected configObject
   configObject$: BehaviorSubject<ConfigObject>;
-  configObjects$: BehaviorSubject<ConfigObject>;
-
-  mergedConfig: ConfigObject;
-  updateAllConfigObject: ConfigObject;
 
   get loading$(): Observable<boolean> {
     return this.configService.loading$;
   }
-
-  get isSingleMode(): boolean {
-    return !this.isAllSelected && this.selectedConfigs.length < 1;
-  }
-
-  //
-  // get canAdministrate(): boolean {
-  //   return this.authService.isAdmin();
-  // }
-  //
-  // get canConfigure(): boolean {
-  //   return this.authService.isAdmin() || this.authService.isCurator();
-  // }
-
 
   constructor(private authService: AuthService,
               private configService: ConfigService,
@@ -111,9 +95,8 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
 
     this.ngUnsubscribe = new Subject<void>();
 
-    // for merged config
-    this.configObjects$ = new BehaviorSubject<ConfigObject>(null);
     this.configObject$ = new BehaviorSubject<ConfigObject>(null);
+    this.selectedConfigs = [];
 
     // for reloading the current query (on save, delete, etc.)
     this.reload = new Subject();
@@ -471,7 +454,6 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
 
   onSelectAll() {
     this.isAllSelected = true;
-    this.updateAllConfigObject = new ConfigObject({kind: this.kind});
   }
 
   onRowClick(config: ConfigObject) {
@@ -481,12 +463,6 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
   onSelectedChange(configs: ConfigObject[]) {
     this.isAllSelected = false;
     this.selectedConfigs = configs;
-    if (configs.length > 1) {
-      const mergedConfigObject = ConfigObject.mergeConfigs(configs);
-      this.mergedConfig = mergedConfigObject;
-    } else {
-      this.mergedConfig = null;
-    }
   }
 
   onFilterByEntityRef(configObject: ConfigObject) {
@@ -575,7 +551,8 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
       .catch(error => this.errorService.dispatch(error));
   }
 
-  onUpdateMultiWithDialog(configObject?: ConfigObject) {
+  onEditSelected() {
+    const configObject = ConfigObject.mergeConfigs(this.selectedConfigs);
     const data: ConfigDialogData = {configObject, options: this.options, allSelected: this.isAllSelected};
     const componentType = multiDialogByKind(configObject.kind);
     const dialogRef = this.dialog.open(componentType, {data});
@@ -592,7 +569,6 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(updatedConfigs => {
         this.reload.next();
-        this.configObjects$.next(null);
         this.snackBarService.openSnackBar(
           updatedConfigs + $localize`:@snackBarMessage.multipleUpdated: configurations updated`);
       });

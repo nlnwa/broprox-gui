@@ -167,6 +167,8 @@ export class ConfigObject {
   static mergeConfigs(configs: ConfigObject[]): ConfigObject {
     if (configs.length < 1) {
       return null;
+    } else if (configs.length === 1) {
+      return configs[0];
     }
     const configObject = new ConfigObject({kind: configs[0].kind});
 

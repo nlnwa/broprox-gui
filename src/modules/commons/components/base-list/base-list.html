@@ -1,5 +1,5 @@
 <div fxLayout="column wrap" class="container">
-  <table class="mat-table" *ngIf="multiSelect && selection.selected.length > 1">
+  <table class="mat-table" *ngIf="multiSelect && selection.selected.length > 0">
     <tr class="mat-row no-interaction">
       <td class="mat-cell" *ngIf="!allSelected">
         <span i18n="@@baseListConfigsInPageSelectedMessage">

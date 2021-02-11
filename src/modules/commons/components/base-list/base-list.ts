@@ -92,12 +92,11 @@ export abstract class BaseListComponent<T extends ListItem> implements OnChanges
   @ContentChildren(FilterDirective, {read: TemplateRef, descendants: true}) filterButtonTemplates;
   @ContentChildren(ShortcutDirective, {read: TemplateRef, descendants: true}) shortcutButtonTemplates;
 
-  // selection
+  // selection of checked rows
   selection: SelectionModel<T>;
   allSelected: boolean;
   isAllInPageSelected$: Observable<boolean>;
   selectedRow: T;
- // expandedConfigObject: T | null;
 
   protected constructor() {
     this.sort = new EventEmitter<Sort>();
@@ -124,7 +123,6 @@ export abstract class BaseListComponent<T extends ListItem> implements OnChanges
     this.selection.clear();
     this.selectedRow = null;
     this.allSelected = false;
-    // this.length$.next(0);
   }
 
   onSortChange(sort: Sort) {
@@ -184,8 +182,7 @@ export abstract class BaseListComponent<T extends ListItem> implements OnChanges
     return this.selectedRow ? this.selectedRow.id === item.id : false;
   }
 
-  isDisabled(item: T): boolean {
-    // @ts-ignore
-    return item?.crawlJob?.disabled || item?.seed?.disabled;
+  isDisabled(_: T): boolean {
+    return false;
   }
 }

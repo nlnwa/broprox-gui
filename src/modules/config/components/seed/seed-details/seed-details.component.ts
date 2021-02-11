@@ -219,7 +219,6 @@ export class SeedDetailsComponent implements OnChanges, OnDestroy {
 
     return urls.map(url => {
       const seed = ConfigObject.clone(configObjectTemplate);
-      seed.seed = configObjectTemplate.seed;
       seed.meta.name = url;
       return seed;
     });
@@ -227,7 +226,7 @@ export class SeedDetailsComponent implements OnChanges, OnDestroy {
 
   protected isMultipleSeed() {
     const meta = this.meta.value;
-    const parts = meta.name.split(/\s+/);
+    const parts = meta.name.trim().split(/\s+/);
     return parts.length > 1;
   }
 }
