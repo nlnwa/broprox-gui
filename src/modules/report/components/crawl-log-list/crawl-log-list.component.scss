@@ -1,55 +1,6 @@
-table {
-  width: 100%;
-}
-
 .mat-column-requestedUri {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 30em;
 }
-
-.action-cell {
-  white-space: nowrap;
-}
-
-.actions {
-  display: inline-block;
-  visibility: hidden;
-}
-
-.mat-row:hover .actions {
-  visibility: visible;
-}
-
-//
-//.mat-column-requestedUri:hover {
-//  white-space: normal;
-//  height: auto;
-//  word-break: break-word;
-//}
-//
-//.mat-column-timestamp {
-//  flex: 0 0 10%;
-//  width: 10%;
-//}
-//
-//.mat-column-statusCode {
-//  flex: 0 0 5%;
-//  width: 5%;
-//}
-//
-//.mat-column-discoveryPath {
-//  flex: 0 0 5%;
-//  width: 5%;
-//}
-//
-//.mat-column-contentType {
-//  flex: 0 0 10%;
-//  width: 10%;
-//}
-//
-//.mat-column-action {
-//  flex: 0 0 7%;
-//  width: 7%;
-//}

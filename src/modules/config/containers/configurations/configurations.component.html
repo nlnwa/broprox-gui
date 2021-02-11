@@ -25,6 +25,7 @@
                               [pageIndex]="pageIndex$ | async"
                               [pageSize]="pageSize$ | async"
                               (selectedChange)="onSelectedChange($event)"
+                              (rowClick)="onRowClick($event)"
                               (selectAll)="onSelectAll()">
           <button mat-icon-button
                   (click)="onUpdateMultiWithDialog(mergedConfig)">

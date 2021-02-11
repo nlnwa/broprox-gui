@@ -45,7 +45,10 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"
-          [ngClass]="isSelected(row) ? 'row-selected' : isChecked(row) ? 'row-checked': ''"
+          class="item-row"
+          [class.row-selected]="isSelected(row)"
+          [class.row-checked]="isChecked(row)"
+          [class.row-disabled]="isDisabled(row)"
           (click)="onRowClick(row)"></tr>
     </table>
   </div>

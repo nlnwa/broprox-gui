@@ -1,4 +1,4 @@
-<div class="container content-padding">
+<div class="container">
   <ng-container *ngIf="configObject$ | async as configObject">
     <ng-container *ngIf="options$ | async as options">
       <div fxLayout="row">
@@ -6,7 +6,7 @@
                       (runCrawl)="onRunCrawl($event)"
                       (clone)="onClone($event)"
                       (createSeed)="onCreateSeedFromEntity($event)"></app-shortcut>
-        <div fxFlex [ngSwitch]="configObject.kind">
+        <div class="content-padding" fxFlex [ngSwitch]="configObject.kind">
           <app-collection-details *ngSwitchCase="Kind.COLLECTION"
                                   [configObject]="configObject"
                                   [rotationPolicies]="options.rotationPolicies"

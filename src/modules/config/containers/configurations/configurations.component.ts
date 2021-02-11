@@ -474,17 +474,18 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
     this.updateAllConfigObject = new ConfigObject({kind: this.kind});
   }
 
-  onSelectedChange(configs: ConfigObject | ConfigObject[]) {
-    this.isAllSelected = false;
+  onRowClick(config: ConfigObject) {
+    this.configObject$.next(config);
+  }
 
-    if (!Array.isArray(configs)) {
-      this.selectedConfigs = [];
-      this.configObjects$.next(null);
-      this.configObject$.next(configs);
-    } else {
-      this.selectedConfigs = configs;
+  onSelectedChange(configs: ConfigObject[]) {
+    this.isAllSelected = false;
+    this.selectedConfigs = configs;
+    if (configs.length > 1) {
       const mergedConfigObject = ConfigObject.mergeConfigs(configs);
       this.mergedConfig = mergedConfigObject;
+    } else {
+      this.mergedConfig = null;
     }
   }
 
@@ -496,7 +497,10 @@ export class ConfigurationsComponent implements OnInit, OnDestroy {
   }
 
   onFilterByScheduleRef(configObject: ConfigObject) {
-    this.router.navigate(['../crawljobs'], {queryParams: {schedule_id: configObject.id}, relativeTo: this.route.parent});
+    this.router.navigate(['../crawljobs'], {
+      queryParams: {schedule_id: configObject.id},
+      relativeTo: this.route.parent
+    });
   }
 
   onFilterByCrawlConfigRef(configObject: ConfigObject) {

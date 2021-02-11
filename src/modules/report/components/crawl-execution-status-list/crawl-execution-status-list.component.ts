@@ -7,7 +7,10 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 @Component({
   selector: 'app-crawl-execution-status-list',
   templateUrl: './crawl-execution-status-list.component.html',
-  styleUrls: ['../../../commons/components/base-list/base-list.scss'],
+  styleUrls: [
+    '../../../commons/components/base-list/base-list.scss',
+    '../../../commons/components/base-list/base-list-odd-preview.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     ListDataSource,

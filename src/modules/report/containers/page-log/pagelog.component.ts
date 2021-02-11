@@ -125,9 +125,8 @@ export class PageLogComponent implements OnInit {
     this.query$ = query$;
   }
 
-
-  onSelectedChange(item: ListItem | ListItem[]) {
-    if (!Array.isArray(item)) {
+  onRowClick(item: ListItem) {
+    if (item !== null) {
       this.router.navigate([item.id], {
         relativeTo: this.route,
       }).catch(error => this.errorService.dispatch(error));

@@ -1,5 +1,16 @@
 <p><strong>Name:</strong> {{configObject.meta.name}}</p>
 <p><strong>Description:</strong> {{configObject.meta.description}}</p>
+<p><strong>Created:</strong> {{configObject.meta.created | date: 'medium'}} by {{configObject.meta.createdBy}}</p>
+<p><strong>Updated:</strong> {{configObject.meta.lastModified | date: 'medium'}} by {{configObject.meta.lastModifiedBy}}
+</p>
+<p><strong>ID:</strong> {{configObject.id}}
+  <button mat-button mat-icon-button (click)="copyIdToClipboard()">
+    <mat-icon matTooltip="copy ID to clipboard"
+              i18n-matTooltip="@@copyIdButtonTooltip"
+              matSuffix>content_copy
+    </mat-icon>
+  </button>
+</p>
 <p *ngIf="configObject.meta.labelList.length">
   <mat-label>Labels</mat-label>
   <mat-chip-list>
@@ -15,15 +26,4 @@
       {{annotation.key}}:{{annotation.value}}
     </mat-chip>
   </mat-chip-list>
-</p>
-<p><strong>Created:</strong> {{configObject.meta.created | date: 'medium'}} by {{configObject.meta.createdBy}}</p>
-<p><strong>Updated:</strong> {{configObject.meta.lastModified | date: 'medium'}} by {{configObject.meta.lastModifiedBy}}
-</p>
-<p><strong>ID:</strong> {{configObject.id}}
-  <button mat-button mat-icon-button (click)="copyIdToClipboard()">
-    <mat-icon matTooltip="copy ID to clipboard"
-              i18n-matTooltip="@@copyIdButtonTooltip"
-              matSuffix>content_copy
-    </mat-icon>
-  </button>
 </p>

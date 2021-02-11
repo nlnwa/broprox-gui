@@ -146,7 +146,6 @@ export class ReportApiService {
     template.seedId = seedId;
     request.setQueryMask(mask);
     request.setQueryTemplate(CrawlExecutionStatus.toProto(template));
-
     request.setOrderByPath('startTime');
     request.setOrderDescending(true);
     if (pageSize) {
